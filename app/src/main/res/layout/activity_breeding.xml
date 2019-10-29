@@ -44,4 +44,19 @@
         app:layout_constraintTop_toBottomOf="@+id/compact_calendar_view"
         app:layout_constraintVertical_bias="0.795" />
 
+    <Button
+        android:id="@+id/add_breeding_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="261dp"
+        android:layout_marginBottom="113dp"
+        android:text="@string/add_breeding"
+        app:layout_constraintBottom_toTopOf="@+id/compact_calendar_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="Dodaj wychów" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
