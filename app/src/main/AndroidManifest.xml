@@ -19,7 +19,8 @@
         </activity>
 
         <activity android:name=".Breeding"
-            android:label="Breeding">
+            android:label="Breeding"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.example.assistantbeekeeper"/>
                 <category android:name="android.intent.category.DEFAULT"/>

@@ -46,12 +46,15 @@
 
     <Button
         android:id="@+id/add_breeding_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="143dp"
+        android:layout_height="72dp"
         android:layout_marginStart="62dp"
         android:layout_marginEnd="261dp"
         android:layout_marginBottom="113dp"
+        android:backgroundTint="#E4FF9800"
+        android:drawableTint="#8BC34A"
         android:text="@string/add_breeding"
+        android:textColor="#F8F4F8"
         app:layout_constraintBottom_toTopOf="@+id/compact_calendar_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
