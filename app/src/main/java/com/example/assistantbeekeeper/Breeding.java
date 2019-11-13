@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
+import com.example.assistantbeekeeper.assistantbeekeepersqllite.MyDbHandler;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 import java.util.ArrayList;
@@ -28,20 +30,22 @@ public class Breeding extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breeding);
-
         final CompactCalendarView compactCalendarView = findViewById(R.id.compact_calendar_view);
 
+        //fields
         eventsListView= findViewById(R.id.events_listview);
         addBreedingButton=findViewById(R.id.add_breeding_button);
         arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1, listEvents);
+        MyDbHandler dbHelper=new MyDbHandler(getApplicationContext());
 
-////////////////////////////////////Listeners/////////////////////////////////////////////////////
+        ////////////////////////////////////Listeners/////////////////////////////////////////////////////
 
         addBreedingButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
                 addBreeding(compactCalendarView, 1572303600000L);
                 eventsListView.setAdapter(arrayAdapter);
+
             }
         }
         );
