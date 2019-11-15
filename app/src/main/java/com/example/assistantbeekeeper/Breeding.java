@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Breeding extends AppCompatActivity {
 
+    //declarations
     ListView eventsListView;
     Date helpDate=new Date();
     ArrayList<String> listEvents=new ArrayList<>();
@@ -46,22 +47,29 @@ public class Breeding extends AppCompatActivity {
 
         addBreedingButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                SQLiteDatabase db=dbHelper.getWritableDatabase();
 
                 addBreeding(compactCalendarView, 1572303600000L);
                 eventsListView.setAdapter(arrayAdapter);
-                SQLiteDatabase db=dbHelper.getWritableDatabase();
-                ContentValues values=new ContentValues();
-                values.put(FeedReaderContract.EventsCalendar.COL1,"Zapisano do bazy wartosc daty");
-                values.put(FeedReaderContract.EventsCalendar.COL2, "zapisano drugie pole do bazy");
-                long newRowID=db.insert(FeedReaderContract.EventsCalendar.TABLE_NAME, null, values);
-                Log.i("WPIS DO BAZY", Long.toString(newRowID));
+
+                ContentValues values2=new ContentValues();
+                ContentValues values1=new ContentValues();
+
+                values1.put(FeedReaderContract.EventsCalendar.COL1, "Zapisano wartosc daty do tabeli Events Calendar");
+                values2.put(FeedReaderContract.TestTable.COL1,"Zapisano do bazy wartosc daty do tabeli TableTest");
+                long newRowID=db.insert(FeedReaderContract.EventsCalendar.TABLE_NAME, null, values1);
+                long newRowID1=db.insert(FeedReaderContract.TestTable.TABLE_NAME, null, values2);
+                Log.i("WPIS DO TABELI EVENTS CALENDAR ", Long.toString(newRowID));
+                Log.i("WPIS DO TABELI TESTTABLE ", Long.toString(newRowID1));
+
+
+
             }
         }
         );
 
 
     }
-
 
 
 
