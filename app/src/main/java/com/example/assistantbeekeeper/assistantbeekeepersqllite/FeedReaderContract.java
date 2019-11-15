@@ -4,12 +4,16 @@ import android.provider.BaseColumns;
 
 public final class FeedReaderContract {
     private FeedReaderContract(){}
+
+    //Table EVEBTS_CALENDAR
     public static class EventsCalendar implements BaseColumns{
-        private static final String TABLE_NAME="Events_Calendar";
-        private static final String COL1="date";
-        private static final String COL2="action";
+        public static final String TABLE_NAME="EVENTS_CALENDAR";
+        public static final String COL1="DATE";
+        public static final String COL2="ACTION";
 
     }
+
+
 
     public static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + EventsCalendar.TABLE_NAME + " (" +

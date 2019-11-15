@@ -1,7 +1,7 @@
 package com.example.assistantbeekeeper;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,12 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.assistantbeekeeper.assistantbeekeepersqllite.FeedReaderContract;
 import com.example.assistantbeekeeper.assistantbeekeepersqllite.MyDbHandler;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
+
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Breeding extends AppCompatActivity {
 
@@ -36,24 +39,28 @@ public class Breeding extends AppCompatActivity {
         eventsListView= findViewById(R.id.events_listview);
         addBreedingButton=findViewById(R.id.add_breeding_button);
         arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1, listEvents);
-        MyDbHandler dbHelper=new MyDbHandler(getApplicationContext());
+        final MyDbHandler dbHelper=new MyDbHandler(this);
 
-        ////////////////////////////////////Listeners/////////////////////////////////////////////////////
+        ////////////////////////////////////////Listeners/////////////////////////////////////////////////////
+        ////////////////////////////////////Buttons Add Breeding/////////////////////////////////////////////////
 
         addBreedingButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
                 addBreeding(compactCalendarView, 1572303600000L);
                 eventsListView.setAdapter(arrayAdapter);
-
+                SQLiteDatabase db=dbHelper.getWritableDatabase();
+                ContentValues values=new ContentValues();
+                values.put(FeedReaderContract.EventsCalendar.COL1,"Zapisano do bazy wartosc daty");
+                values.put(FeedReaderContract.EventsCalendar.COL2, "zapisano drugie pole do bazy");
+                long newRowID=db.insert(FeedReaderContract.EventsCalendar.TABLE_NAME, null, values);
+                Log.i("WPIS DO BAZY", Long.toString(newRowID));
             }
         }
         );
 
 
     }
-
-
 
 
 
@@ -74,7 +81,7 @@ public class Breeding extends AppCompatActivity {
             addEvent(compactCalendarView, Color.RED, time4, "Znakowanie matek i umieszczenie ich z rodziną wychowującą");
 
     }
-
+    //add event to compactCalendarView &&
     private void addEvent (CompactCalendarView compactCalendarView, int color, long timeInMillis, Object data){
         Event ev1=new Event(color, timeInMillis,data);
         compactCalendarView.addEvent(ev1);
