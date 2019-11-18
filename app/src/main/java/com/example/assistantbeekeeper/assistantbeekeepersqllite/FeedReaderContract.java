@@ -17,7 +17,7 @@ public final class FeedReaderContract {
     //Table Test_Table
     public static class TestTable implements BaseColumns{
         public static final String TABLE_NAME="TEST_TABLE";
-        public static final String COL1="DESCRIPTION";
+        public static final String COL1="DESCRIPTION" ;
     }
 
 
