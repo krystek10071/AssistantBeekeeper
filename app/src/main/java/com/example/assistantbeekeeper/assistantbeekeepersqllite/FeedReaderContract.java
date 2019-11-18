@@ -21,11 +21,6 @@ public final class FeedReaderContract {
     }
 
 
-    public static final String SQL_CREATE_TEST_TABLE=
-            "CREATE TABLE " + TestTable.TABLE_NAME +" ("+
-                    TestTable._ID + " INTEGER PRIMARY KEY,"+
-                    TestTable.COL1+ " TEXT)";
-
 
     public static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + EventsCalendar.TABLE_NAME + " (" +
@@ -38,6 +33,7 @@ public final class FeedReaderContract {
 
 
     public static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + EventsCalendar.TABLE_NAME;
+            "DROP TABLE IF EXISTS " + EventsCalendar.TABLE_NAME+
+            "DROP TABLE IF EXISTS " + TestTable.TABLE_NAME;
 
 }
