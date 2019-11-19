@@ -44,6 +44,7 @@ public class Breeding extends AppCompatActivity {
                 breedingFunctions.addBreeding(compactCalendarView, listTimeInMillis, listDescription, listEvents);
                 eventsListView.setAdapter(arrayAdapter);
                 breedingFunctions.addToDatabase(dbHelper,listTimeInMillis, listDescription);
+                breedingFunctions.readEvents(dbHelper);
 
             }
         }
