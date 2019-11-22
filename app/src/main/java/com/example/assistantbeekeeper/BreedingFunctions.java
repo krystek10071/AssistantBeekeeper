@@ -92,5 +92,10 @@ public class BreedingFunctions {
         cursor.close();
     }
 
+
+    public void setBreedingDay(){
+
+    }
+
 }
 

@@ -1,13 +1,18 @@
 package com.example.assistantbeekeeper;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ListView;
 import com.example.assistantbeekeeper.assistantbeekeepersqllite.MyDbHandler;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Breeding extends AppCompatActivity {
@@ -19,6 +24,9 @@ public class Breeding extends AppCompatActivity {
     ArrayList<String> listDescription=new ArrayList<>();                                                        //list with descriptions of activities for beekeeper
     Button addBreedingButton;
     ArrayAdapter arrayAdapter;
+    Calendar calendar;
+    DatePickerDialog datePickerDialog;
+    Date helpDate;
 
 
     @Override
@@ -48,10 +56,28 @@ public class Breeding extends AppCompatActivity {
 
         addBreedingButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                calendar=Calendar.getInstance();
+                int day=calendar.get(Calendar.DAY_OF_MONTH);
+                int month=calendar.get(Calendar.MONTH);
+                int year=calendar.get(Calendar.YEAR);
+
+               datePickerDialog=new DatePickerDialog(Breeding.this, new DatePickerDialog.OnDateSetListener() {
+                   @Override
+                   public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
+                        calendar.set(mYear, mMonth, mDay);
+                   }
+               }, day, month, year);
+               datePickerDialog.show();
+
+
+
+
+
+
+
                 breedingFunctions.addBreeding(compactCalendarView, listTimeInMillis, listDescription, listEvents);//add breeding to CompactCalendarView
                 eventsListView.setAdapter(arrayAdapter);
                 breedingFunctions.addToDatabase(dbHelper,listTimeInMillis, listDescription);                      //add to database
-              //  breedingFunctions.readEvents(dbHelper,listTimeInMillis, listDescription);
 
             }
         }
