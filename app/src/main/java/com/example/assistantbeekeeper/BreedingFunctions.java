@@ -72,7 +72,7 @@ public class BreedingFunctions {
 
     }
 
-    protected void readEvents(MyDbHandler dbHelper){
+    protected void readEvents(MyDbHandler dbHelper, ArrayList<Long> timeInMillis, ArrayList<String> description){
         SQLiteDatabase db=dbHelper.getReadableDatabase();
         Cursor cursor=db.query(
                 FeedReaderContract.EventsCalendar.TABLE_NAME,
@@ -84,6 +84,10 @@ public class BreedingFunctions {
                 null);
         while (cursor.moveToNext()){
             Log.i("WYPIS Z BAZY", Long.toString(cursor.getLong(cursor.getColumnIndexOrThrow(FeedReaderContract.EventsCalendar.COL1))));
+            long pom1=cursor.getLong(cursor.getColumnIndexOrThrow(FeedReaderContract.EventsCalendar.COL1));
+            timeInMillis.add(pom1);
+            String pom2=cursor.getString(cursor.getColumnIndexOrThrow(FeedReaderContract.EventsCalendar.COL2));
+            description.add(pom2);
         }
         cursor.close();
     }
