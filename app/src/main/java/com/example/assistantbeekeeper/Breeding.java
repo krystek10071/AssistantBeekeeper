@@ -25,7 +25,7 @@ public class Breeding extends AppCompatActivity {
     Button addBreedingButton;
     ArrayAdapter arrayAdapter;
     Calendar calendar;
-    DatePickerDialog datePickerDialog;
+
     Date helpDate;
 
 
@@ -50,30 +50,14 @@ public class Breeding extends AppCompatActivity {
             eventsListView.setAdapter(arrayAdapter);
         }
 
-         breedingFunctions.addTimeMillisToList(listTimeInMillis, listDescription);                                //add Date in millis and description to Lists
+      //   breedingFunctions.addTimeMillisToList(listTimeInMillis, listDescription);                                //add Date in millis and description to Lists
 
         ////////////////////////////////////Buttons Add Breeding////////////////////////////////////
 
         addBreedingButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                calendar=Calendar.getInstance();
-                int day=calendar.get(Calendar.DAY_OF_MONTH);
-                int month=calendar.get(Calendar.MONTH);
-                int year=calendar.get(Calendar.YEAR);
 
-               datePickerDialog=new DatePickerDialog(Breeding.this, new DatePickerDialog.OnDateSetListener() {
-                   @Override
-                   public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
-                        calendar.set(mYear, mMonth, mDay);
-                   }
-               }, day, month, year);
-               datePickerDialog.show();
-
-
-
-
-
-
+                breedingFunctions.setBreedingDay(Breeding.this);
 
                 breedingFunctions.addBreeding(compactCalendarView, listTimeInMillis, listDescription, listEvents);//add breeding to CompactCalendarView
                 eventsListView.setAdapter(arrayAdapter);
