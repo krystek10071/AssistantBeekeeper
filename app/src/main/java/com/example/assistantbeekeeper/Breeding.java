@@ -24,9 +24,7 @@ public class Breeding extends AppCompatActivity {
     ArrayList<String> listDescription=new ArrayList<>();                                                        //list with descriptions of activities for beekeeper
     Button addBreedingButton;
     ArrayAdapter arrayAdapter;
-    Calendar calendar;
-
-    Date helpDate;
+    long timeInMillis;
 
 
     @Override
@@ -48,16 +46,19 @@ public class Breeding extends AppCompatActivity {
             breedingFunctions.readEvents(dbHelper, listTimeInMillis, listDescription);                            //read data from database and save in listTimeInMillis, listDescription
             breedingFunctions.addBreeding(compactCalendarView, listTimeInMillis, listDescription, listEvents);
             eventsListView.setAdapter(arrayAdapter);
+            listTimeInMillis.clear();
+            listDescription.clear();
         }
 
-      //   breedingFunctions.addTimeMillisToList(listTimeInMillis, listDescription);                                //add Date in millis and description to Lists
+
 
         ////////////////////////////////////Buttons Add Breeding////////////////////////////////////
 
         addBreedingButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
-                breedingFunctions.setBreedingDay(Breeding.this);
+                timeInMillis=breedingFunctions.setBreedingDay(Breeding.this);
+                breedingFunctions.addTimeMillisToList(listTimeInMillis, listDescription, timeInMillis);                                //add Date in millis and description to Lists
 
                 breedingFunctions.addBreeding(compactCalendarView, listTimeInMillis, listDescription, listEvents);//add breeding to CompactCalendarView
                 eventsListView.setAdapter(arrayAdapter);
