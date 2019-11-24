@@ -53,17 +53,19 @@ public class Breeding extends AppCompatActivity {
 
 
         ////////////////////////////////////Buttons Add Breeding////////////////////////////////////
-
+        //Add BreedingButton
         addBreedingButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
                 timeInMillis=breedingFunctions.setBreedingDay(Breeding.this);
+
                 breedingFunctions.addTimeMillisToList(listTimeInMillis, listDescription, timeInMillis);                                //add Date in millis and description to Lists
 
                 breedingFunctions.addBreeding(compactCalendarView, listTimeInMillis, listDescription, listEvents);//add breeding to CompactCalendarView
                 eventsListView.setAdapter(arrayAdapter);
                 breedingFunctions.addToDatabase(dbHelper,listTimeInMillis, listDescription);                      //add to database
-
+                listTimeInMillis.clear();
+                listDescription.clear();
             }
         }
         );

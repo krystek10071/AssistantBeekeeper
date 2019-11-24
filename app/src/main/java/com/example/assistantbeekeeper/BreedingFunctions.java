@@ -117,7 +117,7 @@ public class BreedingFunctions {
                 calendar.set(Calendar.SECOND, 0);
                 calendar.set(Calendar.HOUR_OF_DAY,0);
                 long timeinmillis=calendar.getTimeInMillis();
-                Log.i("WYBOR DATY", Long.toString(timeinmillis));
+               // Log.i("WYBOR DATY", Long.toString(timeinmillis));
 
 
             }
@@ -125,6 +125,7 @@ public class BreedingFunctions {
         datePickerDialog.show();
 
         setDateInMillis=calendar.getTimeInMillis();
+        Log.i("WYBOR DATY", Long.toString(setDateInMillis));
         return setDateInMillis;
     }
 
