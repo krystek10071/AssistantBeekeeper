@@ -2,6 +2,7 @@ package com.example.assistantbeekeeper;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.locks.ReentrantLock;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +26,8 @@ public class Breeding extends AppCompatActivity {
     ArrayList<String> listDescription=new ArrayList<>();                                                        //list with descriptions of activities for beekeeper
     Button addBreedingButton;
     ArrayAdapter arrayAdapter;
-    long timeInMillis;
+    Calendar calendar;
+    long tabTimeInMillis[]=new long[1];
 
 
     @Override
@@ -50,6 +53,10 @@ public class Breeding extends AppCompatActivity {
             listDescription.clear();
         }
 
+            tabTimeInMillis= breedingFunctions.setBreedingDay(Breeding.this);
+
+
+        Log.i("WYPIS USTAWIONEJ DATY", Long.toString(tabTimeInMillis[0]));
 
 
         ////////////////////////////////////Buttons Add Breeding////////////////////////////////////
@@ -57,9 +64,7 @@ public class Breeding extends AppCompatActivity {
         addBreedingButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
-                timeInMillis=breedingFunctions.setBreedingDay(Breeding.this);
-
-                breedingFunctions.addTimeMillisToList(listTimeInMillis, listDescription, timeInMillis);                                //add Date in millis and description to Lists
+                breedingFunctions.addTimeMillisToList(listTimeInMillis, listDescription,1574550000000L);                                //add Date in millis and description to Lists
 
                 breedingFunctions.addBreeding(compactCalendarView, listTimeInMillis, listDescription, listEvents);//add breeding to CompactCalendarView
                 eventsListView.setAdapter(arrayAdapter);

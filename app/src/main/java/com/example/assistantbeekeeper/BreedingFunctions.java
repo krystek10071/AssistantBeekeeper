@@ -17,6 +17,7 @@ import com.github.sundeepk.compactcalendarview.domain.Event;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.locks.ReentrantLock;
 
 
 public class BreedingFunctions {
@@ -99,34 +100,34 @@ public class BreedingFunctions {
     }
 
 
-    public long setBreedingDay(Context context){
+    public long[] setBreedingDay(Context context){
         DatePickerDialog datePickerDialog;
         calendar= Calendar.getInstance();
         int day=calendar.get(Calendar.DAY_OF_MONTH);
-        int month=calendar.get(Calendar.MONTH);
+        final int month=calendar.get(Calendar.MONTH);
         int year=calendar.get(Calendar.YEAR);
-        long setDateInMillis;                                                                       //set date in milliseconds
+
+        final long[] timeinmillis = new long[1];
 
 
         //set breeding day with DatePickerDialog
         datePickerDialog=new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+
+
             @Override
             public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
                 calendar.set(mYear, mMonth, mDay);
                 calendar.set(Calendar.MINUTE,0);
                 calendar.set(Calendar.SECOND, 0);
                 calendar.set(Calendar.HOUR_OF_DAY,0);
-                long timeinmillis=calendar.getTimeInMillis();
-               // Log.i("WYBOR DATY", Long.toString(timeinmillis));
-
+                timeinmillis[0] =calendar.getTimeInMillis();
+                Log.i("WYBOR DATY", Long.toString(timeinmillis[0]));
 
             }
         }, day, month, year);
         datePickerDialog.show();
+        return timeinmillis;
 
-        setDateInMillis=calendar.getTimeInMillis();
-        Log.i("WYBOR DATY", Long.toString(setDateInMillis));
-        return setDateInMillis;
     }
 
 
