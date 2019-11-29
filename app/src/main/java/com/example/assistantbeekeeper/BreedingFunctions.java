@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.util.Log;
 import android.widget.DatePicker;
+import android.widget.TextView;
 
 import com.example.assistantbeekeeper.assistantbeekeepersqllite.FeedReaderContract;
 import com.example.assistantbeekeeper.assistantbeekeepersqllite.MyDbHandler;
@@ -22,6 +23,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class BreedingFunctions {
     private Calendar calendar;
+    private final ReentrantLock lock=new ReentrantLock();
 
     protected void addTimeMillisToList(ArrayList<Long> listTimeInMillis, ArrayList<String> description, long timeInMillis){
         //time1...time4 this is time for individual activities
@@ -100,36 +102,39 @@ public class BreedingFunctions {
     }
 
 
-    public long[] setBreedingDay(Context context){
+    public void setBreedingDay(final Context context, final Long[] timeInMillis, final TextView textView) {
         DatePickerDialog datePickerDialog;
-        calendar= Calendar.getInstance();
-        int day=calendar.get(Calendar.DAY_OF_MONTH);
-        final int month=calendar.get(Calendar.MONTH);
-        int year=calendar.get(Calendar.YEAR);
-
-        final long[] timeinmillis = new long[1];
-
-
+        calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        final int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        // final Long[] timeinmillis = new Long[1];
+        //timeinmillis[0]=0L;
         //set breeding day with DatePickerDialog
-        datePickerDialog=new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
-
+        datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
                 calendar.set(mYear, mMonth, mDay);
-                calendar.set(Calendar.MINUTE,0);
+                calendar.set(Calendar.MINUTE, 0);
                 calendar.set(Calendar.SECOND, 0);
-                calendar.set(Calendar.HOUR_OF_DAY,0);
-                timeinmillis[0] =calendar.getTimeInMillis();
-                Log.i("WYBOR DATY", Long.toString(timeinmillis[0]));
-
+                calendar.set(Calendar.HOUR_OF_DAY, 0);
+                timeInMillis[0] = calendar.getTimeInMillis();
+                Log.i("WYBOR DATY", Long.toString(timeInMillis[0]));
+                String output=String.format("%tQ", calendar.getTimeInMillis());                     //set output string
+                textView.setText(output);
             }
+
         }, day, month, year);
         datePickerDialog.show();
-        return timeinmillis;
+
 
     }
 
 
-}
+
+
+
+
+    }
 

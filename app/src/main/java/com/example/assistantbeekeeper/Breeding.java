@@ -8,12 +8,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import com.example.assistantbeekeeper.assistantbeekeepersqllite.MyDbHandler;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.concurrent.locks.ReentrantLock;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,8 +28,9 @@ public class Breeding extends AppCompatActivity {
     ArrayList<String> listDescription=new ArrayList<>();                                                        //list with descriptions of activities for beekeeper
     Button addBreedingButton;
     ArrayAdapter arrayAdapter;
-    Calendar calendar;
-    long tabTimeInMillis[]=new long[1];
+    final Long[] timeInMillis=new Long[1];
+    ReentrantLock lock=new ReentrantLock();
+    TextView dateTextView;
 
 
     @Override
@@ -42,6 +45,7 @@ public class Breeding extends AppCompatActivity {
         eventsListView= findViewById(R.id.events_listview);
         addBreedingButton=findViewById(R.id.add_breeding_button);
         arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1, listEvents);
+        dateTextView=findViewById(R.id.textView);
 
 
         if(listEvents.isEmpty()){
@@ -53,19 +57,17 @@ public class Breeding extends AppCompatActivity {
             listDescription.clear();
         }
 
-            tabTimeInMillis= breedingFunctions.setBreedingDay(Breeding.this);
 
 
-        Log.i("WYPIS USTAWIONEJ DATY", Long.toString(tabTimeInMillis[0]));
-
+        breedingFunctions.setBreedingDay(Breeding.this, timeInMillis, dateTextView);
 
         ////////////////////////////////////Buttons Add Breeding////////////////////////////////////
         //Add BreedingButton
         addBreedingButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
+                Log.i("WWDHUWHDUWDH", String.valueOf(dateTextView.getText()));
                 breedingFunctions.addTimeMillisToList(listTimeInMillis, listDescription,1574550000000L);                                //add Date in millis and description to Lists
-
                 breedingFunctions.addBreeding(compactCalendarView, listTimeInMillis, listDescription, listEvents);//add breeding to CompactCalendarView
                 eventsListView.setAdapter(arrayAdapter);
                 breedingFunctions.addToDatabase(dbHelper,listTimeInMillis, listDescription);                      //add to database
