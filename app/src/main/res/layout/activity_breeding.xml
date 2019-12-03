@@ -13,7 +13,7 @@
         android:id="@+id/compact_calendar_view"
         android:layout_width="fill_parent"
         android:layout_height="250dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="168dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         app:compactCalendarBackgroundColor="#F39C1C"
@@ -24,14 +24,14 @@
         app:compactCalendarTextColor="#fff"
         app:compactCalendarTextSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/events_listview"
-        android:layout_width="391dp"
-        android:layout_height="207dp"
+        android:layout_width="390dp"
+        android:layout_height="263dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="5dp"
@@ -49,29 +49,43 @@
         android:layout_width="143dp"
         android:layout_height="72dp"
         android:layout_marginStart="62dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="261dp"
-        android:layout_marginBottom="113dp"
         android:backgroundTint="#E4FF9800"
         android:drawableTint="#8BC34A"
         android:text="@string/add_breeding"
         android:textColor="#F8F4F8"
-        app:layout_constraintBottom_toTopOf="@+id/compact_calendar_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.436"
+        app:layout_constraintHorizontal_bias="0.418"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.762"
         tools:text="Dodaj wychów" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="120dp"
         android:layout_height="31dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/textView"
         app:layout_constraintBottom_toTopOf="@+id/compact_calendar_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.865"
+        app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/set_time_button"
+        android:layout_width="143dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="#E4FF9800"
+        tools:text="Ustaw date"
+        android:textColor="#F8F4F8"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

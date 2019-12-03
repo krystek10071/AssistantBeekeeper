@@ -41,11 +41,15 @@ public class BreedingFunctions {
         description.add("Umiesc je w klateczka pomiedzy z plastrami z czerwiem");
         description.add("Wygryzienie sie matek");
         description.add("Znakowanie matek i umieszczenie ich z rodziną wychowującą");
+
+        Log.i("ADDTimeMillisToList", "ADDTIMEMILLISTOLIST");
     }
 
     protected   void addBreeding(CompactCalendarView compactCalendarView, ArrayList<Long> timeInMillis, ArrayList<String> description, ArrayList<String> listEvents ){
     //lenght lists
         int count=description.size();
+        Log.i("ADDBREEDING", "ADDBREEDING");
+
         for(int i=0; i<count; i++){
             addEvent(compactCalendarView, timeInMillis.get(i), description.get(i), listEvents);
         }
@@ -102,7 +106,7 @@ public class BreedingFunctions {
     }
 
 
-    public void setBreedingDay(final Context context, final Long[] timeInMillis, final TextView textView) {
+    protected void setBreedingDay(final Context context, final Long[] timeInMillis, final TextView textView) {
         DatePickerDialog datePickerDialog;
         calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -121,7 +125,7 @@ public class BreedingFunctions {
                 calendar.set(Calendar.HOUR_OF_DAY, 0);
                 timeInMillis[0] = calendar.getTimeInMillis();
                 Log.i("WYBOR DATY", Long.toString(timeInMillis[0]));
-                String output=String.format("%tQ", calendar.getTimeInMillis());                     //set output string
+                String output=String.format("%tQ", calendar.getTimeInMillis());                     //set output string with time in millis
                 textView.setText(output);
             }
 
