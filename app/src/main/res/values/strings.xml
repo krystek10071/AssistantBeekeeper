@@ -5,4 +5,5 @@
     <string name="button">Button</string>
     <string name="add_breeding">AddBreeding</string>
     <string name="textView">TextView</string>
+    <string name="notsettext">NotSetText</string>
 </resources>

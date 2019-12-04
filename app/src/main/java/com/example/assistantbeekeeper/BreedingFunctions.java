@@ -45,14 +45,17 @@ public class BreedingFunctions {
         Log.i("ADDTimeMillisToList", "ADDTIMEMILLISTOLIST");
     }
 
-    protected   void addBreeding(CompactCalendarView compactCalendarView, ArrayList<Long> timeInMillis, ArrayList<String> description, ArrayList<String> listEvents ){
+    protected   void addBreeding(CompactCalendarView compactCalendarView, ArrayList<Long> timeInMillis, ArrayList<String> description, ArrayList<String> listEvents, TextView textView ){
     //lenght lists
         int count=description.size();
+        String output="NotSetText";
+
         Log.i("ADDBREEDING", "ADDBREEDING");
 
         for(int i=0; i<count; i++){
             addEvent(compactCalendarView, timeInMillis.get(i), description.get(i), listEvents);
         }
+        textView.setText(output);
 
     }
 

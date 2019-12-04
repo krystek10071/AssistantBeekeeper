@@ -1,20 +1,18 @@
 package com.example.assistantbeekeeper;
 
-import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.assistantbeekeeper.assistantbeekeepersqllite.MyDbHandler;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.concurrent.locks.ReentrantLock;
+
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +27,6 @@ public class Breeding extends AppCompatActivity {
     ArrayAdapter arrayAdapter;
     final Long[] timeInMillis=new Long[1];
     TextView dateTextView;                                                                                      //dateTextView with time in millis
-
     //Buttons
     Button addBreedingButton;
     Button setDateButton;
@@ -53,7 +50,7 @@ public class Breeding extends AppCompatActivity {
         //if the listEvents is empty then load data from database to listTimeInMillis and listDescription
         if(listEvents.isEmpty()){
             breedingFunctions.readEvents(dbHelper, listTimeInMillis, listDescription);                            //read data from database and save in listTimeInMillis, listDescription
-            breedingFunctions.addBreeding(compactCalendarView, listTimeInMillis, listDescription, listEvents);
+            breedingFunctions.addBreeding(compactCalendarView, listTimeInMillis, listDescription, listEvents, dateTextView);
             eventsListView.setAdapter(arrayAdapter);
             listTimeInMillis.clear();
             listDescription.clear();
@@ -62,18 +59,25 @@ public class Breeding extends AppCompatActivity {
 
 
 
-
         ////////////////////////////////////Buttons Add Breeding////////////////////////////////////
         //Add BreedingButton
         addBreedingButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                timeInMillis[0]=Long.parseLong(dateTextView.getText().toString());
-                breedingFunctions.addTimeMillisToList(listTimeInMillis, listDescription, timeInMillis[0] );                                //add Date in millis and description to Lists
-                breedingFunctions.addBreeding(compactCalendarView, listTimeInMillis, listDescription, listEvents);//add breeding to CompactCalendarView
-                eventsListView.setAdapter(arrayAdapter);
-                breedingFunctions.addToDatabase(dbHelper,listTimeInMillis, listDescription);                      //add to database
-                listTimeInMillis.clear();
-                listDescription.clear();
+
+                if(dateTextView.getText().toString().equals("NotSetText")){
+                    Toast.makeText(Breeding.this, "Najpierw musisz ustawic date", Toast.LENGTH_LONG).show();
+                }else {
+                    timeInMillis[0]=Long.parseLong(dateTextView.getText().toString());
+                    breedingFunctions.addTimeMillisToList(listTimeInMillis, listDescription, timeInMillis[0] );                                //add Date in millis and description to Lists
+                    breedingFunctions.addBreeding(compactCalendarView, listTimeInMillis, listDescription, listEvents, dateTextView);//add breeding to CompactCalendarView
+                    eventsListView.setAdapter(arrayAdapter);
+                    breedingFunctions.addToDatabase(dbHelper,listTimeInMillis, listDescription);                      //add to database
+                    listTimeInMillis.clear();
+                    listDescription.clear();
+                    Toast.makeText(Breeding.this, "Pomyślnie dodano wychów do kalendarza", Toast.LENGTH_LONG).show();
+
+                }
+
             }
         }
         );
