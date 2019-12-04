@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.example.assistantbeekeeper.assistantbeekeepersqllite.MyDbHandler;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import java.util.ArrayList;
-
+import java.util.Locale;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +36,7 @@ public class Breeding extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breeding);
         final CompactCalendarView compactCalendarView = findViewById(R.id.compact_calendar_view);
+
 
     //fields
         final MyDbHandler dbHelper=new MyDbHandler(this);
