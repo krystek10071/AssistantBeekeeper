@@ -134,8 +134,21 @@ public class BreedingFunctions {
 
         }, day, month, year);
         datePickerDialog.show();
+    }
 
 
+    /**
+     * This method converts the string to the saved event
+     * @param str event written in the string
+     * @return  string with the description of the event
+     */
+    protected String convertString(String str){
+        int index;
+        String result;
+        index= str.indexOf("data");
+        result=str.substring(index+5, str.length()-1);
+        Log.i("STRING PO KONWERSJI", result+"/n");
+        return result+"\n";
     }
 
 

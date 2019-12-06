@@ -1,5 +1,6 @@
 package com.example.assistantbeekeeper;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,10 +12,16 @@ import android.widget.Toast;
 
 import com.example.assistantbeekeeper.assistantbeekeepersqllite.MyDbHandler;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.github.sundeepk.compactcalendarview.domain.Event;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Breeding extends AppCompatActivity {
@@ -27,6 +34,8 @@ public class Breeding extends AppCompatActivity {
     ArrayAdapter arrayAdapter;
     final Long[] timeInMillis=new Long[1];
     TextView dateTextView;                                                                                      //dateTextView with time in millis
+    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
+
     //Buttons
     Button addBreedingButton;
     Button setDateButton;
@@ -36,9 +45,14 @@ public class Breeding extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breeding);
         final CompactCalendarView compactCalendarView = findViewById(R.id.compact_calendar_view);
+        final ActionBar actionBar=getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(false);
+        actionBar.setTitle(null);
+
+        compactCalendarView.setUseThreeLetterAbbreviation(true);                                              //zmienia nazwy dni na 3 literowe
 
 
-    //fields
+        //fields
         final MyDbHandler dbHelper=new MyDbHandler(this);
         final BreedingFunctions breedingFunctions=new BreedingFunctions();
         eventsListView= findViewById(R.id.events_listview);
@@ -89,6 +103,32 @@ public class Breeding extends AppCompatActivity {
             public void onClick(View view) {
                 breedingFunctions.setBreedingDay(Breeding.this, timeInMillis, dateTextView);
                 Log.i("WWDHUWHDUWDH", String.valueOf(dateTextView.getText()));
+            }
+        });
+
+        //compact calendar view Listener
+        compactCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+            @Override
+            public void onDayClick(Date dateClicked) {
+                Context context=getApplicationContext();
+                if(compactCalendarView.getEvents(dateClicked)!=null){
+                    int length;
+                    StringBuilder result= new StringBuilder();
+                    List<Event> events = compactCalendarView.getEvents(dateClicked);
+                    length=events.size();
+                    for(int i=0; i<length; i++){
+                        result.append(breedingFunctions.convertString(events.get(i).toString()));
+                    }
+
+                    Toast.makeText(Breeding.this, result ,Toast.LENGTH_LONG).show();
+                }
+
+
+            }
+
+            @Override
+            public void onMonthScroll(Date firstDayOfNewMonth) {
+                actionBar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
             }
         });
 
