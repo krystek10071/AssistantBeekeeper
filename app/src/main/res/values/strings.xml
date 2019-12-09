@@ -6,4 +6,6 @@
     <string name="add_breeding">AddBreeding</string>
     <string name="textView">TextView</string>
     <string name="notsettext">NotSetText</string>
+    <string name="set_time_button">Button</string>
+    <string name="ustaw_date">Ustaw date</string>
 </resources>
