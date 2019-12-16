@@ -125,11 +125,9 @@ public class Breeding extends AppCompatActivity {
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-                long timeInMillis;
                 actionBar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
-                timeInMillis=firstDayOfNewMonth.getTime();
                 listEvents.clear();
-                listEvents=breedingFunctions.loadEvents(listEvents, compactCalendarView, timeInMillis);
+                listEvents=breedingFunctions.loadEvents(listEvents, compactCalendarView, firstDayOfNewMonth.getTime());
                 arrayAdapter.clear();
                 arrayAdapter.addAll(listEvents);
                 arrayAdapter.notifyDataSetChanged();

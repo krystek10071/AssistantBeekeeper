@@ -149,7 +149,7 @@ public class BreedingFunctions {
         index= str.indexOf("data");
         result=str.substring(index+5, str.length()-1);
         Log.i("STRING PO KONWERSJI", result+"/n");
-        return result+"\n";
+        return result;
     }
 
     protected Date convertEventsToDate(String str){
