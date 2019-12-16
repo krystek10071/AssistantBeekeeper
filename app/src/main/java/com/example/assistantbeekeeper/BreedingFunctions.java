@@ -18,6 +18,7 @@ import com.github.sundeepk.compactcalendarview.domain.Event;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 
@@ -149,6 +150,34 @@ public class BreedingFunctions {
         result=str.substring(index+5, str.length()-1);
         Log.i("STRING PO KONWERSJI", result+"/n");
         return result+"\n";
+    }
+
+    protected Date convertEventsToDate(String str){
+        Date date=new Date();
+        long timeInMillis;
+        String result;
+        int indexStart;
+        int indexEnd;
+        indexStart=str.indexOf("timeInMillis")+13;                                                  //first index after the date saved in long format
+        indexEnd=str.indexOf("data")-2;                                                             //last  index after the date saved in long format
+        result=str.substring(indexStart, indexEnd);
+        timeInMillis=Long.parseLong(result);
+        date.setTime(timeInMillis);
+        return date;
+    }
+
+    protected ArrayList<String> loadEvents(ArrayList<String> listEvents, CompactCalendarView compactCalendarView, long timeInMillis){
+        List<Event> events=compactCalendarView.getEventsForMonth(timeInMillis);
+        String eventString;
+        int size;
+        ArrayList<String> myResultArrayList=new ArrayList<>();
+        size=events.size();
+        for(int i=0; i<size; i++){
+            eventString=events.get(i).toString();
+            myResultArrayList.add(convertEventsToDate(eventString).toString()+"\n"+ convertString(eventString));
+        }
+
+        return myResultArrayList;
     }
 
 

@@ -35,7 +35,6 @@ public class Breeding extends AppCompatActivity {
     final Long[] timeInMillis=new Long[1];
     TextView dateTextView;                                                                                      //dateTextView with time in millis
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
-
     //Buttons
     Button addBreedingButton;
     Button setDateButton;
@@ -74,7 +73,6 @@ public class Breeding extends AppCompatActivity {
 
 
 
-        ////////////////////////////////////Buttons Add Breeding////////////////////////////////////
         //Add BreedingButton
         addBreedingButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -110,7 +108,6 @@ public class Breeding extends AppCompatActivity {
         compactCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
-                Context context=getApplicationContext();
                 if(compactCalendarView.getEvents(dateClicked)!=null){
                     int length;
                     StringBuilder result= new StringBuilder();
@@ -128,7 +125,15 @@ public class Breeding extends AppCompatActivity {
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
+                long timeInMillis;
                 actionBar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
+                timeInMillis=firstDayOfNewMonth.getTime();
+                listEvents.clear();
+                listEvents=breedingFunctions.loadEvents(listEvents, compactCalendarView, timeInMillis);
+                arrayAdapter.clear();
+                arrayAdapter.addAll(listEvents);
+                arrayAdapter.notifyDataSetChanged();
+                eventsListView.setAdapter(arrayAdapter);
             }
         });
 
