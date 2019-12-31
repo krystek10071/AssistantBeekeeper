@@ -8,4 +8,7 @@
     <string name="notsettext">NotSetText</string>
     <string name="set_time_button">Button</string>
     <string name="ustaw_date">Ustaw date</string>
+    <string name="current_location">Bierzaca lokalizacja</string>
+    <string name="todo">TODO</string>
+    <string name="text_location">Hrubieszow</string>
 </resources>
