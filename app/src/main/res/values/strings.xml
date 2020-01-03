@@ -13,4 +13,6 @@
     <string name="text_location">Hrubieszow</string>
     <string name="todo">TODO</string>
     <string name="describe_weather_icon">cześciowe zachmurzenie</string>
+    <string name="current_temperature">20</string>
+    <string name="temperature_symbol">C</string>
 </resources>
