@@ -25,7 +25,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="360dp"
-        android:layout_height="175dp"
+        android:layout_height="210dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="15dp"
@@ -87,12 +87,13 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
+                        android:layout_marginTop="-10dp"
                         android:layout_marginRight="15dp"
                         android:text="@string/describe_weather_icon"
                         android:textColor="#B7FFFFFF"
-                        android:textSize="12sp"></TextView>
+                        android:textSize="12sp" />
 
 
                 </LinearLayout>
@@ -114,42 +115,136 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="30dp"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/current_temperature"
                         android:textColor="#FFFFFF"
-                        android:textSize="37sp"
-                        />
+                        android:textSize="37sp" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="32dp"
-                        android:layout_marginTop="-25dp"
-                        android:text="o"
-                        android:textColor="#FFFFFF"
-                        android:textSize="15sp" />
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/temperature_symbol"
-                        android:textColor="#FFFFFF"
-                        android:textSize="35sp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:layout_marginTop="-25dp"
+                            android:text="o"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp" />
 
-                    </TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/temperature_symbol"
+                            android:textColor="#FFFFFF"
+                            android:textSize="35sp">
+
+                        </TextView>
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="28dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="114dp"
+                                android:layout_height="30dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/wind_icon" />
 
 
-                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="66dp"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/wind_speed"
+                                    android:textSize="12sp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="114dp"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/rain_icon" />
+
+
+                            <LinearLayout
+                                android:layout_width="66dp"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/POP"
+                                    android:textSize="10sp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="114dp"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/thermometer" />
+
+                            <LinearLayout
+                                android:layout_width="66dp"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/sensible_temperature"
+                                    android:textSize="10sp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
 
             </LinearLayout>
 

@@ -15,4 +15,7 @@
     <string name="describe_weather_icon">cześciowe zachmurzenie</string>
     <string name="current_temperature">20</string>
     <string name="temperature_symbol">C</string>
+    <string name="wind_speed">Wiatr</string>
+    <string name="POP">Szansa opadów</string>
+    <string name="sensible_temperature">temperatura odczuwalna</string>
 </resources>
