@@ -26,7 +26,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/widget_weather"
         android:layout_width="360dp"
-        android:layout_height="210dp"
+        android:layout_height="260dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="15dp"
@@ -41,7 +41,7 @@
 
             <LinearLayout
                 android:layout_width="306dp"
-                android:layout_height="75dp"
+                android:layout_height="100dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
@@ -76,26 +76,24 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:contentDescription="@string/todo"
-                        android:src="@drawable/iconfinder">
-
-                    </ImageView>
+                        android:layout_height="62dp"
+                        android:contentDescription="@string/describe_weather_icon"
+                        android:src="@drawable/iconfinder" />
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="-10dp"
-                        android:layout_marginRight="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="39dp"
+                        android:layout_gravity="center"
                         android:text="@string/describe_weather_icon"
                         android:textColor="#B7FFFFFF"
-                        android:textSize="12sp"
-                        />
+                        android:textSize="14sp">
+
+                    </TextView>
 
 
                 </LinearLayout>
@@ -107,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="15dp"
                 android:orientation="horizontal">
@@ -144,9 +142,6 @@
 
                 </LinearLayout>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -155,30 +150,31 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="28dp"
+                            android:layout_height="35dp"
                             android:orientation="horizontal">
 
                             <LinearLayout
                                 android:layout_width="114dp"
-                                android:layout_height="30dp">
+                                android:layout_height="match_parent">
 
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:contentDescription="@string/wind_icon"
                                     android:src="@drawable/wind_icon" />
 
 
                             </LinearLayout>
 
                             <LinearLayout
-                                android:layout_width="66dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text="@string/wind_speed"
-                                    android:textSize="12sp" />
+                                    android:textSize="16sp" />
 
                             </LinearLayout>
 
@@ -186,25 +182,25 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="30dp"
+                            android:layout_height="35dp"
                             android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="114dp"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/rain_icon"
-                                android:contentDescription="TODO" />
+                                android:contentDescription="@string/rain_icon"
+                                android:src="@drawable/rain_icon" />
 
 
                             <LinearLayout
-                                android:layout_width="66dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text="@string/POP"
-                                    android:textSize="10sp" />
+                                    android:textSize="16sp" />
 
                             </LinearLayout>
 
@@ -213,24 +209,24 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="30dp"
+                            android:layout_height="35dp"
                             android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="114dp"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/thermometer"
-                                android:contentDescription="TODO" />
+                                android:layout_height="match_parent"
+                                android:contentDescription="@string/thermometer_icon"
+                                android:src="@drawable/thermometer" />
 
                             <LinearLayout
-                                android:layout_width="66dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:text="@string/sensible_temperature"
-                                    android:textSize="10sp" />
+                                    android:textSize="16sp" />
 
                             </LinearLayout>
 
@@ -239,7 +235,7 @@
                     </LinearLayout>
 
 
-                </RelativeLayout>
+
 
 
             </LinearLayout>

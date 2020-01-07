@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        cardView=findViewById(R.id.widget_weather);
         breedingButton= findViewById(R.id.breedingButton);
         breedingButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -27,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
 
 
 

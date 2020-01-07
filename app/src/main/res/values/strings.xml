@@ -11,11 +11,14 @@
     <string name="current_location">Bierzaca lokalizacja</string>
     <string name="todo1">TODO</string>
     <string name="text_location">Hrubieszow</string>
-    <string name="todo">TODO</string>
+    <string name="todo">Cześciowe zachmmurzenie</string>
     <string name="describe_weather_icon">cześciowe zachmurzenie</string>
-    <string name="current_temperature">20</string>
+    <string name="current_temperature">21</string>
     <string name="temperature_symbol">C</string>
     <string name="wind_speed">Wiatr</string>
-    <string name="POP">Szansa opadów</string>
-    <string name="sensible_temperature">temperatura odczuwalna</string>
+    <string name="POP">POP %</string>
+    <string name="sensible_temperature">real temperature</string>
+    <string name="wind_icon">wind_icon</string>
+    <string name="rain_icon">rain_icon</string>
+    <string name="thermometer_icon">thermometer_icon</string>
 </resources>
