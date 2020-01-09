@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.assistantbeekeeper.weatherwitget.WeatherWidget;
+
+import java.net.URL;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -17,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        URL weatherFiveDayData;
 
         breedingButton= findViewById(R.id.breedingButton);
         breedingButton.setOnClickListener(new View.OnClickListener(){
@@ -27,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        weatherFiveDayData=WeatherWidget.createUrlAddress();
+        WeatherWidget.FetchDataWether(weatherFiveDayData);
 
 
 
