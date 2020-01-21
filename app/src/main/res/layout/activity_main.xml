@@ -54,7 +54,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/text_location"
+                        android:id="@+id/current_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/text_location"
@@ -62,7 +62,6 @@
                         android:textSize="24sp" />
 
                     <TextView
-                        android:id="@+id/current_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/current_location"
@@ -80,12 +79,14 @@
                     tools:ignore="UseCompoundDrawables">
 
                     <ImageView
+                        android:id="@+id/icon_weather"
                         android:layout_width="match_parent"
                         android:layout_height="62dp"
                         android:contentDescription="@string/describe_weather_icon"
                         android:src="@drawable/iconfinder" />
 
                     <TextView
+                        android:id="@+id/describe_weather_Icon"
                         android:layout_width="wrap_content"
                         android:layout_height="39dp"
                         android:layout_gravity="center"
@@ -101,7 +102,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/temperature"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
@@ -118,6 +118,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/current_temperature"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/current_temperature"
@@ -143,99 +144,99 @@
                 </LinearLayout>
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:layout_height="35dp"
+                        android:orientation="horizontal">
 
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="35dp"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="114dp"
-                                android:layout_height="match_parent">
-
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:contentDescription="@string/wind_icon"
-                                    android:src="@drawable/wind_icon" />
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:text="@string/wind_speed"
-                                    android:textSize="16sp" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="35dp"
-                            android:orientation="horizontal">
+                            android:layout_width="114dp"
+                            android:layout_height="match_parent">
 
                             <ImageView
-                                android:layout_width="114dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:contentDescription="@string/rain_icon"
-                                android:src="@drawable/rain_icon" />
+                                android:contentDescription="@string/wind_icon"
+                                android:src="@drawable/wind_icon" />
 
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:text="@string/POP"
-                                    android:textSize="16sp" />
-
-                            </LinearLayout>
 
                         </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/wind_speed"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/wind_speed"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="114dp"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/rain_icon"
+                            android:src="@drawable/rain_icon" />
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="35dp"
-                            android:orientation="horizontal">
+                            android:layout_height="match_parent">
 
-                            <ImageView
-                                android:layout_width="114dp"
-                                android:layout_height="match_parent"
-                                android:contentDescription="@string/thermometer_icon"
-                                android:src="@drawable/thermometer" />
-
-                            <LinearLayout
+                            <TextView
+                                android:id="@+id/POP"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:text="@string/sensible_temperature"
-                                    android:textSize="16sp" />
-
-                            </LinearLayout>
+                                android:layout_height="match_parent"
+                                android:text="@string/POP"
+                                android:textSize="16sp" />
 
                         </LinearLayout>
 
                     </LinearLayout>
 
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:orientation="horizontal">
 
+                        <ImageView
+                            android:layout_width="114dp"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/thermometer_icon"
+                            android:src="@drawable/thermometer" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/sensible_temperature"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/sensible_temperature"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
 
             </LinearLayout>

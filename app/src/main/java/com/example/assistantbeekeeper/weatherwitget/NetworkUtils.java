@@ -15,7 +15,10 @@ public class NetworkUtils {
     private static final String TAG="NETWORK";
 
     private final static String WHEATHER_5_DAY_URL=
-            "http://dataservice.accuweather.com/forecasts/v1/daily/5day/274231";
+            "http://dataservice.accuweather.com/forecasts/v1/daily/5day/274231";                    //weather data for five day
+
+    private final static String WHEATHER_1_DAY_URL=
+            "http://dataservice.accuweather.com/forecasts/v1/daily/1day/267375";                    //weather data for one day
 
     private final static String API_KEY="bDGjT2yEX1J5CGJAC7lpPImJztQAmwcp";
 
@@ -25,13 +28,12 @@ public class NetworkUtils {
     private final static String PARAM_METRIC="metric";
 
 
-    public static URL buildUrlWeather(){
+    public static URL buildUrlWeatheForFiveDay(){
         Uri builUri=Uri.parse(WHEATHER_5_DAY_URL).buildUpon()
                 .appendQueryParameter(PARAM_KEY, API_KEY).appendQueryParameter(PARAM_LANGUAGE, "pl")
                 .appendQueryParameter(PARAM_DETAILS, "true")
                 .appendQueryParameter(PARAM_METRIC, "true")
                 .build();
-
 
         URL urlAddress=null;
 
@@ -44,6 +46,32 @@ public class NetworkUtils {
         Log.i(TAG, "build Url Wather"+ urlAddress);
         return  urlAddress;
     }
+
+    public static URL buildUrlWeatherForOneDay(){
+        Uri buildUri=Uri.parse(WHEATHER_1_DAY_URL).buildUpon()
+                .appendQueryParameter(PARAM_KEY, API_KEY).appendQueryParameter(PARAM_LANGUAGE, "pl")
+                .appendQueryParameter(PARAM_DETAILS, "true")
+                .appendQueryParameter(PARAM_METRIC, "true")
+                .build();
+
+        URL urlAddress=null;
+
+        try {
+            urlAddress=new URL(buildUri.toString());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return urlAddress;
+    }
+
+
+
+
+
+
+
+
+
 
      public static String getResponseFromUrl(URL url)throws IOException {
         HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
