@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
      Button breedingButton;
      CardView cardView;
      TextView currentLocation;
-     TextView iconWeather;
      TextView currentTemperature;
      TextView describeWeatherIcon;
      TextView windSpeed;
@@ -58,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
         weatherOneDayData=WeatherWidget.createUrlAddress();
         listWeatherOneDay=WeatherWidget.FetchDataWether(weatherOneDayData);
+
+
 
 
 

@@ -1,6 +1,7 @@
 package com.example.assistantbeekeeper.weatherwitget;
 
 
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
@@ -27,7 +28,7 @@ public class WeatherWidget {
       return weatherUrl;
     }
 //download weather details
-    public static ArrayList<CurrentWeatherDataClass> FetchDataWether(URL weatherUrl){
+    public static ArrayList<CurrentWeatherDataClass> FetchDataWether(URL weatherUrl, Activity activity){
        new downloadWeatherDetails().execute(weatherUrl);
         return null;
     }
@@ -63,13 +64,9 @@ public class WeatherWidget {
             if(weatherDetailsResult!=null && !weatherDetailsResult.equals("")){
                 weatherDataClassArrayList=parseJSON_Data(weatherDetailsResult, weatherDataClassArrayList);
 
-
-
              //   Iterator itr=weatherDataClassArrayList.iterator();
-
              //   while (itr.hasNext()){
              //  CurrentWeatherDataClass wetherInIterator=(CurrentWeatherDataClass) itr.next();
-
              //  }
 
             }
@@ -137,17 +134,5 @@ public class WeatherWidget {
             return null;
 
     }
-
-
-
-
-    public static void setTextViewField(TextView currentLocation,TextView iconWeather, TextView currentTemperature
-                                        , TextView describeWeatherIcon, TextView WindSpeed, TextView Pop
-                                        , TextView SensibleTemperature){
-
-
-    }
-
-
 
 }
