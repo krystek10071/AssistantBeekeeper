@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.example.assistantbeekeeper.MainActivity;
 import com.example.assistantbeekeeper.R;
 
 import org.json.JSONArray;
@@ -19,21 +20,26 @@ import java.util.Iterator;
 
 public class WeatherWidget {
 
-
     private static final String TAG="WeatherWidget";
-//build our URL Weather
+
+
+
+
+
+    //build our URL Weather
     public static URL createUrlAddress(){
       URL weatherUrl=NetworkUtils.buildUrlWeatherForOneDay();
       Log.i(TAG, "Weather url: "+ weatherUrl);
       return weatherUrl;
     }
 //download weather details
-    public static ArrayList<CurrentWeatherDataClass> FetchDataWether(URL weatherUrl, Activity activity){
+    public static ArrayList<CurrentWeatherDataClass> FetchDataWether(URL weatherUrl){
        new downloadWeatherDetails().execute(weatherUrl);
         return null;
     }
 
     private static class downloadWeatherDetails extends AsyncTask<URL, Void, String>{
+
 
        private ArrayList<CurrentWeatherDataClass> weatherDataClassArrayList=new ArrayList<>();
 
@@ -68,6 +74,7 @@ public class WeatherWidget {
              //   while (itr.hasNext()){
              //  CurrentWeatherDataClass wetherInIterator=(CurrentWeatherDataClass) itr.next();
              //  }
+
 
             }
             super.onPostExecute(weatherDetailsResult);
