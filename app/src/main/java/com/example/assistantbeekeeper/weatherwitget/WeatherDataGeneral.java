@@ -11,8 +11,8 @@ public class WeatherDataGeneral {
     private int precipitationProbality;
 
 
-     WeatherDataGeneral( long epochDate, String location, int whetherIcon, String iconPhrase,
-                              double temperature, double realFeelTemperature, double windSpeed, int precipitationProbality) {
+     protected WeatherDataGeneral(long epochDate, String location, int whetherIcon, String iconPhrase,
+                                  double temperature, double realFeelTemperature, double windSpeed, int precipitationProbality) {
 
         this.epochDate = epochDate;
         this.location = location;

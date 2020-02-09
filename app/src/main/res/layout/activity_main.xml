@@ -10,7 +10,7 @@
 
     <Button
         android:id="@+id/breedingButton"
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="97dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="65dp"
@@ -25,7 +25,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/widget_weather"
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="260dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
@@ -155,11 +155,11 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
-                            android:layout_width="114dp"
+                            android:layout_width="88dp"
                             android:layout_height="match_parent">
 
                             <ImageView
-                                android:layout_width="match_parent"
+                                android:layout_width="89dp"
                                 android:layout_height="wrap_content"
                                 android:contentDescription="@string/wind_icon"
                                 android:src="@drawable/wind_icon" />
@@ -173,10 +173,20 @@
 
                             <TextView
                                 android:id="@+id/wind_speed"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center"
                                 android:text="@string/wind_speed"
-                                android:textSize="16sp" />
+                                android:textColor="#FFFF"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:layout_width="57dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:text="@string/unit_speed"
+                                android:textColor="#FFFF"
+                                android:textSize="20sp" />
 
                         </LinearLayout>
 
@@ -188,7 +198,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="114dp"
+                            android:layout_width="88dp"
                             android:layout_height="wrap_content"
                             android:contentDescription="@string/rain_icon"
                             android:src="@drawable/rain_icon" />
@@ -200,10 +210,20 @@
 
                             <TextView
                                 android:id="@+id/POP"
-                                android:layout_width="match_parent"
+                                android:layout_width="47dp"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center"
                                 android:text="@string/POP"
-                                android:textSize="16sp" />
+                                android:textColor="#FFFF"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:layout_width="53dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:text="@string/percent"
+                                android:textColor="#FFFF"
+                                android:textSize="25sp" />
 
                         </LinearLayout>
 
@@ -216,7 +236,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="114dp"
+                            android:layout_width="88dp"
                             android:layout_height="match_parent"
                             android:contentDescription="@string/thermometer_icon"
                             android:src="@drawable/thermometer" />
@@ -227,10 +247,20 @@
 
                             <TextView
                                 android:id="@+id/sensible_temperature"
-                                android:layout_width="match_parent"
+                                android:layout_width="48dp"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center"
                                 android:text="@string/sensible_temperature"
-                                android:textSize="16sp" />
+                                android:textColor="#FFFF"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:layout_width="53dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:text="@string/temperature_symbol"
+                                android:textColor="#FFFF"
+                                android:textSize="25sp" />
 
                         </LinearLayout>
 

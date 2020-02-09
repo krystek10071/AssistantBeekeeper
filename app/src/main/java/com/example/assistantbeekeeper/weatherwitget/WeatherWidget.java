@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.example.assistantbeekeeper.MainActivity;
 import com.example.assistantbeekeeper.R;
 
 import org.json.JSONArray;
@@ -17,7 +16,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
+
 
 public class WeatherWidget {
 
@@ -42,8 +41,9 @@ public class WeatherWidget {
 
 
         //Constructor
-        @SuppressLint("StaticFieldLeak")
 
+
+        @SuppressLint("StaticFieldLeak")
         Activity activity;
 
         private DownloadWeatherDetails(Activity activity){
@@ -75,17 +75,12 @@ public class WeatherWidget {
         @Override
         protected void onPostExecute(String weatherDetailsResult) {
 
+       //Parse Json Data
             if(weatherDetailsResult!=null && !weatherDetailsResult.equals("")){
                 weatherDataClassArrayList=parseJSON_Data(weatherDetailsResult, weatherDataClassArrayList, activity);
-
-
-
-             //   Iterator itr=weatherDataClassArrayList.iterator();
-             //   while (itr.hasNext()){
-             //  CurrentWeatherDataClass wetherInIterator=(CurrentWeatherDataClass) itr.next();
-             //  }
-
             }
+
+
             super.onPostExecute(weatherDetailsResult);
 
 
@@ -102,11 +97,14 @@ public class WeatherWidget {
 
     private static ArrayList<CurrentWeatherDataClass> parseJSON_Data
             (String weatherDetailsResult, ArrayList<CurrentWeatherDataClass> weatherDataClassArrayList, Activity activity){
+
         TextView currentTemperature=activity.findViewById(R.id.current_temperature);
         TextView describeWeatherIcon=activity.findViewById(R.id.describe_weather_Icon);
         TextView windSpeedTextView=activity.findViewById(R.id.wind_speed);
         TextView pop=activity.findViewById(R.id.POP);
         TextView sensibleTemperature=activity.findViewById(R.id.sensible_temperature);
+
+
 
         if(weatherDataClassArrayList!=null){
             weatherDataClassArrayList.clear();
@@ -118,6 +116,7 @@ public class WeatherWidget {
                 JSONArray dailyForecastArray=jsonObject.getJSONArray("DailyForecasts");
                 JSONObject resultObj=dailyForecastArray.getJSONObject(0);
 
+
                         long epochDate=resultObj.getLong("EpochDate");
                         int whetherIcon=resultObj.getJSONObject("Day").getInt("Icon");
                         String iconPhrase=resultObj.getJSONObject("Day").getString("IconPhrase");
@@ -125,6 +124,7 @@ public class WeatherWidget {
                         double realFeelTemperature=resultObj.getJSONObject("RealFeelTemperature").getJSONObject("Maximum").getDouble("Value");
                         double windSpeed=resultObj.getJSONObject("Day").getJSONObject("Wind").getJSONObject("Speed").getDouble("Value");
                         int precipitationProbality=resultObj.getJSONObject("Day").getInt("PrecipitationProbability");
+
 
                 //set Text View with Main Activity
                         currentTemperature.setText(String.valueOf(temperature));
@@ -142,8 +142,6 @@ public class WeatherWidget {
                             weatherDataClassArrayList.add(currentWeatherDataClass);
                         }
 
-
-                Log.i(TAG, "Pogoda po parsowaniu JSON"+ weatherDataClassArrayList.get(0).getIconPhrase());
 
                 return weatherDataClassArrayList;
             } catch (JSONException e) {

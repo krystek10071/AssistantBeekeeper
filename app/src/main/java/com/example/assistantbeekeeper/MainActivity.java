@@ -1,11 +1,7 @@
 package com.example.assistantbeekeeper;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,11 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.assistantbeekeeper.weatherwitget.CurrentWeatherDataClass;
-import com.example.assistantbeekeeper.weatherwitget.NetworkUtils;
-import com.example.assistantbeekeeper.weatherwitget.WeatherDataGeneral;
 import com.example.assistantbeekeeper.weatherwitget.WeatherWidget;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -29,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     //UI Elements
      Button breedingButton;
-     CardView cardView;
      TextView currentLocation;
      TextView currentTemperature;
      TextView describeWeatherIcon;

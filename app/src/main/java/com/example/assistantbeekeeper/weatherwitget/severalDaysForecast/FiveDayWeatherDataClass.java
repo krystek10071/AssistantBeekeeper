@@ -1,4 +1,6 @@
-package com.example.assistantbeekeeper.weatherwitget;
+package com.example.assistantbeekeeper.weatherwitget.severalDaysForecast;
+
+import com.example.assistantbeekeeper.weatherwitget.WeatherDataGeneral;
 
 public class FiveDayWeatherDataClass extends WeatherDataGeneral {
 
