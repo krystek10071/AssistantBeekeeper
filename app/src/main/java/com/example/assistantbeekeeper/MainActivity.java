@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.assistantbeekeeper.weatherwitget.CurrentWeatherDataClass;
 import com.example.assistantbeekeeper.weatherwitget.WeatherWidget;
+import com.example.assistantbeekeeper.weatherwitget.severalDaysForecast.FiveDaysForecastActivity;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     //UI Elements
      Button breedingButton;
+     Button fiveDaysForecast;
      TextView currentLocation;
      TextView currentTemperature;
      TextView describeWeatherIcon;
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         windSpeed=findViewById(R.id.wind_speed);
         pop=findViewById(R.id.POP);
         sensibleTemperature=findViewById(R.id.sensible_temperature);
+        fiveDaysForecast=findViewById(R.id.five_days_forecast_button);
 
 
         breedingButton= findViewById(R.id.breedingButton);
@@ -52,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        fiveDaysForecast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(), FiveDaysForecastActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         weatherOneDayData=WeatherWidget.createUrlAddress();
         listWeatherOneDay=WeatherWidget.FetchDataWether(weatherOneDayData,this);
