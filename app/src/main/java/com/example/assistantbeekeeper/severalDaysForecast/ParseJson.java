@@ -13,12 +13,12 @@ public class ParseJson {
          this.resultData=string;
      }
 
-     public ArrayList<FiveDayWeatherDataClass> parseJsonToObjectList(ArrayList<FiveDayWeatherDataClass> weatherDataObj){
+    /**
+     * @return weatherDataObj List with weather objects
+     */
+     public ArrayList<FiveDayWeatherDataClass> parseJsonToObjectList(){
 
-          if(weatherDataObj!=null){
-              weatherDataObj.clear();
-          }
-
+         ArrayList<FiveDayWeatherDataClass> weatherDataObj=new ArrayList<>();
           if(resultData!=null){
             try {
                 int lengthDailyForecast;
@@ -35,7 +35,13 @@ public class ParseJson {
                     double tNight=resultObj.getJSONObject("Temperature").getJSONObject("Minimum").getDouble("Value");
                     double windSpeed=resultObj.getJSONObject("Day").getJSONObject("Wind").getJSONObject("Speed").getDouble("Value");
 
+                    FiveDayWeatherDataClass fiveWeatherData=new FiveDayWeatherDataClass(epochDate, whetherIcon,
+                            iconPhrase, tDay, tNight, windSpeed);
+
+                    //add weatherObj to Collection
+                        weatherDataObj.add(fiveWeatherData);
                 }
+                return weatherDataObj;
 
             } catch (Exception e) {
                 e.printStackTrace();

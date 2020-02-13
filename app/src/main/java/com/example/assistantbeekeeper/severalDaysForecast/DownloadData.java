@@ -55,6 +55,7 @@ public class DownloadData {
 
             ParseJson parseJson=new ParseJson(weatherDetailResult);
 
+
        }
    }
 
