@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ParseJson {
+ class ParseJson {
 
     private String resultData;
 
@@ -16,7 +16,7 @@ public class ParseJson {
     /**
      * @return weatherDataObj List with weather objects
      */
-     public ArrayList<FiveDayWeatherDataClass> parseJsonToObjectList(){
+     ArrayList<FiveDayWeatherDataClass> parseJsonToObjectList(){
 
          ArrayList<FiveDayWeatherDataClass> weatherDataObj=new ArrayList<>();
           if(resultData!=null){

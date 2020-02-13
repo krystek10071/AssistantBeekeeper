@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.example.assistantbeekeeper.R;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,7 +29,7 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
 
         //init TextView components
         initComponentView();
-        fiveDaysForecast.downloadWeatherData();
+        fiveDaysForecast.downloadWeatherData(FiveDaysForecastActivity.this);
 
 
 
@@ -65,8 +66,9 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
         windSpeed5=findViewById(R.id.wind_speed5);
     }
 
-    @Override
-    public void setData(Context context) {
+
+    public  void setData(ArrayList<FiveDayWeatherDataClass> data) {
+
 
     }
 

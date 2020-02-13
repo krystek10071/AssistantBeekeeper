@@ -1,5 +1,8 @@
 package com.example.assistantbeekeeper.severalDaysForecast;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -8,24 +11,30 @@ import com.example.assistantbeekeeper.weatherwitget.NetworkUtils;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class DownloadData {
+ class DownloadData {
 
     private static final String Tag="DownloadData";
 
-    public static URL createUrlAdress(){
+     static URL createUrlAdress(){
         URL weatherUrl= NetworkUtils.buildUrlWeatheForFiveDay();
         Log.i(Tag, "Wheather utils"+ weatherUrl);
         return weatherUrl;
     }
 
-   public static ArrayList<FiveDayWeatherDataClass> FetchDataFromWebside(){
 
-
-        return null;
+     static void FetchDataFromWebside(URL url, Context context){
+        new DownloadWeatherDetails(context).execute(url);
    }
 
 
    private static class DownloadWeatherDetails extends AsyncTask<URL, Void, String>{
+
+         @SuppressLint("StaticFieldLeak")
+         Context context;
+
+         DownloadWeatherDetails (Context context){
+             this.context=context;
+         }
 
         @Override
         protected void  onPreExecute(){
@@ -53,7 +62,16 @@ public class DownloadData {
        @Override
        protected void onPostExecute(String weatherDetailResult){
 
+            FiveDaysForecastActivity fiveDaysForecastActivity;
+            ArrayList<FiveDayWeatherDataClass> fiveDayWeatherData;
             ParseJson parseJson=new ParseJson(weatherDetailResult);
+            fiveDayWeatherData=parseJson.parseJsonToObjectList();
+
+
+            //send data to FiveDaysForecastActivity
+
+
+
 
 
        }
