@@ -1,4 +1,4 @@
-package com.example.assistantbeekeeper.weatherwitget.severalDaysForecast;
+package com.example.assistantbeekeeper.severalDaysForecast;
 
 import com.example.assistantbeekeeper.weatherwitget.WeatherDataGeneral;
 

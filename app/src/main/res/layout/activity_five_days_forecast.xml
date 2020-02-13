@@ -25,13 +25,15 @@
                 android:layout_width="75dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <TextView
+                    android:id="@+id/weekDay1"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/weekday"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -41,31 +43,36 @@
                     android:src="@drawable/rain_icon"/>
 
                 <TextView
+                    android:id="@+id/describe_weather_icon1"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:textSize="14sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/describe_weather_icon"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/t_day1"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/temperature_day"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
                 <TextView
+                    android:id="@+id/t_night1"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/temperature_night"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/wind_speed1"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
@@ -84,13 +91,15 @@
                 android:layout_width="75dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <TextView
+                    android:id="@+id/weekday2"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/weekday"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -100,31 +109,36 @@
                     android:src="@drawable/rain_icon"/>
 
                 <TextView
+                    android:id="@+id/describe_weather_icon2"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:textSize="14sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/describe_weather_icon"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/t_day2"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/temperature_day"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
                 <TextView
+                    android:id="@+id/t_night2"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/temperature_night"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/wind_speed2"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
@@ -143,13 +157,15 @@
                 android:layout_width="75dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <TextView
+                    android:id="@+id/weekday3"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/weekday"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -159,31 +175,36 @@
                     android:src="@drawable/rain_icon"/>
 
                 <TextView
+                    android:id="@+id/describe_weather_icon3"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:textSize="14sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/describe_weather_icon"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/t_day3"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/temperature_day"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
                 <TextView
+                    android:id="@+id/t_night3"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/temperature_night"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/wind_speed3"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
@@ -202,13 +223,15 @@
                 android:layout_width="75dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <TextView
+                    android:id="@+id/weekday4"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/weekday"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -218,31 +241,36 @@
                     android:src="@drawable/rain_icon"/>
 
                 <TextView
+                    android:id="@+id/describe_weather_icon4"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:textSize="14sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/describe_weather_icon"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/t_day4"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/temperature_day"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
                 <TextView
+                    android:id="@+id/t_night4"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/temperature_night"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/wind_speed4"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
@@ -261,13 +289,15 @@
                 android:layout_width="75dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <TextView
+                    android:id="@+id/weekday5"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/weekday"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -277,31 +307,36 @@
                     android:src="@drawable/rain_icon"/>
 
                 <TextView
+                    android:id="@+id/describe_weather_icon5"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:textSize="14sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/describe_weather_icon"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/t_day5"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/temperature_day"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
                 <TextView
+                    android:id="@+id/t_night5"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:textSize="20sp"
-                    android:textColor="#FFFFFF"
                     android:text="@string/temperature_night"
-                    android:textAlignment="center"/>
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/wind_speed5"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"

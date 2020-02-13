@@ -3,16 +3,14 @@ package com.example.assistantbeekeeper;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.assistantbeekeeper.weatherwitget.CurrentWeatherDataClass;
 import com.example.assistantbeekeeper.weatherwitget.WeatherWidget;
-import com.example.assistantbeekeeper.weatherwitget.severalDaysForecast.FiveDaysForecastActivity;
+import com.example.assistantbeekeeper.severalDaysForecast.FiveDaysForecastActivity;
 
 import java.net.URL;
 import java.util.ArrayList;
