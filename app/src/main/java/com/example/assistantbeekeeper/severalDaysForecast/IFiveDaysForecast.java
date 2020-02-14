@@ -5,5 +5,5 @@ import android.content.Context;
 
 public interface IFiveDaysForecast {
 
-    void downloadWeatherData(Context context);
+    void downloadWeatherData(FiveDaysForecastActivity fiveDaysForecastActivity);
 }

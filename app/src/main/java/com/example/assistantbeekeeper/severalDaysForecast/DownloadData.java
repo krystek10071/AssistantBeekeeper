@@ -22,18 +22,18 @@ import java.util.ArrayList;
     }
 
 
-     static void FetchDataFromWebside(URL url, Context context){
-        new DownloadWeatherDetails(context).execute(url);
+     static void FetchDataFromWebside(URL url, FiveDaysForecastActivity fiveDaysForecastActivity){
+        new DownloadWeatherDetails(fiveDaysForecastActivity).execute(url);
    }
 
 
    private static class DownloadWeatherDetails extends AsyncTask<URL, Void, String>{
 
          @SuppressLint("StaticFieldLeak")
-         Context context;
+         FiveDaysForecastActivity fiveDaysForecastActivity;
 
-         DownloadWeatherDetails (Context context){
-             this.context=context;
+         DownloadWeatherDetails (FiveDaysForecastActivity fiveDaysForecastActivity){
+             this.fiveDaysForecastActivity=fiveDaysForecastActivity;
          }
 
         @Override
@@ -62,13 +62,16 @@ import java.util.ArrayList;
        @Override
        protected void onPostExecute(String weatherDetailResult){
 
-            FiveDaysForecastActivity fiveDaysForecastActivity;
+
+             FiveDaysForecastActivity fiveDaysForecast=fiveDaysForecastActivity;
             ArrayList<FiveDayWeatherDataClass> fiveDayWeatherData;
             ParseJson parseJson=new ParseJson(weatherDetailResult);
             fiveDayWeatherData=parseJson.parseJsonToObjectList();
 
 
+
             //send data to FiveDaysForecastActivity
+           fiveDaysForecast.setData(fiveDayWeatherData);
 
 
 

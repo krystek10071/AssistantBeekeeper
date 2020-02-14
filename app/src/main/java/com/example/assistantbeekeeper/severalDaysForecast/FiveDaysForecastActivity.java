@@ -1,13 +1,10 @@
 package com.example.assistantbeekeeper.severalDaysForecast;
 
-import android.content.Context;
-import android.os.AsyncTask;
+
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.assistantbeekeeper.R;
-
-import java.net.URL;
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +26,7 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
 
         //init TextView components
         initComponentView();
-        fiveDaysForecast.downloadWeatherData(FiveDaysForecastActivity.this);
+        fiveDaysForecast.downloadWeatherData(this);
 
 
 
@@ -67,8 +64,9 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
     }
 
 
-    public  void setData(ArrayList<FiveDayWeatherDataClass> data) {
+    public void setData(ArrayList<FiveDayWeatherDataClass> data) {
 
+        describeWeather1.setText(data.get(0).getIconPhrase());
 
     }
 
