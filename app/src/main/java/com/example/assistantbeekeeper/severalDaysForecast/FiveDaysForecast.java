@@ -1,8 +1,6 @@
 package com.example.assistantbeekeeper.severalDaysForecast;
 
 
-import android.app.Activity;
-import android.content.Context;
 
 import java.net.URL;
 

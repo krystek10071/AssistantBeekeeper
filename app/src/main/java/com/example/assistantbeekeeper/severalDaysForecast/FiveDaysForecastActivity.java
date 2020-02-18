@@ -1,8 +1,7 @@
 package com.example.assistantbeekeeper.severalDaysForecast;
 
 
-import android.icu.util.Calendar;
-import android.nfc.Tag;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
