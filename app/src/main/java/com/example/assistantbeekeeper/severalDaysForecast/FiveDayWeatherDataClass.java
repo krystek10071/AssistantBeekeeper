@@ -7,11 +7,11 @@ public class FiveDayWeatherDataClass  {
     private long epochDate;
     private int weatherIcon;
     private String iconPhrase;
-    private double tDay;
-    private double tNight;
+    private long tDay;
+    private long tNight;
     private double windSpeed;
 
-    public FiveDayWeatherDataClass(long epochDate, int weatherIcon, String iconPhrase, double tDay, double tNight, double windSpeed) {
+    public FiveDayWeatherDataClass(long epochDate, int weatherIcon, String iconPhrase, long tDay, long tNight, double windSpeed) {
         this.epochDate = epochDate;
         this.weatherIcon = weatherIcon;
         this.iconPhrase = iconPhrase;
@@ -44,19 +44,19 @@ public class FiveDayWeatherDataClass  {
         this.iconPhrase = iconPhrase;
     }
 
-    public double gettDay() {
+    public long gettDay() {
         return tDay;
     }
 
-    public void settDay(double tDay) {
+    public void settDay(int tDay) {
         this.tDay = tDay;
     }
 
-    public double gettNight() {
+    public long gettNight() {
         return tNight;
     }
 
-    public void settNight(double tNight) {
+    public void settNight(int tNight) {
         this.tNight = tNight;
     }
 
