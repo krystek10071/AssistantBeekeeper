@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG="MainActivity";
 
-    //UI Elements
+    //UI Elementsr
      Button breedingButton;
      Button fiveDaysForecast;
      TextView currentLocation;
