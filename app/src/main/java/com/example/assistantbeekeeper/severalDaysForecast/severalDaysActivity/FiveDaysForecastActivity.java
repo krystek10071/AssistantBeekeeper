@@ -1,16 +1,23 @@
-package com.example.assistantbeekeeper.severalDaysForecast;
+package com.example.assistantbeekeeper.severalDaysForecast.severalDaysActivity;
 
 
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.assistantbeekeeper.R;
+import com.example.assistantbeekeeper.severalDaysForecast.modelData.FiveDayWeatherDataClass;
+import com.example.assistantbeekeeper.severalDaysForecast.severalDaysPre.FiveDaysForecast;
+import com.example.assistantbeekeeper.severalDaysForecast.severalDaysPre.WeekDay;
+
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 public class FiveDaysForecastActivity extends AppCompatActivity implements IFiveDaysForecastActivity {
 
@@ -20,6 +27,7 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
     TextView tDay1, tDay2, tDay3, tDay4, tDay5;
     TextView tNight1, tNight2, tNight3, tNight4, tNight5;
     TextView windSpeed1, windSpeed2, windSpeed3, windSpeed4, windSpeed5;
+    ImageView weatherIcon1, weatherIcon2, weatherIcon3, weatherIcon4, weatherIcon5;
 
     FiveDaysForecast fiveDaysForecast=new FiveDaysForecast();
 
@@ -34,6 +42,9 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
         fiveDaysForecast.downloadWeatherData(this);
 
     }
+
+
+
 
 
     @Override
@@ -63,6 +74,11 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
         windSpeed3=findViewById(R.id.wind_speed3);
         windSpeed4=findViewById(R.id.wind_speed4);
         windSpeed5=findViewById(R.id.wind_speed5);
+        weatherIcon1=findViewById(R.id.weather_icon1);
+        weatherIcon2=findViewById(R.id.weather_icon2);
+        weatherIcon3=findViewById(R.id.weather_icon3);
+        weatherIcon4=findViewById(R.id.weather_icon4);
+        weatherIcon5=findViewById(R.id.weather_icon5);
     }
 
 
@@ -73,6 +89,8 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
             setWindSpeed(data);
             setDescribeWeather(data);
             setTdayAndTnight(data);
+            setWeatherIcon(data);
+
         } catch (Exception e) {
             e.printStackTrace();
             Log.i(TAG, "Data has not been downloaded");
@@ -147,7 +165,46 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
         return  stringDay;
     }
 
+    private void setWeatherIcon(ArrayList<FiveDayWeatherDataClass> data){
+        weatherIcon1.setImageDrawable(getResForWeatherIcon(data, 0));
+        weatherIcon2.setImageDrawable(getResForWeatherIcon(data, 1));
+        weatherIcon3.setImageDrawable(getResForWeatherIcon(data, 2));
+        weatherIcon4.setImageDrawable(getResForWeatherIcon(data, 3));
+        weatherIcon5.setImageDrawable(getResForWeatherIcon(data, 4));
 
+    }
+
+    private Drawable getResForWeatherIcon(ArrayList<FiveDayWeatherDataClass> data, int index){
+        if(data.get(index).getWheatherIcon()==1 || data.get(index).getWheatherIcon()==2 || data.get(index).getWheatherIcon()==3 ){
+            return ResourcesCompat.getDrawable(getResources(),R.drawable.iconfinder_partly_cloudy, null);
+        }
+
+
+        else if(data.get(index).getWheatherIcon()==4 || data.get(index).getWheatherIcon()==5 || data.get(index).getWheatherIcon()==6){
+            //mostly cloud
+            return ResourcesCompat.getDrawable(getResources(),R.drawable.iconfinder_partly_cloudy, null);
+
+        }
+
+        else if(data.get(index).getWheatherIcon()==7 || data.get(index).getWheatherIcon()==8 || data.get(index).getWheatherIcon()==11){
+            //cloud
+            return ResourcesCompat.getDrawable(getResources(),R.drawable.iconfinder_overcast, null);
+        }
+
+        else if(data.get(index).getWheatherIcon()==12 || data.get(index).getWheatherIcon()==13 || data.get(index).getWheatherIcon()==14 ||
+                data.get(index).getWheatherIcon()==18){
+            //rain
+            return ResourcesCompat.getDrawable(getResources(),R.drawable.iconfinder_rain_icon, null);
+
+        }
+
+        else if(data.get(index).getWheatherIcon()==25 || data.get(index).getWheatherIcon()==26 || data.get(index).getWheatherIcon()==29){
+            //rain && snow
+            return ResourcesCompat.getDrawable(getResources(),R.drawable.iconfinder_foggy_3741362, null);
+        }
+
+        return null;
+    }
 
 
 }

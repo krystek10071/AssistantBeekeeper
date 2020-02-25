@@ -9,8 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.assistantbeekeeper.weatherwitget.CurrentWeatherDataClass;
-import com.example.assistantbeekeeper.weatherwitget.WeatherWidget;
-import com.example.assistantbeekeeper.severalDaysForecast.FiveDaysForecastActivity;
+import com.example.assistantbeekeeper.severalDaysForecast.severalDaysActivity.FiveDaysForecastActivity;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG="MainActivity";
 
-    //UI Elementsr
+    //UI Elements
      Button breedingButton;
      Button fiveDaysForecast;
      TextView currentLocation;
@@ -43,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
         pop=findViewById(R.id.POP);
         sensibleTemperature=findViewById(R.id.sensible_temperature);
         fiveDaysForecast=findViewById(R.id.five_days_forecast_button);
-
-
         breedingButton= findViewById(R.id.breedingButton);
+
+
         breedingButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -63,9 +62,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-        weatherOneDayData=WeatherWidget.createUrlAddress();
-        listWeatherOneDay=WeatherWidget.FetchDataWether(weatherOneDayData,this);
+        //TODO
+        //weatherOneDayData=WeatherWidget.createUrlAddress();
+        //listWeatherOneDay=WeatherWidget.FetchDataWether(weatherOneDayData,this);
 
     }
 

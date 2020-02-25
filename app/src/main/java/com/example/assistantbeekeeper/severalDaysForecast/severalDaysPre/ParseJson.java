@@ -1,4 +1,6 @@
-package com.example.assistantbeekeeper.severalDaysForecast;
+package com.example.assistantbeekeeper.severalDaysForecast.severalDaysPre;
+
+import com.example.assistantbeekeeper.severalDaysForecast.modelData.FiveDayWeatherDataClass;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -38,7 +40,6 @@ import java.util.ArrayList;
                     FiveDayWeatherDataClass fiveWeatherData=new FiveDayWeatherDataClass(epochDate, whetherIcon,
                             iconPhrase, tDay, tNight, windSpeed);
 
-                    //add weatherObj to Collection
                         weatherDataObj.add(fiveWeatherData);
                 }
                 return weatherDataObj;

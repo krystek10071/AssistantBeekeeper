@@ -1,11 +1,11 @@
-package com.example.assistantbeekeeper.severalDaysForecast;
+package com.example.assistantbeekeeper.severalDaysForecast.severalDaysPre;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.assistantbeekeeper.severalDaysForecast.severalDaysActivity.FiveDaysForecastActivity;
+import com.example.assistantbeekeeper.severalDaysForecast.modelData.FiveDayWeatherDataClass;
 import com.example.assistantbeekeeper.weatherwitget.NetworkUtils;
 
 import java.net.URL;

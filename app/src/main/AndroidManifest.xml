@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".severalDaysForecast.FiveDaysForecastActivity">
+        <activity android:name=".severalDaysForecast.severalDaysActivity.FiveDaysForecastActivity">
             <intent-filter>
                 <action android:name="com.example.assistantbeekeeper.weatherwitget.severalDaysForecast"/>
                 <category android:name="android.intent.category.DEFAULT"/>

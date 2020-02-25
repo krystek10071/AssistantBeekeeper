@@ -36,11 +36,12 @@
                     android:textSize="20sp" />
 
                 <ImageView
+                    android:id="@+id/weather_icon1"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="5dp"
                     android:contentDescription="@string/describe_weather_icon"
-                    android:src="@drawable/rain_icon" />
+                    android:src="@drawable/iconfinder_rain_icon" />
 
                 <TextView
                     android:id="@+id/describe_weather_icon1"
@@ -104,11 +105,12 @@
                     android:textSize="20sp" />
 
                 <ImageView
+                    android:id="@+id/weather_icon2"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="5dp"
                     android:contentDescription="@string/describe_weather_icon"
-                    android:src="@drawable/rain_icon" />
+                    android:src="@drawable/iconfinder_rain_icon" />
 
                 <TextView
                     android:id="@+id/describe_weather_icon2"
@@ -172,11 +174,12 @@
                     android:textSize="20sp" />
 
                 <ImageView
+                    android:id="@+id/weather_icon3"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="5dp"
                     android:contentDescription="@string/describe_weather_icon"
-                    android:src="@drawable/rain_icon" />
+                    android:src="@drawable/iconfinder_rain_icon" />
 
                 <TextView
                     android:id="@+id/describe_weather_icon3"
@@ -240,11 +243,12 @@
                     android:textSize="20sp" />
 
                 <ImageView
+                    android:id="@+id/weather_icon4"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="5dp"
                     android:contentDescription="@string/describe_weather_icon"
-                    android:src="@drawable/rain_icon" />
+                    android:src="@drawable/iconfinder_rain_icon" />
 
                 <TextView
                     android:id="@+id/describe_weather_icon4"
@@ -308,11 +312,12 @@
                     android:textSize="20sp" />
 
                 <ImageView
+                    android:id="@+id/weather_icon5"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="5dp"
                     android:contentDescription="@string/describe_weather_icon"
-                    android:src="@drawable/rain_icon" />
+                    android:src="@drawable/iconfinder_rain_icon" />
 
                 <TextView
                     android:id="@+id/describe_weather_icon5"

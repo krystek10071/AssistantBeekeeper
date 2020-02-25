@@ -1,6 +1,5 @@
-package com.example.assistantbeekeeper.severalDaysForecast;
+package com.example.assistantbeekeeper.severalDaysForecast.modelData;
 
-import com.example.assistantbeekeeper.weatherwitget.WeatherDataGeneral;
 
 public class FiveDayWeatherDataClass  {
 

@@ -212,7 +212,7 @@
                             android:layout_width="88dp"
                             android:layout_height="wrap_content"
                             android:contentDescription="@string/rain_icon"
-                            android:src="@drawable/rain_icon" />
+                            android:src="@drawable/iconfinder_rain_icon" />
 
 
                         <LinearLayout

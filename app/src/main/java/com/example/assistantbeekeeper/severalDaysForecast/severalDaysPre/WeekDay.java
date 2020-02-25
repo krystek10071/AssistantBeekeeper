@@ -1,12 +1,12 @@
-package com.example.assistantbeekeeper.severalDaysForecast;
+package com.example.assistantbeekeeper.severalDaysForecast.severalDaysPre;
 
 import java.util.Calendar;
 
- class WeekDay {
+ public class WeekDay {
 
 
 
-     String getNameWeekday(long timeInMillis) {
+     public String getNameWeekday(long timeInMillis) {
         String nameWeekday;
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(timeInMillis);
@@ -19,19 +19,19 @@ import java.util.Calendar;
 
     private String NameWeekday(int number){
         switch (number){
-            case 7:
-                return "pon.";
-            case 1:
-                return "wt.";
             case 2:
-                return "śr.";
+                return "pon.";
             case 3:
-                return "czw.";
+                return "wt.";
             case 4:
-                return "pt.";
+                return "śr.";
             case 5:
-                return "sob";
+                return "czw.";
             case 6:
+                return "pt.";
+            case 7:
+                return "sob";
+            case 1:
                 return "niedz";
         }
         return null;
