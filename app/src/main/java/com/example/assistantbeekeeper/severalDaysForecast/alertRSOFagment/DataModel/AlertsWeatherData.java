@@ -12,6 +12,14 @@ public class AlertsWeatherData {
         return title;
     }
 
+    public AlertsWeatherData(String title, String provincy, String dateStart, String dateEnd, String descriptioon) {
+        this.title = title;
+        this.provincy = provincy;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
+        this.descriptioon = descriptioon;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
