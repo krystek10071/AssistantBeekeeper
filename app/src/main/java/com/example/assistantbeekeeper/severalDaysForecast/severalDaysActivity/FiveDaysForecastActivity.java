@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class FiveDaysForecastActivity extends AppCompatActivity implements IFiveDaysForecastActivity {
 
@@ -40,6 +41,7 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
         //init TextView components
         initComponentView();
         fiveDaysForecast.downloadWeatherData(this);
+
 
     }
 
