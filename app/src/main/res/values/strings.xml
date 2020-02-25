@@ -27,4 +27,8 @@
     <string name="temperature_day">T_Day</string>
     <string name="temperature_night">T_Night</string>
     <string name="five_days_forecast_button">Prognoza na 5 dni</string>
+    <string name="title_alert">TextView</string>
+    <string name="province">TextView</string>
+    <string name="time_event">TextView</string>
+    <string name="description_events">TextView</string>
 </resources>
