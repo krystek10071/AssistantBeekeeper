@@ -47,7 +47,7 @@ public class NetworkUtils {
         return  urlAddress;
     }
 
-    public static URL buildUrlWeatherForOneDay(){
+        public static URL buildUrlWeatherForOneDay(){
         Uri buildUri=Uri.parse(WHEATHER_1_DAY_URL).buildUpon()
                 .appendQueryParameter(PARAM_KEY, API_KEY).appendQueryParameter(PARAM_LANGUAGE, "pl")
                 .appendQueryParameter(PARAM_DETAILS, "true")
@@ -63,12 +63,6 @@ public class NetworkUtils {
         }
         return urlAddress;
     }
-
-
-
-
-
-
 
 
 

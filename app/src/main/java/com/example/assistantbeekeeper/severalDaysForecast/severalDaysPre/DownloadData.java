@@ -72,11 +72,6 @@ import java.util.ArrayList;
 
             //send data to FiveDaysForecastActivity
            fiveDaysForecast.setData(fiveDayWeatherData);
-
-
-
-
-
        }
    }
 
