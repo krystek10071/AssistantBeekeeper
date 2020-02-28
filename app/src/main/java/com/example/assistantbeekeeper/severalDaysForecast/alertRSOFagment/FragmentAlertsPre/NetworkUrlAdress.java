@@ -28,7 +28,7 @@ public class NetworkUrlAdress {
 
     public static URL buildRsoAdress(String provincy, String category){
         Uri buildUri=Uri.parse(ALERTS_URL).buildUpon().appendPath(provincy)
-                .appendPath("/").appendPath(category).appendPath("/").appendPath("0?_format=json")
+                .appendPath(category).appendEncodedPath("0?_format=json")
                 .build();
 
         URL urlAdress=null;

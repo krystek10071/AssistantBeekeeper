@@ -43,6 +43,7 @@ public class DownloadRSOData {
                 resultRSOData=NetworkUtils.getResponseFromUrl(urlAdress);
             } catch (Exception e) {
                 e.printStackTrace();
+                e.getMessage();
             }
 
             Log.i(TAG, "RSO Data result" + resultRSOData);
