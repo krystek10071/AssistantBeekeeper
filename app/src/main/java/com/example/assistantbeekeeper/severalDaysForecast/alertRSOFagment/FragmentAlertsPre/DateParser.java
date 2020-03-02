@@ -17,8 +17,6 @@ public class DateParser {
 
         String resultStringData=null;
 
-
-
         Date date;
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat(patternBeforeConversion, Locale.getDefault());
         SimpleDateFormat formatForConvertion=new SimpleDateFormat(patternAfterConversion, Locale.getDefault());

@@ -3,7 +3,7 @@ package com.example.assistantbeekeeper.weatherwitget;
 public class WeatherDataGeneral {
     private long epochDate;
     private String location;
-    private int whetherIcon;
+    private int weatherIcon;
     private String iconPhrase;
     private double temperature;
     private double realFeelTemperature;
@@ -16,7 +16,7 @@ public class WeatherDataGeneral {
 
         this.epochDate = epochDate;
         this.location = location;
-        this.whetherIcon = whetherIcon;
+        this.weatherIcon = whetherIcon;
         this.iconPhrase = iconPhrase;
         this.temperature = temperature;
         this.realFeelTemperature = realFeelTemperature;
@@ -48,12 +48,12 @@ public class WeatherDataGeneral {
         this.temperature = temperature;
     }
 
-    public int getWhetherIcon() {
-        return whetherIcon;
+    public int getWeatherIcon() {
+        return weatherIcon;
     }
 
-    public void setWhetherIcon(int whetherIcon) {
-        this.whetherIcon = whetherIcon;
+    public void setWeatherIcon(int whetherIcon) {
+        this.weatherIcon = whetherIcon;
     }
 
     public String getIconPhrase() {

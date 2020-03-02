@@ -3,6 +3,7 @@ package com.example.assistantbeekeeper.weatherwitget;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
@@ -30,8 +31,8 @@ public class WeatherWidget {
     }
 
     //download weather details
-    public static ArrayList<CurrentWeatherDataClass> FetchDataWether(URL weatherUrl, Activity activity){
-       new DownloadWeatherDetails(activity).execute(weatherUrl);
+    public static ArrayList<CurrentWeatherDataClass> FetchDataWether(URL weatherUrl, Activity activity, Context context){
+       new DownloadWeatherDetails(activity, context).execute(weatherUrl);
         return null;
     }
 
@@ -45,9 +46,13 @@ public class WeatherWidget {
 
         @SuppressLint("StaticFieldLeak")
         Activity activity;
+        @SuppressLint("StaticFieldLeak")
+        Context context;
 
-        private DownloadWeatherDetails(Activity activity){
+        private DownloadWeatherDetails(Activity activity, Context context){
+
             this.activity=activity;
+            this.context=context;
         }
 
 
@@ -77,7 +82,7 @@ public class WeatherWidget {
 
        //Parse Json Data
             if(weatherDetailsResult!=null && !weatherDetailsResult.equals("")){
-                weatherDataClassArrayList=parseJSON_Data(weatherDetailsResult, weatherDataClassArrayList, activity);
+                weatherDataClassArrayList=parseJSON_Data(weatherDetailsResult, weatherDataClassArrayList, activity, context);
             }
 
 
@@ -96,7 +101,7 @@ public class WeatherWidget {
      */
 
     private static ArrayList<CurrentWeatherDataClass> parseJSON_Data
-            (String weatherDetailsResult, ArrayList<CurrentWeatherDataClass> weatherDataClassArrayList, Activity activity){
+            (String weatherDetailsResult, ArrayList<CurrentWeatherDataClass> weatherDataClassArrayList, Activity activity, Context context){
 
         TextView currentTemperature=activity.findViewById(R.id.current_temperature);
         TextView describeWeatherIcon=activity.findViewById(R.id.describe_weather_Icon);
@@ -141,6 +146,8 @@ public class WeatherWidget {
                         if (weatherDataClassArrayList != null) {
                             weatherDataClassArrayList.add(currentWeatherDataClass);
                         }
+
+
 
 
                 return weatherDataClassArrayList;

@@ -4,6 +4,7 @@ package com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.Fragm
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
+        import android.widget.Toast;
 
         import com.example.assistantbeekeeper.R;
         import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.DataModel.AlertsWeatherData;
@@ -55,9 +56,11 @@ public class FragmentActivity extends Fragment {
 
 
     public void setRecycleView(ArrayList<AlertsWeatherData> articles){
-
         recyclerView.setAdapter(new MyAdapter(articles));
+    }
 
+    public void displayMessage(){
+        Toast.makeText(getActivity(), "Brak komunikatow RSO do wyswietlenia", Toast.LENGTH_LONG).show();
     }
 
     //TODO

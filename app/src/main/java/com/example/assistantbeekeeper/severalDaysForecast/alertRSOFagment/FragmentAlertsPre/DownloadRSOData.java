@@ -2,6 +2,7 @@ package com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.Fragm
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.DataModel.AlertsWeatherData;
 import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentActivity.FragmentActivity;
@@ -66,7 +67,12 @@ public class DownloadRSOData {
             ArrayList<AlertsWeatherData> alertsResultList;
             RSOParserJsonData parserJsonData= new RSOParserJsonData(result);
             alertsResultList=parserJsonData.ParseJsonToListObj();
+
             fragmentRso.setRecycleView(alertsResultList);
+
+            if(alertsResultList.isEmpty()){
+                fragmentRso.displayMessage();
+            }
         }
     }
 }

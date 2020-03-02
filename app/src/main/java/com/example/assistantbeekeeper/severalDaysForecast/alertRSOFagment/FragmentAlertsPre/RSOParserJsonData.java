@@ -44,7 +44,7 @@ public class RSOParserJsonData {
            }
        }
 
-        return null;
+        return alertsWeatherDataList;
    }
 
 }

@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class FiveDaysForecastActivity extends AppCompatActivity implements IFiveDaysForecastActivity {
 
@@ -41,7 +40,7 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
         //init TextView components
         initComponentView();
         //TODO
-       // fiveDaysForecast.downloadWeatherData(this);
+        //fiveDaysForecast.downloadWeatherData(this);
 
 
     }
@@ -177,7 +176,7 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
 
     }
 
-    private Drawable getResForWeatherIcon(ArrayList<FiveDayWeatherDataClass> data, int index){
+    public Drawable getResForWeatherIcon(ArrayList<FiveDayWeatherDataClass> data, int index){
         if(data.get(index).getWheatherIcon()==1 || data.get(index).getWheatherIcon()==2 || data.get(index).getWheatherIcon()==3 ){
             return ResourcesCompat.getDrawable(getResources(),R.drawable.iconfinder_partly_cloudy, null);
         }
@@ -194,11 +193,17 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
             return ResourcesCompat.getDrawable(getResources(),R.drawable.iconfinder_overcast, null);
         }
 
-        else if(data.get(index).getWheatherIcon()==12 || data.get(index).getWheatherIcon()==13 || data.get(index).getWheatherIcon()==14 ||
-                data.get(index).getWheatherIcon()==18){
-            //rain
-            return ResourcesCompat.getDrawable(getResources(),R.drawable.iconfinder_rain_icon, null);
+        else if(data.get(index).getWheatherIcon()==12 || data.get(index).getWheatherIcon()==13 || data.get(index).getWheatherIcon()==14)
+               {
+            //showers
+            return ResourcesCompat.getDrawable(getResources(),R.drawable.iconfinder_showers, null);
 
+        }
+
+        else if(data.get(index).getWheatherIcon()==18){
+            //rain
+
+            return ResourcesCompat.getDrawable(getResources(),R.drawable.iconfinder_rain_icon, null);
         }
 
         else if(data.get(index).getWheatherIcon()==25 || data.get(index).getWheatherIcon()==26 || data.get(index).getWheatherIcon()==29){
