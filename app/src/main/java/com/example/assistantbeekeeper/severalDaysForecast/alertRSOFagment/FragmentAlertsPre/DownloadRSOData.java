@@ -3,9 +3,12 @@ package com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.Fragm
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.DataModel.AlertsWeatherData;
+import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentActivity.FragmentActivity;
 import com.example.assistantbeekeeper.weatherwitget.NetworkUtils;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 public class DownloadRSOData {
 
@@ -16,11 +19,18 @@ public class DownloadRSOData {
         return buildURLRSO;
     }
 
-    public static void fetchRSODataFromWebsite(URL url){
-       new DownloadRSODetails().execute(url);
+    public static void fetchRSODataFromWebsite(URL url, FragmentActivity fragmentActivity){
+
+        new DownloadRSODetails(fragmentActivity).execute(url);
     }
 
     public static class DownloadRSODetails extends AsyncTask<URL, Void, String>{
+
+        private FragmentActivity fragmentActivity;
+
+        public DownloadRSODetails(FragmentActivity fragmentActivity){
+            this.fragmentActivity=fragmentActivity;
+        }
 
 
         @Override
@@ -51,9 +61,12 @@ public class DownloadRSOData {
         }
 
         @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            //Todo
+        protected void onPostExecute(String result) {
+            FragmentActivity fragmentRso=fragmentActivity;
+            ArrayList<AlertsWeatherData> alertsResultList;
+            RSOParserJsonData parserJsonData= new RSOParserJsonData(result);
+            alertsResultList=parserJsonData.ParseJsonToListObj();
+            fragmentRso.setRecycleView(alertsResultList);
         }
     }
 }

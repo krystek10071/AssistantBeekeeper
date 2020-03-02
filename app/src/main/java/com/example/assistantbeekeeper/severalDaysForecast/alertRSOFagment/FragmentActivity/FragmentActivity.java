@@ -28,8 +28,7 @@ public class FragmentActivity extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //test
-        alertsPre.FethRSOData();
+
     }
 
 
@@ -49,6 +48,7 @@ public class FragmentActivity extends Fragment {
 
         //set adapter
         recyclerView.setAdapter(new MyAdapter(articles));
+        alertsPre.FethRSOData(this);
 
         return view;
     }

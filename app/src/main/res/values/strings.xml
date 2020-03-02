@@ -28,7 +28,7 @@
     <string name="temperature_night">T_Night</string>
     <string name="five_days_forecast_button">Prognoza na 5 dni</string>
     <string name="title_alert">Title</string>
-    <string name="province">Województwo</string>
-    <string name="time_event">Czas wydarzenia</string>
+    <string name="time_event_start">Czas start</string>
+    <string name="time_event_end">Czas stop</string>
     <string name="description_events">Opis</string>
 </resources>

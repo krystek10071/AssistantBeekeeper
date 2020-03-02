@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="180dp"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="8dp"
-        android:layout_marginBottom="15dp">
+        android:layout_marginBottom="15dp"
+        app:cardCornerRadius="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -19,8 +19,8 @@
 
             <TextView
                 android:id="@+id/title_alert"
-                android:layout_width="160dp"
-                android:layout_height="28dp"
+                android:layout_width="219dp"
+                android:layout_height="49dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/title_alert"
@@ -30,33 +30,33 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/province"
-                android:layout_width="84dp"
-                android:layout_height="28dp"
-                android:layout_marginStart="20dp"
+                android:id="@+id/time_event_start"
+                android:layout_width="64dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/province"
+                android:text="@string/time_event_start"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/title_alert"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/time_event"
-                android:layout_width="60dp"
-                android:layout_height="28dp"
-                android:layout_marginStart="17dp"
+                android:id="@+id/time_event_end"
+                android:layout_width="64dp"
+                android:layout_height="49dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/time_event"
+                android:text="@string/time_event_end"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@+id/province"
+                app:layout_constraintStart_toEndOf="@+id/time_event_start"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/description_events"
-                android:layout_width="322dp"
-                android:layout_height="57dp"
+                android:layout_width="321dp"
+                android:layout_height="79dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginBottom="16dp"
                 android:text="@string/description_events"
