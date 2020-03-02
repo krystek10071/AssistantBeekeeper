@@ -19,13 +19,15 @@
 
             <TextView
                 android:id="@+id/title_alert"
-                android:layout_width="219dp"
-                android:layout_height="49dp"
+                android:layout_width="197dp"
+                android:layout_height="51dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="6dp"
                 android:text="@string/title_alert"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/time_event_start"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,9 +37,11 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
                 android:text="@string/time_event_start"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/time_event_end"
                 app:layout_constraintStart_toEndOf="@+id/title_alert"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,9 +51,11 @@
                 android:layout_height="49dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
                 android:text="@string/time_event_end"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/time_event_start"
                 app:layout_constraintTop_toTopOf="parent" />
 

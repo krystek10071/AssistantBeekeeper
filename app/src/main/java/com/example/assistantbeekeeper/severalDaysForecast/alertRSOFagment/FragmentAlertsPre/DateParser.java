@@ -9,19 +9,20 @@ import java.util.Locale;
 
 public class DateParser {
     private static final String TAG="DateParser";
-    private String dateInString;
-    private String pattern;
 
-    public DateParser(String dateInString, String pattern) {
-        this.dateInString = dateInString;
-        this.pattern = pattern;
-    }
 
-    public String parseData(String patternForConversion){
-        Date date;
+
+
+    public String parseData(String patternBeforeConversion ,String patternAfterConversion, String dateInString){
+
         String resultStringData=null;
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat(pattern, Locale.getDefault());
-        SimpleDateFormat formatForConvertion=new SimpleDateFormat(patternForConversion, Locale.getDefault());
+
+
+
+        Date date;
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat(patternBeforeConversion, Locale.getDefault());
+        SimpleDateFormat formatForConvertion=new SimpleDateFormat(patternAfterConversion, Locale.getDefault());
+
         try {
             date=simpleDateFormat.parse(dateInString);
             resultStringData=formatForConvertion.format(date);
