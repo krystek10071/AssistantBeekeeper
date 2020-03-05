@@ -2,7 +2,6 @@ package com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.Fragm
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.DataModel.AlertsWeatherData;
 import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentActivity.FragmentActivity;
@@ -11,25 +10,30 @@ import com.example.assistantbeekeeper.weatherwitget.NetworkUtils;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class DownloadRSOData {
+ class DownloadRSOData {
 
     private static final String TAG="DownloadRsoData";
 
-    public static URL createUrlAdress(String provincy, String category){
-        URL buildURLRSO=NetworkUrlAdress.buildRsoAdress(provincy, category);
-        return buildURLRSO;
+
+     static URL createUrlAdress(String provincy, String category){
+         return NetworkUrlAdress.buildRsoAdress(provincy, category);
     }
 
-    public static void fetchRSODataFromWebsite(URL url, FragmentActivity fragmentActivity){
 
-        new DownloadRSODetails(fragmentActivity).execute(url);
+     static void fetchRSODataFromWebsite(ArrayList<URL> listUrlAdress, FragmentActivity fragmentActivity){
+
+         //noinspection unchecked
+         new DownloadRSODetails(fragmentActivity).execute(listUrlAdress);
     }
 
-    public static class DownloadRSODetails extends AsyncTask<URL, Void, String>{
+
+
+
+    public static class DownloadRSODetails extends AsyncTask<ArrayList<URL>, Void, ArrayList<String>> {
 
         private FragmentActivity fragmentActivity;
 
-        public DownloadRSODetails(FragmentActivity fragmentActivity){
+        private DownloadRSODetails(FragmentActivity fragmentActivity){
             this.fragmentActivity=fragmentActivity;
         }
 
@@ -45,32 +49,57 @@ public class DownloadRSOData {
          * @return String resultRSOData with RSO messages
          */
 
+        @SafeVarargs
         @Override
-        protected String doInBackground(URL... urls) {
-            URL urlAdress=urls[0];
-            String resultRSOData=null;
+        protected final ArrayList<String> doInBackground(ArrayList<URL>... urls) {
+           ArrayList<String> resultRsoData=new ArrayList<>();
+           ArrayList<URL> urlAdresses=urls[0];
+            int lengthUrlAdresses=urlAdresses.size();
+
+
 
             try{
-                resultRSOData=NetworkUtils.getResponseFromUrl(urlAdress);
+                for(int i=0; i<lengthUrlAdresses; i++){
+                    String result;
+                    result=NetworkUtils.getResponseFromUrl(urlAdresses.get(i));
+                    resultRsoData.add(result);
+                }
+
+
+                //resultRSOData=NetworkUtils.getResponseFromUrl(urlAdress);
+                //resultRSOData1=NetworkUtils.getResponseFromUrl(urlAdress2);
             } catch (Exception e) {
                 e.printStackTrace();
                 e.getMessage();
             }
 
-            Log.i(TAG, "RSO Data result" + resultRSOData);
-            return resultRSOData;
+            Log.i(TAG, "RSO Data result" + resultRsoData.get(0));
+            Log.i(TAG, "RSO Data result" + resultRsoData.get(1));
+            Log.i(TAG, "RSO Data result" + resultRsoData.get(2));
+            Log.i(TAG, "RSO Data result" + resultRsoData.get(3));
+
+
+            return resultRsoData;
         }
 
         @Override
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(ArrayList<String> result) {
             FragmentActivity fragmentRso=fragmentActivity;
-            ArrayList<AlertsWeatherData> alertsResultList;
-            RSOParserJsonData parserJsonData= new RSOParserJsonData(result);
-            alertsResultList=parserJsonData.ParseJsonToListObj();
+            ArrayList<AlertsWeatherData> alertsListPom;
+            ArrayList<AlertsWeatherData> alertsResult=new ArrayList<>();
+            int lenghtResultArrayList=result.size();
 
-            fragmentRso.setRecycleView(alertsResultList);
+            for(int i=0; i<lenghtResultArrayList; i++){
+                RSOParserJsonData parserJsonData= new RSOParserJsonData(result.get(i));
+                alertsListPom=parserJsonData.ParseJsonToListObj();
 
-            if(alertsResultList.isEmpty()){
+                if(!alertsListPom.isEmpty()){
+                    alertsResult.addAll(alertsListPom);
+                }
+            }
+            fragmentRso.setRecycleView(alertsResult);
+
+            if(alertsResult.isEmpty()){
                 fragmentRso.displayMessage();
             }
         }

@@ -61,8 +61,6 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
 
-
-
         switch (item.getItemId()){
             case R.id.refresh_id_item:
 
@@ -75,7 +73,6 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
 
             default:
                 return super.onOptionsItemSelected(item);
-
         }
     }
 
