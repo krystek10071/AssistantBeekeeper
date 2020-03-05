@@ -5,6 +5,7 @@ package com.example.assistantbeekeeper.severalDaysForecast.severalDaysActivity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,7 +22,6 @@ import com.example.assistantbeekeeper.severalDaysForecast.severalDaysPre.WeekDay
 
 import java.util.ArrayList;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
@@ -64,16 +64,13 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
 
 
         switch (item.getItemId()){
-            case R.id.refreshIdItem:
-               //fiveDaysForecast.refreshRSOData();
+            case R.id.refresh_id_item:
 
+                FragmentActivity fragmentRSOActivity=(FragmentActivity) getSupportFragmentManager().findFragmentById(R.id.fragment_alerts_activity);
 
-                //FragmentActivity fragmentActivity=(FragmentActivity) getSupportFragmentManager().findFragmentById(R.id.recycle_view);
-               // if (fragmentActivity != null) {
-               //     fragmentActivity.getActivity();
-               // }
-
-
+                if(fragmentRSOActivity!=null && fragmentRSOActivity.isInLayout()){
+                    fragmentRSOActivity.refreshRSOData();
+                }
                 return true;
 
             default:

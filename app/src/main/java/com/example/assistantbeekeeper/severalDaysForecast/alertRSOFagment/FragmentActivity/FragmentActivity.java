@@ -44,10 +44,10 @@ public class FragmentActivity extends Fragment {
         recyclerView.setHasFixedSize(true);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        setArticles(articles);
-
+        //todo
         //set adapter
         recyclerView.setAdapter(new MyAdapter(articles));
+
         alertsPre.FethRSOData(this);
         return view;
     }
@@ -59,6 +59,10 @@ public class FragmentActivity extends Fragment {
 
     public void displayMessage(){
         Toast.makeText(getActivity(), "Brak komunikatow RSO do wyswietlenia", Toast.LENGTH_LONG).show();
+    }
+
+    public void refreshRSOData(){
+        alertsPre.FethRSOData(this);
     }
 
     //TODO

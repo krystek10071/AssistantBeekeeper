@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/refreshIdItem"
+        android:id="@+id/refresh_id_item"
         android:checkable="false"
         android:icon="@drawable/ic_autorenew_white"
         android:title="@string/RefreshItem"
@@ -13,6 +13,6 @@
         android:id="@+id/item2"
         android:icon="@drawable/ic_autorenew_white"
         android:title="@string/item2"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 
 </menu>

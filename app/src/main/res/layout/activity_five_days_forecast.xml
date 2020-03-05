@@ -367,7 +367,7 @@
     </androidx.cardview.widget.CardView>
 
     <fragment
-        android:id="@+id/fragment"
+        android:id="@+id/fragment_alerts_activity"
         android:name="com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentActivity.FragmentActivity"
         android:layout_width="match_parent"
         android:layout_height="350dp"
