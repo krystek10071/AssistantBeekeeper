@@ -9,7 +9,6 @@ package com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.Fragm
         import com.example.assistantbeekeeper.R;
         import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.DataModel.AlertsWeatherData;
         import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentAlertsPre.AlertsPre;
-        import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentAlertsPre.DownloadRSOData;
 
 
         import java.util.ArrayList;
@@ -29,7 +28,6 @@ public class FragmentActivity extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
     }
 
 
@@ -39,6 +37,7 @@ public class FragmentActivity extends Fragment {
         ArrayList<AlertsWeatherData> articles=new ArrayList<>();
 
         //assigning layout to FragmentActivity
+        assert inflater != null;
         View view= inflater.inflate(R.layout.alerts_forecast_fragment, container, false);
         recyclerView= view.findViewById(R.id.recycle_view);
         //optymalization
@@ -50,7 +49,6 @@ public class FragmentActivity extends Fragment {
         //set adapter
         recyclerView.setAdapter(new MyAdapter(articles));
         alertsPre.FethRSOData(this);
-
         return view;
     }
 

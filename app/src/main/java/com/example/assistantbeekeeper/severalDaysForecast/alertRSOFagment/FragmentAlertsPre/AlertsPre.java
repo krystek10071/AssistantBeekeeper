@@ -10,9 +10,9 @@ public class AlertsPre implements IAlertsPre {
     @Override
     public void FethRSOData(FragmentActivity fragmentRsoActivity) {
         URL urlAdress;
-        urlAdress=DownloadRSOData.createUrlAdress("wszystkie", "meteorologiczne");
-        DownloadRSOData.fetchRSODataFromWebsite(urlAdress, fragmentRsoActivity);
         urlAdress=DownloadRSOData.createUrlAdress("wszystkie", "hydrologiczne");
+        DownloadRSOData.fetchRSODataFromWebsite(urlAdress, fragmentRsoActivity);
+        urlAdress=DownloadRSOData.createUrlAdress("wszystkie", "informacje-drogowe");
         DownloadRSOData.fetchRSODataFromWebsite(urlAdress, fragmentRsoActivity);
     }
 }

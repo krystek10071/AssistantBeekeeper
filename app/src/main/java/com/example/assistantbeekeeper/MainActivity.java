@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Todo
         weatherOneDayData= WeatherWidget.createUrlAddress();
-        listWeatherOneDay=WeatherWidget.FetchDataWether(weatherOneDayData,this, this);
+       //listWeatherOneDay=WeatherWidget.FetchDataWether(weatherOneDayData,this, this);
     }
     
     public void setWeatherIcon(ArrayList<CurrentWeatherDataClass> data, int index){

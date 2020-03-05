@@ -31,4 +31,6 @@
     <string name="time_event_start">Czas start</string>
     <string name="time_event_end">Czas stop</string>
     <string name="description_events">Opis</string>
+    <string name="RefreshItem">RefreshItem</string>
+    <string name="item2">Item2</string>
 </resources>

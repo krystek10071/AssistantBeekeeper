@@ -5,17 +5,23 @@ package com.example.assistantbeekeeper.severalDaysForecast.severalDaysActivity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.assistantbeekeeper.R;
+import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentActivity.FragmentActivity;
+import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentAlertsPre.AlertsPre;
 import com.example.assistantbeekeeper.severalDaysForecast.modelData.FiveDayWeatherDataClass;
 import com.example.assistantbeekeeper.severalDaysForecast.severalDaysPre.FiveDaysForecast;
 import com.example.assistantbeekeeper.severalDaysForecast.severalDaysPre.WeekDay;
 
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
@@ -30,6 +36,7 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
     ImageView weatherIcon1, weatherIcon2, weatherIcon3, weatherIcon4, weatherIcon5;
 
     FiveDaysForecast fiveDaysForecast=new FiveDaysForecast();
+    AlertsPre alertsPre=new AlertsPre();
 
 
     @Override
@@ -42,7 +49,37 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
         //TODO
         //fiveDaysForecast.downloadWeatherData(this);
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.five_days_forecast_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+
+
+
+        switch (item.getItemId()){
+            case R.id.refreshIdItem:
+               //fiveDaysForecast.refreshRSOData();
+
+
+                //FragmentActivity fragmentActivity=(FragmentActivity) getSupportFragmentManager().findFragmentById(R.id.recycle_view);
+               // if (fragmentActivity != null) {
+               //     fragmentActivity.getActivity();
+               // }
+
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
 

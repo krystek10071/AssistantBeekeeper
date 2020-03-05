@@ -377,3 +377,5 @@
         tools:layout="@layout/alerts_forecast_fragment" />
 
 </LinearLayout>
+
+
