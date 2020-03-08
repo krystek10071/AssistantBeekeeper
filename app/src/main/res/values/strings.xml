@@ -33,4 +33,9 @@
     <string name="description_events">Opis</string>
     <string name="RefreshItem">RefreshItem</string>
     <string name="item2">Item2</string>
+    <string name="switch1">Switch</string>
+    <string name="ogolne">ogolne</string>
+    <string name="meteorologiczne">meteorologiczne</string>
+    <string name="informacje_drogowe">informacje_drogowe</string>
+    <string name="hydrologiczne">hydrologiczne</string>
 </resources>

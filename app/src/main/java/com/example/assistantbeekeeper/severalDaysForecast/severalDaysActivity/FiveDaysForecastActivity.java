@@ -2,10 +2,10 @@ package com.example.assistantbeekeeper.severalDaysForecast.severalDaysActivity;
 
 
 
+import android.content.ClipData;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -34,15 +34,23 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
     TextView tNight1, tNight2, tNight3, tNight4, tNight5;
     TextView windSpeed1, windSpeed2, windSpeed3, windSpeed4, windSpeed5;
     ImageView weatherIcon1, weatherIcon2, weatherIcon3, weatherIcon4, weatherIcon5;
+    boolean general, meteorological, hydrological, trafficInformation;
 
     FiveDaysForecast fiveDaysForecast=new FiveDaysForecast();
     AlertsPre alertsPre=new AlertsPre();
+    ArrayList<String> rsoParameters=new ArrayList<>();
+
 
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_five_days_forecast);
+
+        general=false;
+        meteorological=false;
+        hydrological=false;
+        trafficInformation=false;
 
         //init TextView components
         initComponentView();
@@ -61,22 +69,82 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
 
+
         switch (item.getItemId()){
             case R.id.refresh_id_item:
-
                 FragmentActivity fragmentRSOActivity=(FragmentActivity) getSupportFragmentManager().findFragmentById(R.id.fragment_alerts_activity);
+                rsoParameters.clear();
 
                 if(fragmentRSOActivity!=null && fragmentRSOActivity.isInLayout()){
-                    fragmentRSOActivity.refreshRSOData();
+                   // fragmentRSOActivity.refreshRSOData(this, general, meteorological, hydrological, trafficInformation);
+                    if(general){
+                        rsoParameters.add("ogolne");
+                    }
+
+                    if(meteorological){
+                        rsoParameters.add("meteorologiczne");
+                    }
+
+                    if(hydrological){
+                        rsoParameters.add("hydrologiczne");
+                    }
+
+                    if(trafficInformation){
+                        rsoParameters.add("informacje-drogowe");
+                    }
+
+                     fragmentRSOActivity.refreshRSOData(this, rsoParameters);
                 }
                 return true;
 
+            case R.id.item1:
+                if(!item.isChecked()){
+                    item.setChecked(true);
+                    general=true;
+                }
+                else{
+                    item.setChecked(false);
+                    general=false;
+                }
+                break;
+
+            case R.id.item2:
+                if(!item.isChecked()){
+                    item.setChecked(true);
+                    meteorological=true;
+                }
+                else{
+                    item.setChecked(false);
+                    meteorological=false;
+                }
+                break;
+
+            case R.id.item3:
+                if(!item.isChecked()){
+                    item.setChecked(true);
+                    hydrological=true;
+                }
+                else{
+                    item.setChecked(false);
+                    hydrological=false;
+                }
+                break;
+
+            case R.id.item4:
+                if(!item.isChecked()){
+                    item.setChecked(true);
+                    trafficInformation=true;
+                }
+                else{
+                    item.setChecked(false);
+                    trafficInformation=false;
+                }
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }
+        return super.onOptionsItemSelected(item);
     }
-
-
 
 
 

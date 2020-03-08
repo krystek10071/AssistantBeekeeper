@@ -1,5 +1,6 @@
 package com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentActivity;
 
+        import android.content.ClipData;
         import android.os.Bundle;
         import android.view.LayoutInflater;
         import android.view.View;
@@ -9,6 +10,7 @@ package com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.Fragm
         import com.example.assistantbeekeeper.R;
         import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.DataModel.AlertsWeatherData;
         import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentAlertsPre.AlertsPre;
+        import com.example.assistantbeekeeper.severalDaysForecast.severalDaysActivity.FiveDaysForecastActivity;
 
 
         import java.util.ArrayList;
@@ -35,6 +37,7 @@ public class FragmentActivity extends Fragment {
     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         ArrayList<AlertsWeatherData> articles=new ArrayList<>();
+        ArrayList<String> listParameter=new ArrayList<>();
 
         //assigning layout to FragmentActivity
         assert inflater != null;
@@ -48,7 +51,9 @@ public class FragmentActivity extends Fragment {
         //set adapter
         recyclerView.setAdapter(new MyAdapter(articles));
 
-        alertsPre.FethRSOData(this);
+        alertsPre.FethRSOData(this, listParameter);
+
+        Toast.makeText(getActivity(), "Wybierz parametry do wyswietlenia", Toast.LENGTH_SHORT).show();
         return view;
     }
 
@@ -61,8 +66,9 @@ public class FragmentActivity extends Fragment {
         Toast.makeText(getActivity(), "Brak komunikatow RSO do wyswietlenia", Toast.LENGTH_LONG).show();
     }
 
-    public void refreshRSOData(){
-        alertsPre.FethRSOData(this);
+    public void refreshRSOData(FiveDaysForecastActivity fiveDaysForecastActivity, ArrayList<String> listParameter){
+
+        alertsPre.FethRSOData(this, listParameter);
     }
 
     //TODO

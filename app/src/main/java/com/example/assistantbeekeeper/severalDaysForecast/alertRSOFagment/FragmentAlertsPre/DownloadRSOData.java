@@ -73,10 +73,11 @@ import java.util.ArrayList;
                 e.getMessage();
             }
 
-            Log.i(TAG, "RSO Data result" + resultRsoData.get(0));
-            Log.i(TAG, "RSO Data result" + resultRsoData.get(1));
-            Log.i(TAG, "RSO Data result" + resultRsoData.get(2));
-            Log.i(TAG, "RSO Data result" + resultRsoData.get(3));
+
+            for(int i=0; i<lengthUrlAdresses; i++){
+                Log.i(TAG, "RSO Data result" + resultRsoData.get(i));
+            }
+
 
 
             return resultRsoData;
