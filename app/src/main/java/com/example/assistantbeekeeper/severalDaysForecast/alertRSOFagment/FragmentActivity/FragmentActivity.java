@@ -47,7 +47,6 @@ public class FragmentActivity extends Fragment {
         recyclerView.setHasFixedSize(true);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        //todo
         //set adapter
         recyclerView.setAdapter(new MyAdapter(articles));
 
