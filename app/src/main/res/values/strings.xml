@@ -38,4 +38,5 @@
     <string name="meteorologiczne">meteorologiczne</string>
     <string name="informacje_drogowe">informacje_drogowe</string>
     <string name="hydrologiczne">hydrologiczne</string>
+    <string name="button_test">Button</string>
 </resources>

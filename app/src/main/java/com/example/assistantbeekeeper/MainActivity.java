@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.assistantbeekeeper.weatherRadar.weatherRadarActi.WeatherRadarActivity;
 import com.example.assistantbeekeeper.weatherwitget.CurrentWeatherDataClass;
 import com.example.assistantbeekeeper.severalDaysForecast.severalDaysActivity.FiveDaysForecastActivity;
 import com.example.assistantbeekeeper.weatherwitget.WeatherWidget;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     //UI Elements
      Button breedingButton;
      Button fiveDaysForecast;
+     Button buttonTest;
      TextView currentLocation;
      TextView currentTemperature;
      TextView describeWeatherIcon;
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         fiveDaysForecast=findViewById(R.id.five_days_forecast_button);
         breedingButton= findViewById(R.id.breedingButton);
         weatherIcon=findViewById(R.id.icon_weather);
+        buttonTest=findViewById(R.id.buttonTest);
 
 
         breedingButton.setOnClickListener(new View.OnClickListener(){
@@ -63,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(), FiveDaysForecastActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(), WeatherRadarActivity.class);
                 startActivity(intent);
             }
         });
