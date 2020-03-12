@@ -2,7 +2,7 @@
     <string name="app_name">AssistantBeekeeper</string>
     <string name="button1">Button</string>
     <string name="textview">TextView</string>
-    <string name="button">Button</string>
+    <string name="button">Wychow matek</string>
     <string name="add_breeding">AddBreeding</string>
     <string name="textView">TextView</string>
     <string name="notsettext">NotSetText</string>
@@ -39,4 +39,11 @@
     <string name="informacje_drogowe">informacje_drogowe</string>
     <string name="hydrologiczne">hydrologiczne</string>
     <string name="button_test">Button</string>
+    <string name="radar_button">Radar pogodowy</string>
+    <string name="locality">Moja pasieka</string>
+    <string name="production_cost">Koszty w bierzącym roku</string>
+    <string name="earnings">Zysk w bierzącym roku</string>
+    <string name="honey_production">Produkcja miodu</string>
+    <string name="sum1">20001</string>
+    <string name="see_more">zobacz więcej</string>
 </resources>
