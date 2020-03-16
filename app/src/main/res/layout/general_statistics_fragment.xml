@@ -18,9 +18,10 @@
             >
 
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp">
+
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="217dp"
@@ -31,7 +32,22 @@
                     android:textAlignment="textStart"
                     android:textColor="#FFFF"
                     android:textSize="24sp" />
-            </LinearLayout>
+
+                <Spinner
+                    android:id="@+id/spinner_statistic"
+                    style="@android:style/Widget.DeviceDefault.Light.Spinner"
+                    android:layout_width="61dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="81dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_toEndOf="@+id/textView2"
+                    android:spinnerMode="dropdown">
+
+                </Spinner>
+
+
+            </RelativeLayout>
 
 
 
