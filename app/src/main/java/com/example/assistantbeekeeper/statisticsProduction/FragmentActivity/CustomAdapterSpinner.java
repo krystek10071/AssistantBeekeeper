@@ -28,20 +28,23 @@ public class CustomAdapterSpinner extends BaseAdapter {
 
     @Override
     public int getCount() {
+
         return customItems.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+      return   customItems.get(i);
     }
 
     @Override
     public long getItemId(int i) {
+
         return 0;
     }
 
-    @SuppressLint({"InflateParams", "ViewHolder"})
+
+    @SuppressLint({"ViewHolder", "InflateParams"})
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         view=inflater.inflate(R.layout.custom_spinner_layout, null);

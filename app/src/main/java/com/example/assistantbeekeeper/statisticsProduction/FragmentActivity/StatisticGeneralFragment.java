@@ -7,13 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
-
-import com.example.assistantbeekeeper.R;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +21,8 @@ import static com.example.assistantbeekeeper.R.*;
 public class StatisticGeneralFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private ArrayList<CustomItems> customList=new ArrayList<>();
-    private Spinner customSpinnerStatistics;
+
+    private TextView apiaryName;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,22 +32,20 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        customList.add(new CustomItems("enedue"));
-        customList.add(new CustomItems("enedue"));
-        customList.add(new CustomItems("enedue"));
-        customList.add(new CustomItems("enedue"));
-        customList.add(new CustomItems("enedue"));
+        customList.add(new CustomItems("Bytom"));
+        customList.add(new CustomItems("Miejscowosc2"));
+        customList.add(new CustomItems("Wrotkowo"));
+        customList.add(new CustomItems("Ksiezypole"));
 
         View view=inflater.inflate(layout.general_statistics_fragment, container, false);
+        initComponent(view);
+
          Spinner customSpinnerStatistics = view.findViewById(id.spinner_statistic);
          customSpinnerStatistics.setOnItemSelectedListener(this);
 
         CustomAdapterSpinner customAdapter=new CustomAdapterSpinner(getContext(), customList);
-        //todo
         customSpinnerStatistics.setAdapter(customAdapter);
-        customSpinnerStatistics.setVisibility(View.VISIBLE);
-
-       // customSpinnerStatistics.setOnItemClickListener((AdapterView.OnItemClickListener) this.getView());
+        customAdapter.notifyDataSetChanged();
 
         return view ;
     }
@@ -57,11 +53,21 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        //Log.i()
+        Log.i("POSITION", String.valueOf(adapterView.getAdapter().getItem(i)));
+
+        String placeName=customList.get(i).getSpinnerText();
+        setApiaryName(placeName);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+    }
 
+    private void setApiaryName(String name){
+        apiaryName.setText(name);
+    }
+
+    private void initComponent(View view){
+        apiaryName=view.findViewById(id.apiaryName);
     }
 }

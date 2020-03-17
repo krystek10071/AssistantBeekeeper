@@ -1,26 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="30dp"
-    android:background="@color/greyBackground"
+    android:background="#FFFFFF"
     >
 
     <TextView
         android:id="@+id/textViewSpinner"
-        android:layout_width="244dp"
+        android:layout_width="134dp"
         android:layout_height="match_parent"
+        android:padding="5dp"
         android:text="@string/see_more"
         android:textColor="#000000"
         android:textSize="18sp" />
-
-    <RadioButton
-        android:id="@+id/radioButtonSpinner"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="30dp">
-
-    </RadioButton>
-
 
 </LinearLayout>

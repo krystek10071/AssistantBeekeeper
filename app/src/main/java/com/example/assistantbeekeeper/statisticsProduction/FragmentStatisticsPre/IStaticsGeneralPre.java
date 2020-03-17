@@ -1,5 +1,4 @@
 package com.example.assistantbeekeeper.statisticsProduction.FragmentStatisticsPre;
 
-public class StatisticGeneralPre {
-
+public interface IStaticsGeneralPre {
 }
