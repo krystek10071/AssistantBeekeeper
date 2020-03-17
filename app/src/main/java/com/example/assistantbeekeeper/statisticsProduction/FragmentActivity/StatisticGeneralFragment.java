@@ -20,7 +20,9 @@ import androidx.fragment.app.Fragment;
 
 import static com.example.assistantbeekeeper.R.*;
 
-public class StatisticGeneralFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class StatisticGeneralFragment extends Fragment  {
+
+    private ArrayList<CustomItems> customList=new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,35 +32,40 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        customList.add(new CustomItems("enedue"));
+        customList.add(new CustomItems("enedue"));
+        customList.add(new CustomItems("enedue"));
+        customList.add(new CustomItems("enedue"));
+        customList.add(new CustomItems("enedue"));
 
         View view=inflater.inflate(layout.general_statistics_fragment, container, false);
         Spinner customSpinnerStatistics = view.findViewById(id.spinner_statistic);
+        //customSpinnerStatistics.setOnItemClickListener((AdapterView.OnItemClickListener) this);
 
-        ArrayList<CustomItems> customList=new ArrayList<>();
-
-        customList.add(new CustomItems("enedue"));
-        customList.add(new CustomItems("enedue"));
-        customList.add(new CustomItems("enedue"));
-        customList.add(new CustomItems("enedue"));
-        customList.add(new CustomItems("enedue"));
-
-
-        CustomAdapterSpinner customAdapter=new CustomAdapterSpinner(Objects.requireNonNull(getActivity()), layout.custom_spinner_layout, customList);
+        CustomAdapterSpinner customAdapter=new CustomAdapterSpinner(getContext(), customList);
         //todo
+        customSpinnerStatistics.setAdapter(customAdapter);
+        customSpinnerStatistics.setVisibility(View.VISIBLE);
 
-        if(customSpinnerStatistics !=null){
-            customSpinnerStatistics.setAdapter(customAdapter);
-          // customSpinnerStatistics.setOnItemClickListener(this);
-        }
+        //customSpinnerStatistics.setOnItemClickListener((AdapterView.OnItemClickListener) view.getContext());
+
+        customSpinnerStatistics.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(adapterView.getContext(), customList.get(i).getSpinnerText(), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
 
         return view ;
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        CustomItems items= (CustomItems) adapterView.getSelectedItem();
-        Toast.makeText(getActivity(), items.getSpinnerText(), Toast.LENGTH_LONG).show();
-    }
+
 }

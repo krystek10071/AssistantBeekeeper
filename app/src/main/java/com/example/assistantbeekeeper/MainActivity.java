@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentActivity.FragmentActivity;
 import com.example.assistantbeekeeper.weatherRadar.weatherRadarActi.WeatherRadarActivity;
 import com.example.assistantbeekeeper.weatherwitget.CurrentWeatherDataClass;
 import com.example.assistantbeekeeper.severalDaysForecast.severalDaysActivity.FiveDaysForecastActivity;
@@ -82,8 +83,15 @@ public class MainActivity extends AppCompatActivity {
         //Todo
         weatherOneDayData= WeatherWidget.createUrlAddress();
        //listWeatherOneDay=WeatherWidget.FetchDataWether(weatherOneDayData,this, this);
+
+
+       // FragmentActivity fragmentStatistics= (FragmentActivity) getSupportFragmentManager().findFragmentById(R.id.statistics_fragment);
+
+
     }
-    
+
+
+
     public void setWeatherIcon(ArrayList<CurrentWeatherDataClass> data, int index){
         weatherIcon.setImageDrawable(getResForWeatherIcon(data, index));
     }

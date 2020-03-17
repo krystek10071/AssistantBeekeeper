@@ -1,10 +1,12 @@
 package com.example.assistantbeekeeper.statisticsProduction.FragmentActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -15,37 +17,36 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class CustomAdapterSpinner extends ArrayAdapter {
-    public CustomAdapterSpinner(@NonNull Context context, int resource, ArrayList<CustomItems> customList) {
-        super(context, resource, customList);
-    }
+public class CustomAdapterSpinner extends BaseAdapter {
+    private ArrayList<CustomItems> customItems;
+    private LayoutInflater inflater;
 
-    @NonNull
-    @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        return customView(position, convertView, parent);
+    public CustomAdapterSpinner(Context context, ArrayList<CustomItems> customItems) {
+        this.customItems = customItems;
+        inflater=(LayoutInflater.from(context));
     }
 
     @Override
-    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        return super.getDropDownView(position, convertView, parent);
+    public int getCount() {
+        return customItems.size();
     }
 
-    public View customView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
-        if(convertView==null){
-            convertView= LayoutInflater.from(getContext()).inflate(R.layout.custom_spinner_layout, parent, false);
-        }
-
-        CustomItems items= (CustomItems) getItem(position);
-        TextView spinnerTextView= convertView.findViewById(R.id.textViewSpinner);
-        RadioButton radioButton=convertView.findViewById(R.id.radioButtonSpinner);
-
-        if(items!=null){
-            spinnerTextView.setText(items.getSpinnerText());
-        }
-        return convertView;
+    @Override
+    public Object getItem(int i) {
+        return null;
     }
 
+    @Override
+    public long getItemId(int i) {
+        return 0;
+    }
 
-
+    @SuppressLint({"InflateParams", "ViewHolder"})
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        view=inflater.inflate(R.layout.custom_spinner_layout, null);
+        TextView textView=view.findViewById(R.id.textViewSpinner);
+        textView.setText(customItems.get(i).getSpinnerText());
+        return view;
+    }
 }
