@@ -59,7 +59,6 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
 
          Spinner customSpinnerStatistics = view.findViewById(id.spinner_statistic);
          customSpinnerStatistics.setOnItemSelectedListener(this);
-
         CustomAdapterSpinner customAdapter=new CustomAdapterSpinner(getContext(), customList);
         customSpinnerStatistics.setAdapter(customAdapter);
         customAdapter.notifyDataSetChanged();
