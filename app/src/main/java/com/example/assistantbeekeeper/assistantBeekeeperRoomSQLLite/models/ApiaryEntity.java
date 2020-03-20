@@ -2,6 +2,7 @@ package com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models;
 
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -9,9 +10,14 @@ import androidx.room.PrimaryKey;
 public class ApiaryEntity {
 
     @PrimaryKey (autoGenerate = true)
+    @ColumnInfo(name = "id")
     private Long id;
+
+    @ColumnInfo(name = "name")
     private String name;
-    private Long amountOfHoney;
+
+    @ColumnInfo(name = "amount_of_honey")
+    private int amountOfHoney;
 
     @NonNull
     public Long getId() {
@@ -30,11 +36,11 @@ public class ApiaryEntity {
         this.name = name;
     }
 
-    public Long getAmountOfHoney() {
+    public int getAmountOfHoney() {
         return amountOfHoney;
     }
 
-    public void setAmountOfHoney(Long amountOfHoney) {
+    public void setAmountOfHoney(int amountOfHoney) {
         this.amountOfHoney = amountOfHoney;
     }
 }

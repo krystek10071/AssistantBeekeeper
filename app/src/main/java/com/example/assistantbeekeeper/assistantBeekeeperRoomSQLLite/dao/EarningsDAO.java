@@ -2,6 +2,7 @@ package com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dao;
 
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.CostEntity;
+import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.EarningsEntity;
 
 import java.util.List;
 
@@ -11,14 +12,14 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 @Dao
-public interface CostDao {
+public interface EarningsDAO {
 
-    @Query("SELECT * FROM Costs")
-    List<CostEntity> getAll();
+    @Query("SELECT * FROM Earnings")
+    List<EarningsEntity> getAll();
 
     @Insert
-    void insertAll(CostEntity ... costEntities);
+    void insertAll(EarningsEntity... earningsEntities);
 
     @Delete
-    void delete(CostEntity costEntity);
+    void delete(EarningsEntity earningsEntity);
 }

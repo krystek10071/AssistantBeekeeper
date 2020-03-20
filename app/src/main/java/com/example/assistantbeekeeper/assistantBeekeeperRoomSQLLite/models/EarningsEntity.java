@@ -1,6 +1,7 @@
 package com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
@@ -11,18 +12,27 @@ import static androidx.room.ForeignKey.CASCADE;
 @Entity(tableName = "Earnings",
         foreignKeys = @ForeignKey(entity=ApiaryEntity.class,
                         parentColumns = "id",
-                        childColumns = "idApiaryEntity",
+                        childColumns = "idApiary",
                         onDelete = CASCADE,
                         onUpdate = CASCADE),
-        indices=@Index("idApiaryEntity")
+        indices=@Index("idApiary")
 
 )
 public class EarningsEntity {
     @PrimaryKey(autoGenerate=true)
+    @ColumnInfo(name = "id")
     private Long id;
+
+    @ColumnInfo(name = "name")
     private String name;
+
+    @ColumnInfo(name = "value")
     private Double value;
+
+    @ColumnInfo(name = "idApiary")
     private Long idApiary;
+
+    @ColumnInfo(name = "Data")
     private String Data;
 
     @NonNull
