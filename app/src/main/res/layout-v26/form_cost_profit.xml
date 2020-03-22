@@ -20,7 +20,6 @@
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter_name_cost"
@@ -56,7 +55,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/textInput3"
         android:layout_width="249dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textInput2"
@@ -71,7 +70,7 @@
         android:importantForAutofill="no" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/floatingActionButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -85,15 +84,14 @@
         app:srcCompat="@color/colorAccentCustom" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonAkcept"
         android:layout_width="match_parent"
         android:layout_height="68dp"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/textInput3"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="119dp"
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
-
         android:background="@drawable/rounded_button_white"
         android:text="@string/ButtonAkceptForm" />
 
