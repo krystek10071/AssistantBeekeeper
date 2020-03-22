@@ -49,4 +49,8 @@
     <string name="add_cost_button">Dodaj koszt</string>
     <string name="add_profit_button">Dodaj zysk</string>
     <string name="amount_of_production_button">Dodaj produkcje</string>
+    <string name="enter_name_cost">Nazwa kosztu</string>
+    <string name="ButtonAkceptForm">Dodaj Zysk</string>
+    <string name="enter_text">Dodaj Zysk</string>
+    <string name="enter_value_cost">Wprowadź wartość kosztu</string>
 </resources>

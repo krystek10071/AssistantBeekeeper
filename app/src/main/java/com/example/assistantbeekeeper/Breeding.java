@@ -74,34 +74,29 @@ public class Breeding extends AppCompatActivity {
 
 
         //Add BreedingButton
-        addBreedingButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        addBreedingButton.setOnClickListener(v -> {
 
-                if(dateTextView.getText().toString().equals("NotSetText")){
-                    Toast.makeText(Breeding.this, "Najpierw musisz ustawic date", Toast.LENGTH_LONG).show();
-                }else {
-                    timeInMillis[0]=Long.parseLong(dateTextView.getText().toString());
-                    breedingFunctions.addTimeMillisToList(listTimeInMillis, listDescription, timeInMillis[0] );                                //add Date in millis and description to Lists
-                    breedingFunctions.addBreeding(compactCalendarView, listTimeInMillis, listDescription, listEvents, dateTextView);//add breeding to CompactCalendarView
-                    eventsListView.setAdapter(arrayAdapter);
-                    breedingFunctions.addToDatabase(dbHelper,listTimeInMillis, listDescription);                      //add to database
-                    listTimeInMillis.clear();
-                    listDescription.clear();
-                    Toast.makeText(Breeding.this, "Pomyślnie dodano wychów do kalendarza", Toast.LENGTH_LONG).show();
-
-                }
+            if(dateTextView.getText().toString().equals("NotSetText")){
+                Toast.makeText(Breeding.this, "Najpierw musisz ustawic date", Toast.LENGTH_LONG).show();
+            }else {
+                timeInMillis[0]=Long.parseLong(dateTextView.getText().toString());
+                breedingFunctions.addTimeMillisToList(listTimeInMillis, listDescription, timeInMillis[0] );                                //add Date in millis and description to Lists
+                breedingFunctions.addBreeding(compactCalendarView, listTimeInMillis, listDescription, listEvents, dateTextView);//add breeding to CompactCalendarView
+                eventsListView.setAdapter(arrayAdapter);
+                breedingFunctions.addToDatabase(dbHelper,listTimeInMillis, listDescription);                      //add to database
+                listTimeInMillis.clear();
+                listDescription.clear();
+                Toast.makeText(Breeding.this, "Pomyślnie dodano wychów do kalendarza", Toast.LENGTH_LONG).show();
 
             }
+
         }
         );
 
        //setDate Button
-        setDateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                breedingFunctions.setBreedingDay(Breeding.this, timeInMillis, dateTextView);
-                Log.i("WWDHUWHDUWDH", String.valueOf(dateTextView.getText()));
-            }
+        setDateButton.setOnClickListener(view -> {
+            breedingFunctions.setBreedingDay(Breeding.this, timeInMillis, dateTextView);
+            Log.i("WWDHUWHDUWDH", String.valueOf(dateTextView.getText()));
         });
 
         //compact calendar view Listener

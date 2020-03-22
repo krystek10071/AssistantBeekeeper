@@ -55,28 +55,19 @@ public class MainActivity extends AppCompatActivity {
         buttonTest=findViewById(R.id.buttonTest);
 
 
-        breedingButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent=new Intent(getApplicationContext(), Breeding.class);
-                startActivity(intent);
-            }
+        breedingButton.setOnClickListener(v -> {
+            Intent intent=new Intent(getApplicationContext(), Breeding.class);
+            startActivity(intent);
         });
 
-        fiveDaysForecast.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), FiveDaysForecastActivity.class);
-                startActivity(intent);
-            }
+        fiveDaysForecast.setOnClickListener(view -> {
+            Intent intent=new Intent(getApplicationContext(), FiveDaysForecastActivity.class);
+            startActivity(intent);
         });
 
-        buttonTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), WeatherRadarActivity.class);
-                startActivity(intent);
-            }
+        buttonTest.setOnClickListener(view -> {
+            Intent intent=new Intent(getApplicationContext(), WeatherRadarActivity.class);
+            startActivity(intent);
         });
 
 

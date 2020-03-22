@@ -24,7 +24,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class BreedingFunctions {
     private Calendar calendar;
-    private final ReentrantLock lock=new ReentrantLock();
 
     protected void addTimeMillisToList(ArrayList<Long> listTimeInMillis, ArrayList<String> description, long timeInMillis){
         //time1...time4 this is time for individual activities
@@ -119,20 +118,15 @@ public class BreedingFunctions {
         // final Long[] timeinmillis = new Long[1];
         //timeinmillis[0]=0L;
         //set breeding day with DatePickerDialog
-        datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
-                calendar.set(mYear, mMonth, mDay);
-                calendar.set(Calendar.MINUTE, 0);
-                calendar.set(Calendar.SECOND, 0);
-                calendar.set(Calendar.HOUR_OF_DAY, 0);
-                timeInMillis[0] = calendar.getTimeInMillis();
-                Log.i("WYBOR DATY", Long.toString(timeInMillis[0]));
-                String output=String.format("%tQ", calendar.getTimeInMillis());                     //set output string with time in millis
-                textView.setText(output);
-            }
-
+        datePickerDialog = new DatePickerDialog(context, (datePicker, mYear, mMonth, mDay) -> {
+            calendar.set(mYear, mMonth, mDay);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            calendar.set(Calendar.HOUR_OF_DAY, 0);
+            timeInMillis[0] = calendar.getTimeInMillis();
+            Log.i("WYBOR DATY", Long.toString(timeInMillis[0]));
+            String output=String.format("%tQ", calendar.getTimeInMillis());                     //set output string with time in millis
+            textView.setText(output);
         }, day, month, year);
         datePickerDialog.show();
     }
