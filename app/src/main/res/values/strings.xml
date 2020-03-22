@@ -46,4 +46,7 @@
     <string name="honey_production">Produkcja miodu</string>
     <string name="sum1">20001</string>
     <string name="see_more">zobacz więcej</string>
+    <string name="add_cost_button">Dodaj koszt</string>
+    <string name="add_profit_button">Dodaj zysk</string>
+    <string name="amount_of_production_button">Dodaj produkcje</string>
 </resources>

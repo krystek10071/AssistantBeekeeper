@@ -15,11 +15,18 @@ public class StatisticGeneralPre implements IStaticsGeneralPre {
 
     @Override
     public void createDatabase(Context context) {
-        AssistantDbAbstract database = Room.databaseBuilder(Objects.requireNonNull(context), AssistantDbAbstract.class, "mydbdatabase").
+        AssistantDbAbstract database = Room.databaseBuilder(Objects.requireNonNull(context), AssistantDbAbstract.class, "myDbDatabase.db").
                 allowMainThreadQueries().build();
 
         ApiaryEntity apiaryEntity=new ApiaryEntity();
         CostEntity costEntity=new CostEntity();
         EarningsEntity earningsEntity=new EarningsEntity();
+
+        apiaryEntity.setName("Moje pole");
+        apiaryEntity.setAmountOfHoney(200);
+        database.apiaryDAO().insertAll();
+
+
+
     }
 }

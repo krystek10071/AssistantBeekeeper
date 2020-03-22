@@ -10,11 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-
-import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
-import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.CostEntity;
-import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.EarningsEntity;
 import com.example.assistantbeekeeper.statisticsProduction.FragmentStatisticsPre.StatisticGeneralPre;
 
 import java.util.ArrayList;
@@ -24,7 +20,6 @@ import java.util.Objects;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.room.Room;
 
 import static com.example.assistantbeekeeper.R.*;
 
@@ -33,17 +28,17 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
     private ArrayList<CustomItems> customList=new ArrayList<>();
     private TextView apiaryName;
     private static final String TAG="STATISTIC_GENERAL_STATIC";
-    private StatisticGeneralPre statisticGeneralPre;
 
     List<ApiaryEntity> apiaryListItem;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        statisticGeneralPre=new StatisticGeneralPre();
+        StatisticGeneralPre statisticGeneralPre = new StatisticGeneralPre();
 
         //Create mydatabase
         statisticGeneralPre.createDatabase(getContext());
+
     }
 
     @Nullable
