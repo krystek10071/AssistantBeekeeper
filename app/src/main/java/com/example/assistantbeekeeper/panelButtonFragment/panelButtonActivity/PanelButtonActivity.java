@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.assistantbeekeeper.R;
+import com.example.assistantbeekeeper.panelButtonFragment.forms.formActivity.EntryFormActivity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
