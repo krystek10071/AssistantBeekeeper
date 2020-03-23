@@ -53,4 +53,6 @@
     <string name="ButtonAkceptForm">Dodaj Zysk</string>
     <string name="enter_text">Dodaj Zysk</string>
     <string name="enter_value_cost">Wprowadź wartość kosztu</string>
+    <string name="enter_value_profit">Wprowadź wartość zysku</string>
+    <string name="enter_name_profit">Wprowadź nazwe zysku</string>
 </resources>

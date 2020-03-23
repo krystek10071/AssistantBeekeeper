@@ -6,12 +6,15 @@ import androidx.core.content.res.ResourcesCompat;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.assistantbeekeeper.panelButtonFragment.panelButtonActivity.PanelButtonActivity;
 import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentActivity.FragmentActivity;
+import com.example.assistantbeekeeper.statisticsProduction.FragmentActivity.StatisticGeneralFragment;
 import com.example.assistantbeekeeper.weatherRadar.weatherRadarActi.WeatherRadarActivity;
 import com.example.assistantbeekeeper.weatherwitget.CurrentWeatherDataClass;
 import com.example.assistantbeekeeper.severalDaysForecast.severalDaysActivity.FiveDaysForecastActivity;
@@ -20,7 +23,7 @@ import com.example.assistantbeekeeper.weatherwitget.WeatherWidget;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements StatisticGeneralFragment.OverviewFragmentActivityListener {
 
     private static final String TAG="MainActivity";
 
@@ -126,5 +129,19 @@ public class MainActivity extends AppCompatActivity {
         return null;
     }
 
+    //method for communication between Static General Fragment and Panel button
+    @Override
+    public void sendIdApiaryToPanelButton(Long id_apiary) {
 
+        PanelButtonActivity fragmentPanelButton= (PanelButtonActivity) getSupportFragmentManager()
+                                                  .findFragmentById(R.id.panel_button_fragment);
+
+        //checking if a fragment exists in a given activity
+        if(fragmentPanelButton!=null && fragmentPanelButton.isInLayout()){
+            fragmentPanelButton.setIdApiary(id_apiary);
+        }else
+        {
+            Log.i(TAG, "fragment non exist");
+        }
+    }
 }

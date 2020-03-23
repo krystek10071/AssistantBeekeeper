@@ -1,5 +1,7 @@
 package com.example.assistantbeekeeper.statisticsProduction.FragmentActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +30,7 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
     private ArrayList<CustomItems> customList=new ArrayList<>();
     private TextView apiaryName;
     private static final String TAG="STATISTIC_GENERAL_STATIC";
+    private OverviewFragmentActivityListener listener;
 
     List<ApiaryEntity> apiaryListItem;
 
@@ -40,6 +43,15 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
         statisticGeneralPre.createDatabase(getContext());
 
     }
+
+
+    @Override
+    public void onAttach(@NonNull Activity activity) {
+        super.onAttach(activity);
+        listener=(OverviewFragmentActivityListener) activity;
+    }
+
+
 
     @Nullable
     @Override
@@ -58,7 +70,19 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
         customSpinnerStatistics.setAdapter(customAdapter);
         customAdapter.notifyDataSetChanged();
 
+        //todo
+        listener.sendIdApiaryToPanelButton(14L);
+
         return view ;
+    }
+
+
+
+    //interface for communication between fragments
+    public interface OverviewFragmentActivityListener{
+
+        //method for communication between Static General Fragment and Panel button
+        void sendIdApiaryToPanelButton(Long id_apiary);
     }
 
 
@@ -74,9 +98,12 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
 
+
     private void setApiaryName(String name){
         apiaryName.setText(name);
     }
+
+
 
     private void initComponent(View view){
         apiaryName=view.findViewById(id.apiaryName);

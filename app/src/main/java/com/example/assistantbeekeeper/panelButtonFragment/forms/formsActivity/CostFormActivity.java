@@ -1,24 +1,25 @@
-package com.example.assistantbeekeeper.panelButtonFragment.forms.formActivity;
+package com.example.assistantbeekeeper.panelButtonFragment.forms.formsActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.assistantbeekeeper.R;
-import com.example.assistantbeekeeper.panelButtonFragment.ModelData.CostOrEarnings;
 import com.example.assistantbeekeeper.panelButtonFragment.forms.formPre.EntryFormPre;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class EntryFormActivity extends AppCompatActivity {
+public class CostFormActivity extends AppCompatActivity {
+
     TextInputLayout textInputName;
     TextInputLayout textInputValue;
     TextInputLayout textInputDate;
@@ -32,21 +33,26 @@ public class EntryFormActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.form_cost_profit);
+        setContentView(R.layout.form_cost);
         init();
+
         //listeners
         floatingActionButton.setOnClickListener(view ->  setDateWithDataPicker(this));
         buttonAkcept.setOnClickListener(view -> checkTheField());
+
     }
 
 
     private void checkTheField() {
-        String inputName=textInputName.getEditText().getText().toString().trim();
-        String inputValue=textInputValue.getEditText().getText().toString().trim();
-        String inputDate=textInputDate.getEditText().getText().toString().trim();
+        String inputName= Objects.requireNonNull(textInputName.getEditText()).getText().toString().trim();
+        String inputValue= Objects.requireNonNull(textInputValue.getEditText()).getText().toString().trim();
+        String inputDate= Objects.requireNonNull(textInputDate.getEditText()).getText().toString().trim();
         String apiary_id_entity;
 
         if(inputName.isEmpty() || inputValue.isEmpty() || inputDate.isEmpty()){
+            Toast.makeText(this, "Musisz uzupełnić wszystkie pola", Toast.LENGTH_LONG).show();
+        }else
+        {
 
         }
     }
@@ -56,7 +62,7 @@ public class EntryFormActivity extends AppCompatActivity {
         textInputName=findViewById(R.id.textInput1);
         textInputValue=findViewById(R.id.textInput2);
         textInputDate=findViewById(R.id.textInput3);
-        buttonAkcept=findViewById(R.id.buttonAkcept);
+        buttonAkcept=findViewById(R.id.buttonConfirmProfit);
         floatingActionButton=findViewById(R.id.floatingActionButton1);
     }
 
@@ -77,7 +83,6 @@ public class EntryFormActivity extends AppCompatActivity {
             timeInMillis = calendar.getTimeInMillis();
             Log.i("WYBOR DATY", Long.toString(timeInMillis));
             String output=String.format("%tQ", calendar.getTimeInMillis());                     //set output string with time in millis
-            textInputDate.setText(output);
         }, day, month, year);
         datePickerDialog.show();
     }

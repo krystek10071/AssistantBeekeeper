@@ -20,12 +20,21 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".panelButtonFragment.forms.formActivity.EntryFormActivity">
+        <activity android:name=".panelButtonFragment.forms.formsActivity.ProfitFormActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".panelButtonFragment.forms.formsActivity.CostFormActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+
 
 
         <activity android:name=".MainActivity">
