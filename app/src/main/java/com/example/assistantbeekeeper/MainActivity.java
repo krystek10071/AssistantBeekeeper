@@ -1,7 +1,9 @@
 package com.example.assistantbeekeeper;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.assistantbeekeeper.panelButtonFragment.panelButtonActivity.PanelButtonActivity;
 import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentActivity.FragmentActivity;
@@ -129,19 +132,16 @@ public class MainActivity extends AppCompatActivity implements StatisticGeneralF
         return null;
     }
 
-    //method for communication between Static General Fragment and Panel button
+    @Override
+    public void onAttachFragment(@NonNull Fragment fragment) {
+        if(fragment instanceof StatisticGeneralFragment){
+            StatisticGeneralFragment statisticGeneralFragment=(StatisticGeneralFragment) fragment;
+            statisticGeneralFragment.setOverviewFragmentActivityListener(this);
+        }
+    }
+
     @Override
     public void sendIdApiaryToPanelButton(Long id_apiary) {
-
-        PanelButtonActivity fragmentPanelButton= (PanelButtonActivity) getSupportFragmentManager()
-                                                  .findFragmentById(R.id.panel_button_fragment);
-
-        //checking if a fragment exists in a given activity
-        if(fragmentPanelButton!=null && fragmentPanelButton.isInLayout()){
-            fragmentPanelButton.setIdApiary(id_apiary);
-        }else
-        {
-            Log.i(TAG, "fragment non exist");
-        }
+        Toast.makeText(this, id_apiary.toString(), Toast.LENGTH_LONG).show();
     }
 }

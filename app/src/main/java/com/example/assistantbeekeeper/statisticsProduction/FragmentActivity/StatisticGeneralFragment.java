@@ -1,8 +1,5 @@
 package com.example.assistantbeekeeper.statisticsProduction.FragmentActivity;
 
-import android.app.Activity;
-import android.content.Context;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -41,15 +38,10 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
 
         //Create mydatabase
         statisticGeneralPre.createDatabase(getContext());
-
+        statisticGeneralPre.loadTableApiaryEntity();
     }
 
 
-    @Override
-    public void onAttach(@NonNull Activity activity) {
-        super.onAttach(activity);
-        listener=(OverviewFragmentActivityListener) activity;
-    }
 
 
 
@@ -70,6 +62,8 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
         customSpinnerStatistics.setAdapter(customAdapter);
         customAdapter.notifyDataSetChanged();
 
+
+
         //todo
         listener.sendIdApiaryToPanelButton(14L);
 
@@ -79,11 +73,19 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
 
 
     //interface for communication between fragments
+
     public interface OverviewFragmentActivityListener{
 
         //method for communication between Static General Fragment and Panel button
         void sendIdApiaryToPanelButton(Long id_apiary);
     }
+
+
+    public void setOverviewFragmentActivityListener(OverviewFragmentActivityListener callBack){
+        listener=callBack;
+    }
+
+
 
 
     @Override

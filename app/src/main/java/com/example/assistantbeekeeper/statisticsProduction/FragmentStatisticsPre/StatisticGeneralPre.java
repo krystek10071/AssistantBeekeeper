@@ -21,12 +21,11 @@ public class StatisticGeneralPre implements IStaticsGeneralPre {
         ApiaryEntity apiaryEntity=new ApiaryEntity();
         CostEntity costEntity=new CostEntity();
         EarningsEntity earningsEntity=new EarningsEntity();
-
-        apiaryEntity.setName("Moje pole");
-        apiaryEntity.setAmountOfHoney(200);
-        database.apiaryDAO().insertAll();
+    }
 
 
+
+    public void loadTableApiaryEntity() {
 
     }
 }
