@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.assistantbeekeeper.R;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
+import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.EarningsEntity;
 import com.example.assistantbeekeeper.panelButtonFragment.forms.formPre.FormPre;
 import com.example.assistantbeekeeper.statisticsProduction.FragmentStatisticsPre.StatisticGeneralPre;
@@ -17,6 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 import androidx.annotation.Nullable;
@@ -34,17 +36,18 @@ public class ProfitFormActivity extends AppCompatActivity {
     FormPre formPresenter=new FormPre();
     private AssistantDbAbstract databaseHandle;
     StatisticGeneralPre statisticGeneralPre;
-
+    String namePlace;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.form_profit);
-        String namePlace;
+        init();
 
         namePlace= Objects.requireNonNull(getIntent().getExtras()).getString("placeName");
-        init();
         placeName.setText(namePlace);
+        databaseHandle=formPresenter.accessDatabase(getBaseContext());
+
 
         //listeners
         floatingActionButton.setOnClickListener(view ->  setDateWithDataPicker(this));
@@ -52,11 +55,18 @@ public class ProfitFormActivity extends AppCompatActivity {
     }
 
 
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+    }
+
     private void checkTheField() {
         String inputName= Objects.requireNonNull(textInputName.getEditText()).getText().toString().trim();
         String inputValue= Objects.requireNonNull(textInputValue.getEditText()).getText().toString().trim();
         String inputDate= Objects.requireNonNull(textInputDate.getEditText()).getText().toString().trim();
         String nameApiary= Objects.requireNonNull(getIntent().getExtras()).getString("placeName");
+        List<ApiaryEntity> list=databaseHandle.apiaryDAO().getIdApiaryByName(nameApiary);
 
         if(inputName.isEmpty() || inputValue.isEmpty() || inputDate.isEmpty()) {
             Toast.makeText(this, "Musisz uzupełnić wszystkie pola", Toast.LENGTH_LONG).show();
@@ -65,16 +75,12 @@ public class ProfitFormActivity extends AppCompatActivity {
             EarningsEntity objProfit=new EarningsEntity();
             objProfit.setName(inputName);
             objProfit.setValue(Double.valueOf(inputValue));
-            databaseHandle.apiaryDAO().getIdApiaryByName(nameApiary);
 
-
-            formPresenter.writeProfitToDatabase();
+           formPresenter.writeProfitToDatabase();
         }
 
 
     }
-
-
 
     public void init(){
         textInputName=findViewById(R.id.name_profit);

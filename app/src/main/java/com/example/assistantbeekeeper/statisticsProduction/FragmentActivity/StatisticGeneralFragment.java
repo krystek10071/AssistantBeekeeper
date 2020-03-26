@@ -28,7 +28,6 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
     private TextView apiaryName;
     private static final String TAG="STATISTIC_GENERAL_STATIC";
     private OverviewFragmentActivityListener listener;
-    private AssistantDbAbstract databaseStatistic;
     private List<ApiaryEntity> apiaryListItem;
     private StatisticGeneralPre statisticGeneralPre;
 
@@ -39,7 +38,7 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
         ApiaryEntity apiaryEntity=new ApiaryEntity();
 
         //Create mydatabase
-        databaseStatistic=statisticGeneralPre.createDatabase(getContext());
+        AssistantDbAbstract databaseStatistic = statisticGeneralPre.createDatabase(getContext());
         apiaryListItem=statisticGeneralPre.loadTableApiaryEntity(apiaryListItem, databaseStatistic);
 
     }
