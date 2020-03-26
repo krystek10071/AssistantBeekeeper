@@ -1,8 +1,8 @@
 package com.example.assistantbeekeeper.panelButtonFragment.forms.formPre;
 
-public class EntryFormPre {
+public class FormPre {
 
-    public void writeToDataBase() {
 
+    public void writeProfitToDatabase() {
     }
 }

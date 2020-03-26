@@ -21,4 +21,6 @@ public interface ApiaryDAO {
     @Delete
     void delete(ApiaryEntity apiaryEntity);
 
+    @Query("SELECT * FROM Aparies WHERE name = (:placeName)")
+    List<ApiaryEntity> getIdApiaryByName(String placeName);
 }

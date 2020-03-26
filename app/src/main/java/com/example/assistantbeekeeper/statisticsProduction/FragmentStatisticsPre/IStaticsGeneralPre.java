@@ -2,6 +2,8 @@ package com.example.assistantbeekeeper.statisticsProduction.FragmentStatisticsPr
 
 import android.content.Context;
 
+import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
+
 public interface IStaticsGeneralPre {
-     void createDatabase(Context context);
+     AssistantDbAbstract createDatabase(Context context);
 }

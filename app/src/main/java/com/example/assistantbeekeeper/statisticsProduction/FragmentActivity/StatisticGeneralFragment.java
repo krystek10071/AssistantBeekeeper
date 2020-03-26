@@ -9,12 +9,12 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
 import com.example.assistantbeekeeper.statisticsProduction.FragmentStatisticsPre.StatisticGeneralPre;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,44 +28,40 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
     private TextView apiaryName;
     private static final String TAG="STATISTIC_GENERAL_STATIC";
     private OverviewFragmentActivityListener listener;
-
-    List<ApiaryEntity> apiaryListItem;
+    private AssistantDbAbstract databaseStatistic;
+    private List<ApiaryEntity> apiaryListItem;
+    private StatisticGeneralPre statisticGeneralPre;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatisticGeneralPre statisticGeneralPre = new StatisticGeneralPre();
+         statisticGeneralPre = new StatisticGeneralPre();
+        ApiaryEntity apiaryEntity=new ApiaryEntity();
 
         //Create mydatabase
-        statisticGeneralPre.createDatabase(getContext());
-        statisticGeneralPre.loadTableApiaryEntity();
+        databaseStatistic=statisticGeneralPre.createDatabase(getContext());
+        apiaryListItem=statisticGeneralPre.loadTableApiaryEntity(apiaryListItem, databaseStatistic);
+
     }
-
-
-
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        customList.add(new CustomItems("Bytom"));
-        customList.add(new CustomItems("Miejscowosc2"));
-        customList.add(new CustomItems("Wrotkowo"));
-        customList.add(new CustomItems("Ksiezypole"));
 
         View view=inflater.inflate(layout.general_statistics_fragment, container, false);
         initComponent(view);
 
-         Spinner customSpinnerStatistics = view.findViewById(id.spinner_statistic);
-         customSpinnerStatistics.setOnItemSelectedListener(this);
+        Spinner customSpinnerStatistics = view.findViewById(id.spinner_statistic);
+        customSpinnerStatistics.setOnItemSelectedListener(this);
+
+        customList=statisticGeneralPre.loadDataToCustomList(apiaryListItem);
+        Log.i(TAG, String.valueOf(customList.size()));
+
         CustomAdapterSpinner customAdapter=new CustomAdapterSpinner(getContext(), customList);
         customSpinnerStatistics.setAdapter(customAdapter);
         customAdapter.notifyDataSetChanged();
 
-
-
-        //todo
-        listener.sendIdApiaryToPanelButton(14L);
 
         return view ;
     }
@@ -77,7 +73,7 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
     public interface OverviewFragmentActivityListener{
 
         //method for communication between Static General Fragment and Panel button
-        void sendIdApiaryToPanelButton(Long id_apiary);
+        void sendIdApiaryToPanelButton(String name_apiary);
     }
 
 
@@ -94,6 +90,7 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
 
         String placeName=customList.get(i).getSpinnerText();
         setApiaryName(placeName);
+        listener.sendIdApiaryToPanelButton(placeName);
     }
 
     @Override

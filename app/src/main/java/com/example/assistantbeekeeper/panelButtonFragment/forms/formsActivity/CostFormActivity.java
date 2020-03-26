@@ -5,10 +5,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.assistantbeekeeper.R;
-import com.example.assistantbeekeeper.panelButtonFragment.forms.formPre.EntryFormPre;
+import com.example.assistantbeekeeper.panelButtonFragment.forms.formPre.FormPre;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -27,7 +28,8 @@ public class CostFormActivity extends AppCompatActivity {
     FloatingActionButton floatingActionButton;
     private Calendar calendar;
     Long timeInMillis;
-    EntryFormPre entryFormPre;
+    FormPre formPre;
+    TextView placeName;
 
 
     @Override
@@ -35,6 +37,10 @@ public class CostFormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.form_cost);
         init();
+
+        String namePlace= Objects.requireNonNull(getIntent().getExtras()).getString("placeName");
+        init();
+        placeName.setText(namePlace);
 
         //listeners
         floatingActionButton.setOnClickListener(view ->  setDateWithDataPicker(this));
@@ -64,6 +70,7 @@ public class CostFormActivity extends AppCompatActivity {
         textInputDate=findViewById(R.id.textInput3);
         buttonAkcept=findViewById(R.id.buttonConfirmProfit);
         floatingActionButton=findViewById(R.id.floatingActionButton1);
+        placeName=findViewById(R.id.placeName);
     }
 
     private void setDateWithDataPicker(Context context){

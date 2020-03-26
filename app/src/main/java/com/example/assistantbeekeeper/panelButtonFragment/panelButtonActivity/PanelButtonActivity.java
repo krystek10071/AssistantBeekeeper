@@ -24,7 +24,7 @@ public class PanelButtonActivity extends Fragment {
     private Button addCost;
     private Button addProfit;
     private Button addAmountOfProduction;
-    private Long idApiary;
+    private String nameApiary;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,11 +41,13 @@ public class PanelButtonActivity extends Fragment {
 
         addProfit.setOnClickListener(view1 -> {
           Intent intent=new Intent(getActivity(), ProfitFormActivity.class);
+          intent.putExtra("placeName", nameApiary);
           startActivity(intent);
         });
 
         addCost.setOnClickListener(view1 -> {
             Intent intent=new Intent(getActivity(), CostFormActivity.class);
+            intent.putExtra("placeName", nameApiary);
             startActivity(intent);
         });
 
@@ -64,9 +66,9 @@ public class PanelButtonActivity extends Fragment {
 
     }
 
-    public void setIdApiary(Long idApiary) {
-        this.idApiary=idApiary;
-        Log.i(TAG, idApiary.toString());
-        Toast.makeText(getContext(), "przekazano parametr", Toast.LENGTH_LONG).show();
+    public void setNameApiary(String name_Apiary) {
+        nameApiary=name_Apiary;
+        Log.i(TAG, nameApiary);
+        Toast.makeText(getContext(), name_Apiary, Toast.LENGTH_LONG).show();
     }
 }

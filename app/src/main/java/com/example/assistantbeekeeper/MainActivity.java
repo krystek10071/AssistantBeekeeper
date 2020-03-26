@@ -8,8 +8,6 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements StatisticGeneralF
      TextView pop;
      TextView sensibleTemperature;
      ImageView weatherIcon;
+     PanelButtonActivity fragmentPanelButtons;
 
 
     @Override
@@ -49,17 +48,8 @@ public class MainActivity extends AppCompatActivity implements StatisticGeneralF
         setContentView(R.layout.activity_main);
         URL weatherOneDayData;
         ArrayList<CurrentWeatherDataClass>  listWeatherOneDay;
-        currentLocation=findViewById(R.id.current_location);
-        currentTemperature=findViewById(R.id.current_temperature);
-        describeWeatherIcon=findViewById(R.id.describe_weather_Icon);
-        windSpeed=findViewById(R.id.wind_speed);
-        pop=findViewById(R.id.POP);
-        sensibleTemperature=findViewById(R.id.sensible_temperature);
-        fiveDaysForecast=findViewById(R.id.five_days_forecast_button);
-        breedingButton= findViewById(R.id.breedingButton);
-        weatherIcon=findViewById(R.id.icon_weather);
-        buttonTest=findViewById(R.id.buttonTest);
 
+        init();
 
         breedingButton.setOnClickListener(v -> {
             Intent intent=new Intent(getApplicationContext(), Breeding.class);
@@ -88,6 +78,20 @@ public class MainActivity extends AppCompatActivity implements StatisticGeneralF
     }
 
 
+
+    private void init(){
+        currentLocation=findViewById(R.id.current_location);
+        currentTemperature=findViewById(R.id.current_temperature);
+        describeWeatherIcon=findViewById(R.id.describe_weather_Icon);
+        windSpeed=findViewById(R.id.wind_speed);
+        pop=findViewById(R.id.POP);
+        sensibleTemperature=findViewById(R.id.sensible_temperature);
+        fiveDaysForecast=findViewById(R.id.five_days_forecast_button);
+        breedingButton= findViewById(R.id.breedingButton);
+        weatherIcon=findViewById(R.id.icon_weather);
+        buttonTest=findViewById(R.id.buttonTest);
+        fragmentPanelButtons=(PanelButtonActivity) getSupportFragmentManager().findFragmentById(R.id.panel_button_fragment);
+    }
 
     public void setWeatherIcon(ArrayList<CurrentWeatherDataClass> data, int index){
         weatherIcon.setImageDrawable(getResForWeatherIcon(data, index));
@@ -141,7 +145,8 @@ public class MainActivity extends AppCompatActivity implements StatisticGeneralF
     }
 
     @Override
-    public void sendIdApiaryToPanelButton(Long id_apiary) {
-        Toast.makeText(this, id_apiary.toString(), Toast.LENGTH_LONG).show();
+    public void sendIdApiaryToPanelButton(String name_apiary) {
+       // Toast.makeText(this, name_apiary, Toast.LENGTH_LONG).show();
+        fragmentPanelButtons.setNameApiary(name_apiary);
     }
 }
