@@ -73,13 +73,40 @@ public class ProfitFormActivity extends AppCompatActivity {
         }
         else{
             EarningsEntity objProfit=new EarningsEntity();
-            objProfit.setName(inputName);
-            objProfit.setValue(Double.valueOf(inputValue));
+           // objProfit.setName(inputName);
+           // objProfit.setValue(Double.valueOf(inputValue));
 
-           formPresenter.writeProfitToDatabase();
+            formPresenter.validateFields(this, inputName, inputValue);
+
+            if(textInputName.getError()==null && textInputValue.getError()==null){
+                Toast.makeText(this, "Brak bledow", Toast.LENGTH_LONG).show();
+
+              //  formPresenter.createObjectEntity(this);
+            }
+
+
+            //todo
+           // formPresenter.createObjectEntity(this);
+           // formPresenter.writeToDatabse();
         }
 
 
+    }
+
+    public void disableErrorTextInputName(String string){
+        textInputName.setError(null);
+    }
+
+    public void disableErrorTextInputValue(String string){
+        textInputValue.setError(null);
+    }
+
+    public void setErrorTextInputName(String message){
+        textInputName.setError(message);
+    }
+
+    public void setErrorTextInputValue(String message){
+        textInputValue.setError(message);
     }
 
     public void init(){
