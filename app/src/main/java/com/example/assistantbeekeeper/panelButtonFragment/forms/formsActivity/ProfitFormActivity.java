@@ -92,6 +92,7 @@ public class ProfitFormActivity extends AppCompatActivity {
         textInputName.setError(null);
     }
 
+
     public void disableErrorTextInputValue(){
         textInputValue.setError(null);
     }
