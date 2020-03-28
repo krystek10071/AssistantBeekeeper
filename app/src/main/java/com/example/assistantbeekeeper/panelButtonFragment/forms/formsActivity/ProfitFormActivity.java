@@ -12,8 +12,7 @@ import com.example.assistantbeekeeper.R;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.EarningsEntity;
-import com.example.assistantbeekeeper.panelButtonFragment.forms.formPre.FormPre;
-import com.example.assistantbeekeeper.statisticsProduction.FragmentStatisticsPre.StatisticGeneralPre;
+import com.example.assistantbeekeeper.panelButtonFragment.forms.formPre.FormProfitPre;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -33,7 +32,7 @@ public class ProfitFormActivity extends AppCompatActivity {
     FloatingActionButton floatingActionButton;
     private Calendar calendar;
     Long timeInMillis;
-    FormPre formPresenter=new FormPre();
+    FormProfitPre formPresenter=new FormProfitPre();
     private AssistantDbAbstract databaseHandle;
     String namePlace;
 

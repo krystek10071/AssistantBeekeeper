@@ -1,6 +1,7 @@
 package com.example.assistantbeekeeper.panelButtonFragment.forms.formPre;
 
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
+import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.CostEntity;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.EarningsEntity;
 import com.example.assistantbeekeeper.panelButtonFragment.forms.formsActivity.ProfitFormActivity;
 

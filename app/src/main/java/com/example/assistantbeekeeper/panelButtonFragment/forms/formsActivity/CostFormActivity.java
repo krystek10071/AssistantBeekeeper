@@ -9,11 +9,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.assistantbeekeeper.R;
-import com.example.assistantbeekeeper.panelButtonFragment.forms.formPre.FormPre;
+import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
+import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
+import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.CostEntity;
+import com.example.assistantbeekeeper.panelButtonFragment.forms.formPre.FormCostPre;
+import com.example.assistantbeekeeper.panelButtonFragment.forms.formPre.FormProfitPre;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 import androidx.annotation.Nullable;
@@ -28,8 +33,10 @@ public class CostFormActivity extends AppCompatActivity {
     FloatingActionButton floatingActionButton;
     private Calendar calendar;
     Long timeInMillis;
-    FormPre formPre;
+    FormProfitPre formPre;
     TextView placeName;
+    private AssistantDbAbstract databaseHandle;
+    FormCostPre formPresenter=new FormCostPre();
 
 
     @Override
@@ -41,6 +48,7 @@ public class CostFormActivity extends AppCompatActivity {
         String namePlace= Objects.requireNonNull(getIntent().getExtras()).getString("placeName");
         init();
         placeName.setText(namePlace);
+        databaseHandle=formPresenter.accessDatabase(getBaseContext());
 
         //listeners
         floatingActionButton.setOnClickListener(view ->  setDateWithDataPicker(this));
@@ -50,15 +58,27 @@ public class CostFormActivity extends AppCompatActivity {
 
 
     private void checkTheField() {
+        CostEntity costEntity;
         String inputName= Objects.requireNonNull(textInputName.getEditText()).getText().toString().trim();
         String inputValue= Objects.requireNonNull(textInputValue.getEditText()).getText().toString().trim();
         String inputDate= Objects.requireNonNull(textInputDate.getEditText()).getText().toString().trim();
-        String apiary_id_entity;
+        String nameApiary= Objects.requireNonNull(getIntent().getExtras()).getString("placeName");
+        List<ApiaryEntity> list=databaseHandle.apiaryDAO().getIdApiaryByName(nameApiary);
 
         if(inputName.isEmpty() || inputValue.isEmpty() || inputDate.isEmpty()){
             Toast.makeText(this, "Musisz uzupełnić wszystkie pola", Toast.LENGTH_LONG).show();
         }else
         {
+
+            formPresenter.validateFields(this, inputName, inputValue);
+
+            if(textInputName.getError()==null && textInputValue.getError()==null){
+                Toast.makeText(this, "Brak bledow", Toast.LENGTH_LONG).show();
+
+                costEntity=formPresenter.createObjectEntity(inputName, inputValue, inputDate, list);
+                formPresenter.writeToDatabse(costEntity);
+                Toast.makeText(this, "Zapisano do bazy", Toast.LENGTH_LONG).show();
+            }
 
         }
     }
@@ -92,5 +112,21 @@ public class CostFormActivity extends AppCompatActivity {
             String output=String.format("%tQ", calendar.getTimeInMillis());                     //set output string with time in millis
         }, day, month, year);
         datePickerDialog.show();
+    }
+
+    public void setErrorTextInputName(String error1) {
+        textInputName.setError(error1);
+    }
+
+    public void disableErrorTextInputName() {
+        textInputName.setError(null);
+    }
+
+    public void setErrorTextInputValue(String error2) {
+        textInputValue.setError(error2);
+    }
+
+    public void disableErrorTextInputValue() {
+        textInputValue.setError(null);
     }
 }

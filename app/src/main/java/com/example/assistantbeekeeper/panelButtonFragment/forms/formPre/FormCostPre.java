@@ -4,13 +4,15 @@ import android.content.Context;
 
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
+import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.CostEntity;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.EarningsEntity;
-import com.example.assistantbeekeeper.panelButtonFragment.forms.formsActivity.ProfitFormActivity;
+import com.example.assistantbeekeeper.panelButtonFragment.forms.formsActivity.CostFormActivity;
 import com.example.assistantbeekeeper.statisticsProduction.FragmentStatisticsPre.StatisticGeneralPre;
 
 import java.util.List;
 
-public class FormPre implements IFormPre {
+public class FormCostPre implements IFormCost {
+
     private AssistantDbAbstract databaseHandle;
     private StatisticGeneralPre statisticGeneralPre=new StatisticGeneralPre();
 
@@ -19,25 +21,25 @@ public class FormPre implements IFormPre {
         return databaseHandle;
     }
 
+
     @Override
-    public void writeToDatabse(EarningsEntity earningsEntity) {
-        databaseHandle.earningsDAO().insertAll(earningsEntity);
+    public void writeToDatabse(CostEntity costEntity) {
+        databaseHandle.costDao().insertAll(costEntity);
     }
 
     @Override
-    public EarningsEntity createObjectEntity(String name, String value, String date, List<ApiaryEntity> list) {
-        EarningsEntity objProfit=new EarningsEntity();
-        objProfit.setName(name);
-        objProfit.setValue(Double.valueOf(value));
-        objProfit.setData(date);
-        objProfit.setIdApiary(list.get(0).getId());
+    public CostEntity createObjectEntity(String name, String value, String date, List<ApiaryEntity> list) {
+        CostEntity objCost=new CostEntity();
+        objCost.setName(name);
+        objCost.setValue(Double.valueOf(value));
+        objCost.setData(date);
+        objCost.setIdApiaryEntity(list.get(0).getId());
 
-        return objProfit;
+        return  objCost;
     }
 
-
     @Override
-    public void validateFields(ProfitFormActivity activity, String inputName, String inputValue) {
+    public void validateFields(CostFormActivity activity, String inputName, String inputValue) {
         ValidatorForms validator=new ValidatorForms();
         String error1, error2;
 
@@ -48,7 +50,7 @@ public class FormPre implements IFormPre {
             activity.setErrorTextInputName(error1);
         }
         else {
-           activity.disableErrorTextInputName();
+            activity.disableErrorTextInputName();
         }
 
         if(!error2.equals(inputValue)){
@@ -57,7 +59,5 @@ public class FormPre implements IFormPre {
         {
             activity.disableErrorTextInputValue();
         }
-
-
     }
 }
