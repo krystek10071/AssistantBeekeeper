@@ -35,7 +35,6 @@ public class ProfitFormActivity extends AppCompatActivity {
     Long timeInMillis;
     FormPre formPresenter=new FormPre();
     private AssistantDbAbstract databaseHandle;
-    StatisticGeneralPre statisticGeneralPre;
     String namePlace;
 
     @Override
@@ -62,6 +61,7 @@ public class ProfitFormActivity extends AppCompatActivity {
     }
 
     private void checkTheField() {
+        EarningsEntity earningsEntity;
         String inputName= Objects.requireNonNull(textInputName.getEditText()).getText().toString().trim();
         String inputValue= Objects.requireNonNull(textInputValue.getEditText()).getText().toString().trim();
         String inputDate= Objects.requireNonNull(textInputDate.getEditText()).getText().toString().trim();
@@ -72,32 +72,27 @@ public class ProfitFormActivity extends AppCompatActivity {
             Toast.makeText(this, "Musisz uzupełnić wszystkie pola", Toast.LENGTH_LONG).show();
         }
         else{
-            EarningsEntity objProfit=new EarningsEntity();
-           // objProfit.setName(inputName);
-           // objProfit.setValue(Double.valueOf(inputValue));
 
             formPresenter.validateFields(this, inputName, inputValue);
 
             if(textInputName.getError()==null && textInputValue.getError()==null){
                 Toast.makeText(this, "Brak bledow", Toast.LENGTH_LONG).show();
 
-              //  formPresenter.createObjectEntity(this);
+               earningsEntity=formPresenter.createObjectEntity(inputName, inputValue, inputDate, list);
+               formPresenter.writeToDatabse(earningsEntity);
+               Toast.makeText(this, "Zapisano do bazy", Toast.LENGTH_LONG).show();
             }
 
-
-            //todo
-           // formPresenter.createObjectEntity(this);
-           // formPresenter.writeToDatabse();
         }
 
 
     }
 
-    public void disableErrorTextInputName(String string){
+    public void disableErrorTextInputName(){
         textInputName.setError(null);
     }
 
-    public void disableErrorTextInputValue(String string){
+    public void disableErrorTextInputValue(){
         textInputValue.setError(null);
     }
 

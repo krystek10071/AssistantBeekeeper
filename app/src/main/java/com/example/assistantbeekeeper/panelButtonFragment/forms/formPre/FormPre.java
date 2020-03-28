@@ -3,8 +3,12 @@ package com.example.assistantbeekeeper.panelButtonFragment.forms.formPre;
 import android.content.Context;
 
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
+import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
+import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.EarningsEntity;
 import com.example.assistantbeekeeper.panelButtonFragment.forms.formsActivity.ProfitFormActivity;
 import com.example.assistantbeekeeper.statisticsProduction.FragmentStatisticsPre.StatisticGeneralPre;
+
+import java.util.List;
 
 public class FormPre implements IFormPre {
     private AssistantDbAbstract databaseHandle;
@@ -16,13 +20,19 @@ public class FormPre implements IFormPre {
     }
 
     @Override
-    public void writeToDatabse() {
-
+    public void writeToDatabse(EarningsEntity earningsEntity) {
+        databaseHandle.earningsDAO().insertAll(earningsEntity);
     }
 
     @Override
-    public void createObjectEntity(Context context) {
+    public EarningsEntity createObjectEntity(String name, String value, String date, List<ApiaryEntity> list) {
+        EarningsEntity objProfit=new EarningsEntity();
+        objProfit.setName(name);
+        objProfit.setValue(Double.valueOf(value));
+        objProfit.setData(date);
+        objProfit.setIdApiary(list.get(0).getId());
 
+        return objProfit;
     }
 
 
@@ -38,14 +48,14 @@ public class FormPre implements IFormPre {
             activity.setErrorTextInputName(error1);
         }
         else {
-           activity.disableErrorTextInputName(null);
+           activity.disableErrorTextInputName();
         }
 
         if(!error2.equals(inputValue)){
             activity.setErrorTextInputValue(error2);
         }else
         {
-            activity.disableErrorTextInputValue(null);
+            activity.disableErrorTextInputValue();
         }
 
 
