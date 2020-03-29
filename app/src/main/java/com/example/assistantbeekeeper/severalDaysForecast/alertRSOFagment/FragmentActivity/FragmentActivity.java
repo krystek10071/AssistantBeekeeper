@@ -1,24 +1,24 @@
 package com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentActivity;
 
-        import android.content.ClipData;
-        import android.os.Bundle;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.Toast;
+import android.content.ClipData;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
-        import com.example.assistantbeekeeper.R;
-        import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.DataModel.AlertsWeatherData;
-        import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentAlertsPre.AlertsPre;
-        import com.example.assistantbeekeeper.severalDaysForecast.severalDaysActivity.FiveDaysForecastActivity;
+import com.example.assistantbeekeeper.R;
+import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.DataModel.AlertsWeatherData;
+import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentAlertsPre.AlertsPre;
+import com.example.assistantbeekeeper.severalDaysForecast.severalDaysActivity.FiveDaysForecastActivity;
 
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
-        import androidx.annotation.Nullable;
-        import androidx.fragment.app.Fragment;
-        import androidx.recyclerview.widget.LinearLayoutManager;
-        import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class FragmentActivity extends Fragment {
 

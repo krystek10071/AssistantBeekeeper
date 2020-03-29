@@ -76,7 +76,7 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
                 rsoParameters.clear();
 
                 if(fragmentRSOActivity!=null && fragmentRSOActivity.isInLayout()){
-                   // fragmentRSOActivity.refreshRSOData(this, general, meteorological, hydrological, trafficInformation);
+                    // fragmentRSOActivity.refreshRSOData(this, general, meteorological, hydrological, trafficInformation);
                     if(general){
                         rsoParameters.add("ogolne");
                     }
@@ -93,7 +93,7 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
                         rsoParameters.add("informacje-drogowe");
                     }
 
-                     fragmentRSOActivity.refreshRSOData(this, rsoParameters);
+                    fragmentRSOActivity.refreshRSOData(this, rsoParameters);
                 }
                 return true;
 
@@ -293,7 +293,7 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
         }
 
         else if(data.get(index).getWheatherIcon()==12 || data.get(index).getWheatherIcon()==13 || data.get(index).getWheatherIcon()==14)
-               {
+        {
             //showers
             return ResourcesCompat.getDrawable(getResources(),R.drawable.iconfinder_showers, null);
 

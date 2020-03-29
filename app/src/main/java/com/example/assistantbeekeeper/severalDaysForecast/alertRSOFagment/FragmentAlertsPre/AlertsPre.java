@@ -15,7 +15,7 @@ public class AlertsPre implements IAlertsPre {
     public void FethRSOData(FragmentActivity fragmentRsoActivity, ArrayList<String> listRsoParameter) {
 
         //todo
-       ArrayList<URL> listUrl=new ArrayList<>();
+        ArrayList<URL> listUrl=new ArrayList<>();
 
         int lenghtListParameter=listRsoParameter.size();
 
