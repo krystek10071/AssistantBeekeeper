@@ -31,6 +31,11 @@ public class StatisticGeneralPre implements IStaticsGeneralPre {
         return database;
     }
 
+    @Override
+    public void loadDataForPlaceName(Context context) {
+        AssistantDbAbstract databaseHandle;
+        databaseHandle=createDatabase(context);
+    }
 
 
     public List<ApiaryEntity> loadTableApiaryEntity(List<ApiaryEntity> apiaryListItem, AssistantDbAbstract database) {

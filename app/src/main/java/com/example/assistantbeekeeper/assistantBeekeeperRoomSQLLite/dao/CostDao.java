@@ -21,4 +21,5 @@ public interface CostDao {
 
     @Delete
     void delete(CostEntity costEntity);
+
 }

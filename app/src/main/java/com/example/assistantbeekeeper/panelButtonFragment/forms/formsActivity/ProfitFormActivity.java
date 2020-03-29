@@ -83,10 +83,7 @@ public class ProfitFormActivity extends AppCompatActivity {
                formPresenter.writeToDatabse(earningsEntity);
                Toast.makeText(this, "Zapisano do bazy", Toast.LENGTH_LONG).show();
             }
-
         }
-
-
     }
 
     public void disableErrorTextInputName(){

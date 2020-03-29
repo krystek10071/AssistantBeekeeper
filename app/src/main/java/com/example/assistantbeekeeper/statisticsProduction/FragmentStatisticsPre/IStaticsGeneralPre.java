@@ -6,4 +6,6 @@ import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.As
 
 public interface IStaticsGeneralPre {
      AssistantDbAbstract createDatabase(Context context);
+
+     void loadDataForPlaceName(Context context);
 }

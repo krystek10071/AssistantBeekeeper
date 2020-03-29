@@ -40,6 +40,7 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
         //Create mydatabase
         AssistantDbAbstract databaseStatistic = statisticGeneralPre.createDatabase(getContext());
         apiaryListItem=statisticGeneralPre.loadTableApiaryEntity(apiaryListItem, databaseStatistic);
+        databaseStatistic.close();
 
     }
 
@@ -60,7 +61,6 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
         CustomAdapterSpinner customAdapter=new CustomAdapterSpinner(getContext(), customList);
         customSpinnerStatistics.setAdapter(customAdapter);
         customAdapter.notifyDataSetChanged();
-
 
         return view ;
     }
@@ -90,6 +90,7 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
         String placeName=customList.get(i).getSpinnerText();
         setApiaryName(placeName);
         listener.sendIdApiaryToPanelButton(placeName);
+        statisticGeneralPre.loadDataForPlaceName(getContext());
     }
 
     @Override
