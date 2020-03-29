@@ -11,8 +11,6 @@ public class DateParser {
     private static final String TAG="DateParser";
 
 
-
-
     public String parseData(String patternBeforeConversion ,String patternAfterConversion, String dateInString){
 
         String resultStringData=null;

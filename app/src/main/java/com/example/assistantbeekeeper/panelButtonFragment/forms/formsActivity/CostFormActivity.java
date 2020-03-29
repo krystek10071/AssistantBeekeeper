@@ -126,7 +126,6 @@ public class CostFormActivity extends AppCompatActivity {
             Log.i("WYBOR DATY", result);
 
 
-
         }, day, month, year);
         datePickerDialog.show();
     }
