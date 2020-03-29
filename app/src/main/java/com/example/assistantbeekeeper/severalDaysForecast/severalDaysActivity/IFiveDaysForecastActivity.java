@@ -10,5 +10,6 @@ import java.util.ArrayList;
 public interface IFiveDaysForecastActivity {
 
     void initComponentView();
+
     void setData(ArrayList<FiveDayWeatherDataClass> data);
 }
