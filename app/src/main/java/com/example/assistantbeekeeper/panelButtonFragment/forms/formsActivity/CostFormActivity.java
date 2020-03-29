@@ -12,8 +12,10 @@ import com.example.assistantbeekeeper.R;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.CostEntity;
+import com.example.assistantbeekeeper.panelButtonFragment.forms.formPre.DateFormater;
 import com.example.assistantbeekeeper.panelButtonFragment.forms.formPre.FormCostPre;
 import com.example.assistantbeekeeper.panelButtonFragment.forms.formPre.FormProfitPre;
+import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentAlertsPre.DateParser;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -94,6 +96,8 @@ public class CostFormActivity extends AppCompatActivity {
     }
 
     private void setDateWithDataPicker(Context context){
+        DateParser dateParser = new DateParser();
+
         DatePickerDialog datePickerDialog;
         calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -109,7 +113,7 @@ public class CostFormActivity extends AppCompatActivity {
             calendar.set(Calendar.HOUR_OF_DAY, 0);
             timeInMillis = calendar.getTimeInMillis();
             Log.i("WYBOR DATY", Long.toString(timeInMillis));
-            String output=String.format("%tQ", calendar.getTimeInMillis());                     //set output string with time in millis
+            String output = String.format("%tQ", calendar.getTimeInMillis());                     // set output string with time in millis
         }, day, month, year);
         datePickerDialog.show();
     }
