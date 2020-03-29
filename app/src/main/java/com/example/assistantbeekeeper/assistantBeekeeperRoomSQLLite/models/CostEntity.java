@@ -1,6 +1,5 @@
 package com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models;
 
-import android.provider.ContactsContract;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
