@@ -17,9 +17,10 @@ public class DateParser {
 
         String resultStringData=null;
 
+        //todo
         Date date;
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat(patternBeforeConversion, Locale.getDefault());
-        SimpleDateFormat formatForConvertion=new SimpleDateFormat(patternAfterConversion, Locale.getDefault());
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat(patternBeforeConversion, Locale.ENGLISH);
+        SimpleDateFormat formatForConvertion=new SimpleDateFormat(patternAfterConversion, Locale.ENGLISH);
 
         try {
             date=simpleDateFormat.parse(dateInString);

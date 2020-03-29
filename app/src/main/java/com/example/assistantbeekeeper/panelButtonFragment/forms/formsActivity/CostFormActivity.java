@@ -20,6 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -96,7 +97,7 @@ public class CostFormActivity extends AppCompatActivity {
     }
 
     private void setDateWithDataPicker(Context context){
-        DateParser dateParser = new DateParser();
+
 
         DatePickerDialog datePickerDialog;
         calendar = Calendar.getInstance();
@@ -107,6 +108,11 @@ public class CostFormActivity extends AppCompatActivity {
 
         //set breeding day with DatePickerDialog
         datePickerDialog = new DatePickerDialog(context, (datePicker, mYear, mMonth, mDay) -> {
+            DateParser dateParser=new DateParser();
+            String dateBeforeConvertionFormat="EEE MMM DD HH:mm:ss zzz yyyy";
+            String dateAfterConvertion="dd-MM-yyyy";
+            String result;
+
             calendar.set(mYear, mMonth, mDay);
             calendar.set(Calendar.MINUTE, 0);
             calendar.set(Calendar.SECOND, 0);
@@ -114,6 +120,13 @@ public class CostFormActivity extends AppCompatActivity {
             timeInMillis = calendar.getTimeInMillis();
             Log.i("WYBOR DATY", Long.toString(timeInMillis));
             String output = String.format("%tQ", calendar.getTimeInMillis());                     // set output string with time in millis
+
+            Date date= calendar.getTime();
+            result=dateParser.parseData(dateBeforeConvertionFormat, dateAfterConvertion, date.toString());
+            Log.i("WYBOR DATY", result);
+
+
+
         }, day, month, year);
         datePickerDialog.show();
     }

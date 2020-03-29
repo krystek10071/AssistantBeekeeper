@@ -27,7 +27,7 @@ public class RSOParserJsonData {
                JSONObject jsonObject=new JSONObject(jsonString);
                JSONArray jsonNewsesArray=jsonObject.getJSONArray("newses");
                lengthNewses=jsonNewsesArray.length();
-                //Todo
+
                for (int i =0; i< lengthNewses; i++){
                    JSONObject jsonObjectNews=jsonNewsesArray.getJSONObject(i);
                    String title=jsonObjectNews.getString("title");
