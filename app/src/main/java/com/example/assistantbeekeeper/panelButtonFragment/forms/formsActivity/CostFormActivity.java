@@ -31,7 +31,7 @@ public class CostFormActivity extends AppCompatActivity {
 
     TextInputLayout textInputName;
     TextInputLayout textInputValue;
-    TextInputLayout textInputDate;
+    TextView textInputDate;
     Button buttonAkcept;
     FloatingActionButton floatingActionButton;
     private Calendar calendar;
@@ -64,7 +64,7 @@ public class CostFormActivity extends AppCompatActivity {
         CostEntity costEntity;
         String inputName= Objects.requireNonNull(textInputName.getEditText()).getText().toString().trim();
         String inputValue= Objects.requireNonNull(textInputValue.getEditText()).getText().toString().trim();
-        String inputDate= Objects.requireNonNull(textInputDate.getEditText()).getText().toString().trim();
+        String inputDate= (String) Objects.requireNonNull(textInputDate.getText());
         String nameApiary= Objects.requireNonNull(getIntent().getExtras()).getString("placeName");
         List<ApiaryEntity> list=databaseHandle.apiaryDAO().getIdApiaryByName(nameApiary);
 
@@ -124,6 +124,7 @@ public class CostFormActivity extends AppCompatActivity {
             Date date= calendar.getTime();
             result=dateParser.parseData(dateBeforeConvertionFormat, dateAfterConvertion, date.toString());
             Log.i("WYBOR DATY", result);
+            textInputDate.setText(result);
 
 
         }, day, month, year);
