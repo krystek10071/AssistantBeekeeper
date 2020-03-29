@@ -13,10 +13,12 @@ import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.As
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.EarningsEntity;
 import com.example.assistantbeekeeper.panelButtonFragment.forms.formPre.FormProfitPre;
+import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentAlertsPre.DateParser;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,7 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ProfitFormActivity extends AppCompatActivity {
     TextInputLayout textInputName;
     TextInputLayout textInputValue;
-    TextInputLayout textInputDate;
+    TextView textInputDate;
     TextView placeName;
     Button buttonAkcept;
     FloatingActionButton floatingActionButton;
@@ -63,7 +65,7 @@ public class ProfitFormActivity extends AppCompatActivity {
         EarningsEntity earningsEntity;
         String inputName= Objects.requireNonNull(textInputName.getEditText()).getText().toString().trim();
         String inputValue= Objects.requireNonNull(textInputValue.getEditText()).getText().toString().trim();
-        String inputDate= Objects.requireNonNull(textInputDate.getEditText()).getText().toString().trim();
+        String inputDate= Objects.requireNonNull(textInputDate.getText().toString().trim());
         String nameApiary= Objects.requireNonNull(getIntent().getExtras()).getString("placeName");
         List<ApiaryEntity> list=databaseHandle.apiaryDAO().getIdApiaryByName(nameApiary);
 
@@ -123,13 +125,22 @@ public class ProfitFormActivity extends AppCompatActivity {
 
         //set breeding day with DatePickerDialog
         datePickerDialog = new DatePickerDialog(context, (datePicker, mYear, mMonth, mDay) -> {
+            DateParser dateParser=new DateParser();
+            String dateBeforeConvertionFormat="EEE MMM DD HH:mm:ss zzz yyyy";
+            String dateAfterConvertion="dd-MM-yyyy";
+            String result;
+
             calendar.set(mYear, mMonth, mDay);
             calendar.set(Calendar.MINUTE, 0);
             calendar.set(Calendar.SECOND, 0);
             calendar.set(Calendar.HOUR_OF_DAY, 0);
             timeInMillis = calendar.getTimeInMillis();
-            Log.i("WYBOR DATY", Long.toString(timeInMillis));
-            String output=String.format("%tQ", calendar.getTimeInMillis());                     //set output string with time in millis
+
+            Date date= calendar.getTime();
+            result=dateParser.parseData(dateBeforeConvertionFormat, dateAfterConvertion, date.toString());
+            Log.i("WYBOR DATY", result);
+            textInputDate.setText(result);
+
         }, day, month, year);
         datePickerDialog.show();
     }

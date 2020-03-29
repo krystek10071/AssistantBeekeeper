@@ -118,8 +118,6 @@ public class CostFormActivity extends AppCompatActivity {
             calendar.set(Calendar.SECOND, 0);
             calendar.set(Calendar.HOUR_OF_DAY, 0);
             timeInMillis = calendar.getTimeInMillis();
-            Log.i("WYBOR DATY", Long.toString(timeInMillis));
-            String output = String.format("%tQ", calendar.getTimeInMillis());                     // set output string with time in millis
 
             Date date= calendar.getTime();
             result=dateParser.parseData(dateBeforeConvertionFormat, dateAfterConvertion, date.toString());
