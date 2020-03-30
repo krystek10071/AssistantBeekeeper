@@ -78,7 +78,7 @@ public class CostFormActivity extends AppCompatActivity {
             if(textInputName.getError()==null && textInputValue.getError()==null){
                 Toast.makeText(this, "Brak bledow", Toast.LENGTH_LONG).show();
 
-                costEntity=formPresenter.createObjectEntity(inputName, inputValue, inputDate, list);
+                costEntity=formPresenter.createObjectEntity(inputName, inputValue, timeInMillis, list);
                 formPresenter.writeToDatabse(costEntity);
                 Toast.makeText(this, "Zapisano do bazy", Toast.LENGTH_LONG).show();
             }
@@ -123,6 +123,11 @@ public class CostFormActivity extends AppCompatActivity {
             result=dateParser.parseData(dateBeforeConvertionFormat, dateAfterConvertion, date.toString());
             Log.i("WYBOR DATY", result);
             textInputDate.setText(result);
+
+            //new version
+            timeInMillis=date.getTime();
+
+            Log.i("WYBOR DATY", String.valueOf(timeInMillis));
 
 
         }, day, month, year);

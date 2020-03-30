@@ -9,7 +9,8 @@ import java.util.List;
 interface IFormCost {
     void writeToDatabse(CostEntity costEntity);
 
-    CostEntity createObjectEntity(String name, String value, String date, List<ApiaryEntity> list);
+    CostEntity createObjectEntity(String name, String value, Long date, List<ApiaryEntity> list);
+
 
     void validateFields(CostFormActivity activity, String inputName, String inputValue);
 }

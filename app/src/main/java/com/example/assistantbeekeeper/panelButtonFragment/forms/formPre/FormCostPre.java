@@ -28,7 +28,7 @@ public class FormCostPre implements IFormCost {
     }
 
     @Override
-    public CostEntity createObjectEntity(String name, String value, String date, List<ApiaryEntity> list) {
+    public CostEntity createObjectEntity(String name, String value, Long date, List<ApiaryEntity> list) {
         CostEntity objCost=new CostEntity();
         objCost.setName(name);
         objCost.setValue(Double.valueOf(value));

@@ -79,7 +79,7 @@ public class ProfitFormActivity extends AppCompatActivity {
             if(textInputName.getError()==null && textInputValue.getError()==null){
                 Toast.makeText(this, "Brak bledow", Toast.LENGTH_LONG).show();
 
-               earningsEntity=formPresenter.createObjectEntity(inputName, inputValue, inputDate, list);
+               earningsEntity=formPresenter.createObjectEntity(inputName, inputValue, timeInMillis, list);
                formPresenter.writeToDatabse(earningsEntity);
                Toast.makeText(this, "Zapisano do bazy", Toast.LENGTH_LONG).show();
             }
@@ -137,6 +137,7 @@ public class ProfitFormActivity extends AppCompatActivity {
             result=dateParser.parseData(dateBeforeConvertionFormat, dateAfterConvertion, date.toString());
             Log.i("WYBOR DATY", result);
             textInputDate.setText(result);
+            timeInMillis=date.getTime();
 
         }, day, month, year);
         datePickerDialog.show();

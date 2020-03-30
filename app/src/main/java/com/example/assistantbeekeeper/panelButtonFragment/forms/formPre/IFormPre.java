@@ -10,7 +10,7 @@ import java.util.List;
 public interface IFormPre {
     void writeToDatabse(EarningsEntity earningsEntity);
 
-    EarningsEntity createObjectEntity(String name, String value, String date, List<ApiaryEntity> list);
+    EarningsEntity createObjectEntity(String name, String value, Long date, List<ApiaryEntity> list);
 
     void validateFields(ProfitFormActivity activity, String inputName, String inputValue);
 }

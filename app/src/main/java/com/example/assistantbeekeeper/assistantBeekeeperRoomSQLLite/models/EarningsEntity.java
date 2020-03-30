@@ -33,7 +33,7 @@ public class EarningsEntity {
     private Long idApiary;
 
     @ColumnInfo(name = "Data")
-    private String Data;
+    private Long Data;
 
     @NonNull
     public Long getId() {
@@ -68,11 +68,11 @@ public class EarningsEntity {
         this.idApiary = idApiary;
     }
 
-    public String getData() {
+    public Long getData() {
         return Data;
     }
 
-    public void setData(String data) {
+    public void setData(Long data) {
         Data = data;
     }
 }

@@ -34,7 +34,7 @@ public class CostEntity {
     private Long idApiaryEntity;
 
     @ColumnInfo(name = "Data")
-    private String Data;
+    private Long Data;
 
     @NonNull
     public Long getId() {
@@ -70,11 +70,11 @@ public class CostEntity {
     }
 
 
-    public String getData() {
+    public Long getData() {
         return Data;
     }
 
-    public void setData(String data) {
+    public void setData(Long data) {
         Data = data;
     }
 }

@@ -25,7 +25,7 @@ public class FormProfitPre implements IFormPre {
     }
 
     @Override
-    public EarningsEntity createObjectEntity(String name, String value, String date, List<ApiaryEntity> list) {
+    public EarningsEntity createObjectEntity(String name, String value, Long date, List<ApiaryEntity> list) {
         EarningsEntity objProfit=new EarningsEntity();
         objProfit.setName(name);
         objProfit.setValue(Double.valueOf(value));

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
@@ -40,7 +41,10 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
         //Create mydatabase
         AssistantDbAbstract databaseStatistic = statisticGeneralPre.createDatabase(getContext());
         apiaryListItem=statisticGeneralPre.loadTableApiaryEntity(apiaryListItem, databaseStatistic);
-        databaseStatistic.close();
+        if(apiaryListItem.isEmpty()){
+            Toast.makeText(getContext(), "Baza Apiery jest pusta", Toast.LENGTH_LONG).show();
+        }
+       // databaseStatistic.close();
 
     }
 
@@ -90,7 +94,7 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
         String placeName=customList.get(i).getSpinnerText();
         setApiaryName(placeName);
         listener.sendIdApiaryToPanelButton(placeName);
-        statisticGeneralPre.loadDataForPlaceName(getContext());
+        //statisticGeneralPre.loadDataForPlaceName(getContext());
     }
 
     @Override
