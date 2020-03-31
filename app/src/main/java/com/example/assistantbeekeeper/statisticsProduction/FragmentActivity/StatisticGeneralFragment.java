@@ -72,11 +72,14 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
     }
 
     public void setTotalCost(double totalValueCost) {
-        costsInCurentYear.setText((int) totalValueCost);
+
+        String total=Double.toString(totalValueCost);
+        costsInCurentYear.setText(total);
     }
 
     public void setTotalProfit(double totalValueProfit) {
-        profitInCurentYear.setText((int) totalValueProfit);
+        String total=Double.toString(totalValueProfit);
+        profitInCurentYear.setText(total);
     }
 
 
@@ -123,7 +126,7 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
 
         apiaryName=view.findViewById(id.apiaryName);
         costsInCurentYear=view.findViewById(id.textView6);
-        productionInCurentYear=view.findViewById(id.textView7);
+        profitInCurentYear=view.findViewById(id.textView7);
         productionInCurentYear=view.findViewById(id.textView8);
 
     }
