@@ -24,7 +24,7 @@ public interface EarningsDAO {
     void delete(EarningsEntity earningsEntity);
 
     @Query("SELECT * FROM Earnings WHERE Data > (:timeFrom) AND Data < (:timeTo) AND idApiary = (:id_apiary)"  )
-    List<CostEntity> loadCurrentCostsInYear(Long timeFrom, Long timeTo, Long id_apiary);
+    List<EarningsEntity> loadCurrentCostsInYear(Long timeFrom, Long timeTo, Long id_apiary);
 
 
 }

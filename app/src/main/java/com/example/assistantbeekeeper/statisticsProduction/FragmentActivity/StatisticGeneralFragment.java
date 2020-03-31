@@ -32,7 +32,7 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
     private OverviewFragmentActivityListener listener;
     private List<ApiaryEntity> apiaryListItem;
     private StatisticGeneralPre statisticGeneralPre;
-    private TextView costsInCurentYear, ProfitInCurentYear, productionInCurentYear;
+    private TextView costsInCurentYear, profitInCurentYear, productionInCurentYear;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,6 +71,13 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
         return view ;
     }
 
+    public void setTotalCost(double totalValueCost) {
+        costsInCurentYear.setText((int) totalValueCost);
+    }
+
+    public void setTotalProfit(double totalValueProfit) {
+        profitInCurentYear.setText((int) totalValueProfit);
+    }
 
 
     //interface for communication between fragments
@@ -98,7 +105,7 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
         listener.sendIdApiaryToPanelButton(placeName);
 
 
-        statisticGeneralPre.loadDataForPlaceName(getContext(), placeName);
+        statisticGeneralPre.loadDataForPlaceName(getContext(),this, placeName);
     }
 
     @Override

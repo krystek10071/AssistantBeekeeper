@@ -1,15 +1,19 @@
 package com.example.assistantbeekeeper.statisticsProduction.FragmentStatisticsPre;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.CostEntity;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.EarningsEntity;
 import com.example.assistantbeekeeper.statisticsProduction.FragmentActivity.CustomItems;
+import com.example.assistantbeekeeper.statisticsProduction.FragmentActivity.StatisticGeneralFragment;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,7 +36,8 @@ public class StatisticGeneralPre implements IStaticsGeneralPre {
     }
 
     @Override
-    public void loadDataForPlaceName(Context context, String placeName) {
+    public void loadDataForPlaceName(Context context, StatisticGeneralFragment activity, String placeName) {
+        Date date=new Date();
         List<EarningsEntity> listEarnings;
         List<CostEntity> listCost;
         List<ApiaryEntity> listApiary;
@@ -42,17 +47,47 @@ public class StatisticGeneralPre implements IStaticsGeneralPre {
 
         listApiary=fetchListIdApiaryByName(placeName, databaseHandle);
 
-        listCost=databaseHandle.costDao().loadCurrentCostsInYear(1577833200000L, 1877833200000L);
-       // listEarnings=databaseHandle.earningsDAO().
+        if(!listApiary.isEmpty()){
+            listCost=databaseHandle.costDao().loadCurrentCostsInYear(1577833200000L, date.getTime(), listApiary.get(0).getId());
+            listEarnings=databaseHandle.earningsDAO().loadCurrentCostsInYear(1577833200000L, date.getTime(), listApiary.get(0).getId());
 
-        //Log.i(TAG, listCost.get(0).getData().toString());
+            if(!listCost.isEmpty()){
+                double totalValueCost;
+                totalValueCost=countCosts(listCost);
+                activity.setTotalCost(totalValueCost);
+            }else
+            {
+                Toast.makeText(context, "List Cost jest pusty", Toast.LENGTH_LONG).show();
+            }
 
-
-
-
-
-
+            if(!listEarnings.isEmpty()){
+                double totalValueProfit;
+                totalValueProfit=countEarnings(listEarnings);
+                activity.setTotalProfit(totalValueProfit);
+            }
+            else{
+                Toast.makeText(context, "List earnins jest pusta", Toast.LENGTH_LONG).show(); 
+            }
+        }
         databaseHandle.close();
+    }
+
+    private double countEarnings(List<EarningsEntity> listEarnings) {
+        double sum = 0;
+        int size=listEarnings.size();
+        for(int i=0; i<size; i++){
+            sum+=listEarnings.get(i).getValue();
+        }
+        return sum;
+    }
+
+    private double countCosts(List<CostEntity> listCost) {
+        double sum = 0;
+        int size=listCost.size();
+        for(int i=0; i<size; i++){
+            sum+=listCost.get(i).getValue();
+        }
+        return sum;
     }
 
     public List<ApiaryEntity> fetchListIdApiaryByName(String placeName, AssistantDbAbstract dbHandle){
