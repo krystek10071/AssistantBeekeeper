@@ -32,9 +32,33 @@ public class StatisticGeneralPre implements IStaticsGeneralPre {
     }
 
     @Override
-    public void loadDataForPlaceName(Context context) {
+    public void loadDataForPlaceName(Context context, String placeName) {
+        List<EarningsEntity> listEarnings;
+        List<CostEntity> listCost;
+        List<ApiaryEntity> listApiary;
+
         AssistantDbAbstract databaseHandle;
         databaseHandle=createDatabase(context);
+
+        listApiary=fetchListIdApiaryByName(placeName, databaseHandle);
+
+        listCost=databaseHandle.costDao().loadCurrentCostsInYear(1577833200000L, 1877833200000L);
+       // listEarnings=databaseHandle.earningsDAO().
+
+        //Log.i(TAG, listCost.get(0).getData().toString());
+
+
+
+
+
+
+        databaseHandle.close();
+    }
+
+    public List<ApiaryEntity> fetchListIdApiaryByName(String placeName, AssistantDbAbstract dbHandle){
+        List<ApiaryEntity> listApiary;
+        listApiary= dbHandle.apiaryDAO().getIdApiaryByName(placeName);
+        return listApiary;
     }
 
 

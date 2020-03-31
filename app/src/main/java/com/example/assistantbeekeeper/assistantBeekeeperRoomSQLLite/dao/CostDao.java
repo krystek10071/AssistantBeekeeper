@@ -22,4 +22,6 @@ public interface CostDao {
     @Delete
     void delete(CostEntity costEntity);
 
+    @Query("SELECT * FROM Costs WHERE Data > (:timeFrom) AND Data < (:timeTo) AND id_apiary_entity = (:id_apiary)"  )
+    List<CostEntity> loadCurrentCostsInYear(Long timeFrom, Long timeTo, Long id_apiary);
 }

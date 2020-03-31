@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.assistantbeekeeper.R;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
 import com.example.assistantbeekeeper.statisticsProduction.FragmentStatisticsPre.StatisticGeneralPre;
@@ -31,6 +32,7 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
     private OverviewFragmentActivityListener listener;
     private List<ApiaryEntity> apiaryListItem;
     private StatisticGeneralPre statisticGeneralPre;
+    private TextView costsInCurentYear, ProfitInCurentYear, productionInCurentYear;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -94,7 +96,9 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
         String placeName=customList.get(i).getSpinnerText();
         setApiaryName(placeName);
         listener.sendIdApiaryToPanelButton(placeName);
-        //statisticGeneralPre.loadDataForPlaceName(getContext());
+
+
+        statisticGeneralPre.loadDataForPlaceName(getContext(), placeName);
     }
 
     @Override
@@ -109,6 +113,11 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
 
 
     private void initComponent(View view){
+
         apiaryName=view.findViewById(id.apiaryName);
+        costsInCurentYear=view.findViewById(id.textView6);
+        productionInCurentYear=view.findViewById(id.textView7);
+        productionInCurentYear=view.findViewById(id.textView8);
+
     }
 }

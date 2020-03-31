@@ -23,4 +23,5 @@ public interface ApiaryDAO {
 
     @Query("SELECT * FROM Aparies WHERE name = (:placeName)")
     List<ApiaryEntity> getIdApiaryByName(String placeName);
+
 }
