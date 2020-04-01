@@ -81,13 +81,13 @@
                         android:layout_width="97dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="30dp"
                         android:layout_toEndOf="@+id/textView5"
                         android:gravity="center_vertical"
                         android:text="@string/sum1"
                         android:textColor="#FDFFFFFF"
-                        android:textSize="18sp"/>
+                        android:textSize="16sp"/>
 
                 </RelativeLayout>
 
@@ -115,13 +115,13 @@
                         android:layout_width="107dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="30dp"
                         android:layout_toEndOf="@+id/textView4"
                         android:gravity="center_vertical"
                         android:text="@string/sum1"
                         android:textColor="#FDFFFFFF"
-                        android:textSize="18sp"/>
+                        android:textSize="16sp"/>
 
                 </RelativeLayout>
 
@@ -149,14 +149,13 @@
                         android:layout_width="107dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="30dp"
                         android:layout_toEndOf="@+id/textView3"
                         android:gravity="center_vertical"
-
                         android:text="@string/sum1"
                         android:textColor="#FDFFFFFF"
-                        android:textSize="18sp"/>
+                        android:textSize="16sp"/>
 
                 </RelativeLayout>
 

@@ -57,7 +57,7 @@ public class StatisticGeneralPre implements IStaticsGeneralPre {
                 activity.setTotalCost(totalValueCost);
             }else
             {
-                Toast.makeText(context, "List Cost jest pusty", Toast.LENGTH_LONG).show();
+                activity.setTotalCost(0);
             }
 
             if(!listEarnings.isEmpty()){
@@ -66,7 +66,7 @@ public class StatisticGeneralPre implements IStaticsGeneralPre {
                 activity.setTotalProfit(totalValueProfit);
             }
             else{
-                Toast.makeText(context, "List earnins jest pusta", Toast.LENGTH_LONG).show(); 
+                activity.setTotalProfit(0);
             }
         }
         databaseHandle.close();
