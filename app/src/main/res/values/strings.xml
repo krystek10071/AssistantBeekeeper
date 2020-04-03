@@ -56,4 +56,7 @@
     <string name="enter_value_profit">Wprowadź wartość zysku</string>
     <string name="enter_name_profit">Wprowadź nazwe zysku</string>
     <string name="place_name">Nazwa miejscowosci</string>
+    <string name="enter_value_production">Wprowadz wartość produkcji</string>
+    <string name="ButtonAkceptProduction">Dodaj wartość produkcji</string>
+
 </resources>
