@@ -9,10 +9,12 @@ import com.example.assistantbeekeeper.statisticsProduction.FragmentStatisticsPre
 import com.example.assistantbeekeeper.statisticsProduction.detailStatistic.models.OperationsData;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ListOfOperationsPre {
-    public void loadDataToRecycleView(Context context) {
+    public ArrayList<OperationsData> loadDataToRecycleView(Context context) {
+        ArrayList<OperationsData> listArticle;
         List<EarningsEntity> earningsEntities;
         List<CostEntity> costEntities;
 
@@ -22,12 +24,13 @@ public class ListOfOperationsPre {
         earningsEntities=databaseHandle.earningsDAO().getAll();
         costEntities=databaseHandle.costDao().getAll();
 
-         prepareListOfOperations(earningsEntities, costEntities);
+         listArticle=prepareListOfOperations(earningsEntities, costEntities);
+         return listArticle;
     }
 
 
 
-    private void prepareListOfOperations(List<EarningsEntity> earningsEntities, List<CostEntity> costEntities) {
+    private ArrayList<OperationsData> prepareListOfOperations(List<EarningsEntity> earningsEntities, List<CostEntity> costEntities) {
         ArrayList<OperationsData> listArticle=new ArrayList<>();
         ArrayList<OperationsData> listEarnings=new ArrayList<>();
         ArrayList<OperationsData> listCosts=new ArrayList<>();
@@ -38,7 +41,9 @@ public class ListOfOperationsPre {
         listArticle.addAll(listEarnings);
         listArticle.addAll(listCosts);
 
+        Collections.sort(listArticle);
 
+        return listArticle;
     }
 
     private ArrayList<OperationsData> convertEarnigsToOperationData(List<EarningsEntity> earningsEntities){

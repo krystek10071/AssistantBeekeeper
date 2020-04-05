@@ -24,7 +24,7 @@ public class ListOfOperationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         ArrayList<OperationsData> objList=new ArrayList<>();
-        listOfOperationsPre.loadDataToRecycleView(this);
+        objList=listOfOperationsPre.loadDataToRecycleView(this);
 
 
 

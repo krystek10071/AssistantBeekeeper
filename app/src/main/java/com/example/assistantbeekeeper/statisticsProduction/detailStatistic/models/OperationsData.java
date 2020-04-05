@@ -1,6 +1,6 @@
 package com.example.assistantbeekeeper.statisticsProduction.detailStatistic.models;
 
-public class OperationsData {
+public class OperationsData implements Comparable<OperationsData>{
     private Long timeInMillis;
     private String date;
     private String description;
@@ -36,5 +36,10 @@ public class OperationsData {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    @Override
+    public int compareTo(OperationsData operationsData) {
+        return this.timeInMillis.compareTo(operationsData.timeInMillis);
     }
 }
