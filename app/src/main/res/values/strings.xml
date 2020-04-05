@@ -58,5 +58,7 @@
     <string name="place_name">Nazwa miejscowosci</string>
     <string name="enter_value_production">Wprowadz wartość produkcji</string>
     <string name="ButtonAkceptProduction">Dodaj wartość produkcji</string>
+    <string name="value">120.50</string>
+    <string name="currency">zł</string>
 
 </resources>
