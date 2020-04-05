@@ -35,7 +35,9 @@ public class AdapterDetailStatistics extends RecyclerView.Adapter<ViewHolderDeta
         TextView descriptionOperation=holder.itemView.findViewById(R.id.descriptionOperation);
         TextView valueOperation=holder.itemView.findViewById(R.id.valueOperation);
 
-        //todo
+        dateOperation.setText(articles.get(position).getDescription());
+        descriptionOperation.setText(articles.get(position).getDescription());
+        valueOperation.setText(articles.get(position).getValue());
 
     }
 
