@@ -1,19 +1,21 @@
 package com.example.assistantbeekeeper.statisticsProduction.FragmentActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.assistantbeekeeper.R;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
 import com.example.assistantbeekeeper.statisticsProduction.FragmentStatisticsPre.StatisticGeneralPre;
+import com.example.assistantbeekeeper.statisticsProduction.detailStatistic.detailStatisticActivity.ListOfOperationsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import static com.example.assistantbeekeeper.R.*;
+import static com.example.assistantbeekeeper.R.id;
+import static com.example.assistantbeekeeper.R.layout;
 
 public class StatisticGeneralFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -33,12 +36,12 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
     private List<ApiaryEntity> apiaryListItem;
     private StatisticGeneralPre statisticGeneralPre;
     private TextView costsInCurentYear, profitInCurentYear, productionInCurentYear;
+    private Button seeMoreButton;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
          statisticGeneralPre = new StatisticGeneralPre();
-        ApiaryEntity apiaryEntity=new ApiaryEntity();
 
         //Create mydatabase
         AssistantDbAbstract databaseStatistic = statisticGeneralPre.createDatabase(getContext());
@@ -67,6 +70,12 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
         CustomAdapterSpinner customAdapter=new CustomAdapterSpinner(getContext(), customList);
         customSpinnerStatistics.setAdapter(customAdapter);
         customAdapter.notifyDataSetChanged();
+
+        seeMoreButton.setOnClickListener(view1 -> {
+            Intent intent=new Intent(getActivity(), ListOfOperationsActivity.class);
+            intent.putExtra("placeName", String.valueOf(apiaryName));
+            startActivity(intent);
+        });
 
         return view ;
     }
@@ -128,6 +137,6 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
         costsInCurentYear=view.findViewById(id.textView6);
         profitInCurentYear=view.findViewById(id.textView7);
         productionInCurentYear=view.findViewById(id.textView8);
-
+        seeMoreButton=view.findViewById(id.seeMoreButton);
     }
 }
