@@ -24,4 +24,8 @@ public interface ApiaryDAO {
     @Query("SELECT * FROM Aparies WHERE name = (:placeName)")
     List<ApiaryEntity> getIdApiaryByName(String placeName);
 
+    @Query("UPDATE Aparies SET amount_of_honey = (:amountOfHoney) WHERE id = (:id_Apiary) ")
+    void changeAmountOfHoney(Long id_Apiary, int amountOfHoney);
+
+
 }

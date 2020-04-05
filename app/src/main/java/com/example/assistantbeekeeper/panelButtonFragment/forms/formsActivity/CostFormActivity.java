@@ -49,7 +49,6 @@ public class CostFormActivity extends AppCompatActivity {
         init();
 
         String namePlace= Objects.requireNonNull(getIntent().getExtras()).getString("placeName");
-        init();
         placeName.setText(namePlace);
         databaseHandle=formPresenter.accessDatabase(getBaseContext());
 

@@ -34,7 +34,12 @@
             </intent-filter>
         </activity>
 
-
+        <activity android:name=".panelButtonFragment.forms.formsActivity.ProductionFormActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
 
 
         <activity android:name=".MainActivity">
@@ -56,8 +61,7 @@
         </activity>
 
         <activity android:name=".Breeding"
-            android:label="Breeding"
-            android:screenOrientation="portrait">
+            android:label="Breeding">
             <intent-filter>
                 <action android:name="com.example.assistantbeekeeper"/>
                 <category android:name="android.intent.category.DEFAULT"/>

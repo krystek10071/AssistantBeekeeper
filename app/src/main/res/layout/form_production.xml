@@ -43,7 +43,7 @@
         app:errorEnabled="true" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingButtonProfit"
+        android:id="@+id/floatingButtonProduction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -57,7 +57,7 @@
         app:srcCompat="@color/colorAccentCustom" />
 
     <Button
-        android:id="@+id/buttonConfirmProfit"
+        android:id="@+id/buttonConfirmProduction"
         android:layout_width="match_parent"
         android:layout_height="68dp"
         android:layout_below="@+id/date_production"

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.assistantbeekeeper.R;
 import com.example.assistantbeekeeper.panelButtonFragment.forms.formsActivity.CostFormActivity;
+import com.example.assistantbeekeeper.panelButtonFragment.forms.formsActivity.ProductionFormActivity;
 import com.example.assistantbeekeeper.panelButtonFragment.forms.formsActivity.ProfitFormActivity;
 
 import androidx.annotation.NonNull;
@@ -51,6 +52,12 @@ public class PanelButtonActivity extends Fragment {
             startActivity(intent);
         });
 
+        addAmountOfProduction.setOnClickListener(view1 -> {
+            Intent intent=new Intent(getActivity(), ProductionFormActivity.class);
+            intent.putExtra("placeName", nameApiary);
+            startActivity(intent);
+        });
+
         return view;
     }
 
@@ -58,13 +65,9 @@ public class PanelButtonActivity extends Fragment {
         addCost=view.findViewById(R.id.add_cost_button);
         addProfit=view.findViewById(R.id.add_profit_button);
         addAmountOfProduction=view.findViewById(R.id.add_amount_production);
-
-
     }
 
-    private void createFormView(){
 
-    }
 
     public void setNameApiary(String name_Apiary) {
         nameApiary=name_Apiary;
