@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.assistantbeekeeper.Breeding.Breeding;
 import com.example.assistantbeekeeper.R;
+import com.example.assistantbeekeeper.panelAddApiary.addApiaryActivity.AddApiaryActivity;
 import com.example.assistantbeekeeper.panelButtonFragment.panelButtonActivity.PanelButtonActivity;
 import com.example.assistantbeekeeper.statisticsProduction.FragmentActivity.StatisticGeneralFragment;
 import com.example.assistantbeekeeper.weatherRadar.weatherRadarActi.WeatherRadarActivity;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements StatisticGeneralF
      Button breedingButton;
      Button fiveDaysForecast;
      Button buttonTest;
+     Button addApiaryButton;
      TextView currentLocation;
      TextView currentTemperature;
      TextView describeWeatherIcon;
@@ -66,6 +68,13 @@ public class MainActivity extends AppCompatActivity implements StatisticGeneralF
             startActivity(intent);
         });
 
+        addApiaryButton.setOnClickListener(view ->{
+            Intent intent=new Intent(getApplicationContext(), AddApiaryActivity.class);
+            startActivity(intent);
+        } );
+
+
+
 
         //Todo
         weatherOneDayData= WeatherWidget.createUrlAddress();
@@ -91,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements StatisticGeneralF
         weatherIcon=findViewById(R.id.icon_weather);
         buttonTest=findViewById(R.id.buttonTest);
         fragmentPanelButtons=(PanelButtonActivity) getSupportFragmentManager().findFragmentById(R.id.panel_button_fragment);
+        addApiaryButton=findViewById(R.id.addApiaryButton);
     }
 
     public void setWeatherIcon(ArrayList<CurrentWeatherDataClass> data, int index){
