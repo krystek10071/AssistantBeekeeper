@@ -34,7 +34,7 @@ public class Breeding extends AppCompatActivity {
     ArrayAdapter arrayAdapter;
     final Long[] timeInMillis=new Long[1];
     TextView dateTextView;                                                                                      //dateTextView with time in millis
-    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM- yyyy", Locale.getDefault());
+    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM  yyyy", Locale.getDefault());
     //Buttons
     Button addBreedingButton;
     Button setDateButton;
@@ -56,6 +56,7 @@ public class Breeding extends AppCompatActivity {
         final BreedingFunctions breedingFunctions=new BreedingFunctions();
         eventsListView= findViewById(R.id.events_listview);
         addBreedingButton=findViewById(R.id.add_breeding_button);
+
         arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1, listEvents);
         dateTextView=findViewById(R.id.textView);
         setDateButton=findViewById(R.id.set_time_button);
@@ -118,6 +119,7 @@ public class Breeding extends AppCompatActivity {
 
             }
 
+            //todo
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
                 actionBar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
