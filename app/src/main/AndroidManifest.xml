@@ -42,7 +42,7 @@
         </activity>
 
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".Breeding.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -58,7 +58,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Breeding"
+        <activity android:name=".Breeding.Breeding"
             android:label="Breeding">
             <intent-filter>
                 <action android:name="com.example.assistantbeekeeper"/>

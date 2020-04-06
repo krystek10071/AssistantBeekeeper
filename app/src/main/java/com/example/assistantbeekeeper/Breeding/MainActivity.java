@@ -1,4 +1,4 @@
-package com.example.assistantbeekeeper;
+package com.example.assistantbeekeeper.Breeding;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,10 +11,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.assistantbeekeeper.Breeding.Breeding;
+import com.example.assistantbeekeeper.R;
 import com.example.assistantbeekeeper.panelButtonFragment.panelButtonActivity.PanelButtonActivity;
-import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentActivity.FragmentActivity;
 import com.example.assistantbeekeeper.statisticsProduction.FragmentActivity.StatisticGeneralFragment;
 import com.example.assistantbeekeeper.weatherRadar.weatherRadarActi.WeatherRadarActivity;
 import com.example.assistantbeekeeper.weatherwitget.CurrentWeatherDataClass;

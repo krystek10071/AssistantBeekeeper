@@ -1,15 +1,14 @@
-package com.example.assistantbeekeeper;
+package com.example.assistantbeekeeper.Breeding;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.assistantbeekeeper.R;
 import com.example.assistantbeekeeper.assistantbeekeepersqllite.MyDbHandler;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
@@ -33,8 +32,9 @@ public class Breeding extends AppCompatActivity {
     ArrayList<String> listDescription=new ArrayList<>();                                                        //list with descriptions of activities for beekeeper
     ArrayAdapter arrayAdapter;
     final Long[] timeInMillis=new Long[1];
-    TextView dateTextView;                                                                                      //dateTextView with time in millis
-    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM  yyyy", Locale.getDefault());
+    TextView dateTextView, nameMonth;                                                                                      //dateTextView with time in millis
+    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MM", Locale.getDefault());
+    private SimpleDateFormat dateFormatYear = new SimpleDateFormat("yyyy", Locale.getDefault());
     //Buttons
     Button addBreedingButton;
     Button setDateButton;
@@ -43,6 +43,8 @@ public class Breeding extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breeding);
+
+        MonthCalendar monthCalendar=new MonthCalendar();
         final CompactCalendarView compactCalendarView = findViewById(R.id.compact_calendar_view);
         final ActionBar actionBar=getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
@@ -60,6 +62,7 @@ public class Breeding extends AppCompatActivity {
         arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1, listEvents);
         dateTextView=findViewById(R.id.textView);
         setDateButton=findViewById(R.id.set_time_button);
+        nameMonth=findViewById(R.id.calendar_month);
 
 
         //if the listEvents is empty then load data from database to listTimeInMillis and listDescription
@@ -122,7 +125,11 @@ public class Breeding extends AppCompatActivity {
             //todo
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-                actionBar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
+                String nameMon=monthCalendar.setMonthInCalendar(Integer.parseInt(dateFormatMonth.format(firstDayOfNewMonth)));
+
+                actionBar.setTitle(dateFormatYear.format(firstDayOfNewMonth));
+                nameMonth.setText(nameMon);
+
                 listEvents.clear();
                 listEvents=breedingFunctions.loadEvents(listEvents, compactCalendarView, firstDayOfNewMonth.getTime());
                 arrayAdapter.clear();

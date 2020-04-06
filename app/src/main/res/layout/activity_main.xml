@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#F1951A"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".Breeding.MainActivity">
 
 
 
