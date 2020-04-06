@@ -61,5 +61,7 @@
     <string name="value">120.50</string>
     <string name="currency">zł</string>
     <string name="month_calendar">Styczeń</string>
+    <string name="enter_name_apiary">Wprowadź nazwę pasieki</string>
+    <string name="ButtonAddApiary">Dodaj pasiekę</string>
 
 </resources>
