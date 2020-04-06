@@ -108,7 +108,7 @@ public class CostFormActivity extends AppCompatActivity {
         //set breeding day with DatePickerDialog
         datePickerDialog = new DatePickerDialog(context, (datePicker, mYear, mMonth, mDay) -> {
             DateParser dateParser=new DateParser();
-            String dateBeforeConvertionFormat="EEE MMM DD HH:mm:ss zzz yyyy";
+            String dateBeforeConvertionFormat="EEE MMM dd HH:mm:ss zzz yyyy";
             String dateAfterConvertion="dd-MM-yyyy";
             String result;
 
@@ -127,6 +127,7 @@ public class CostFormActivity extends AppCompatActivity {
             timeInMillis=date.getTime();
 
             Log.i("WYBOR DATY", String.valueOf(timeInMillis));
+            Log.i("WYBOR DATY", date.toString());
 
 
         }, day, month, year);

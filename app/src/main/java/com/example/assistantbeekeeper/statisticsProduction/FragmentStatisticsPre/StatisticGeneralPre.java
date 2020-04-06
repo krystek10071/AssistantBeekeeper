@@ -68,6 +68,16 @@ public class StatisticGeneralPre implements IStaticsGeneralPre {
             else{
                 activity.setTotalProfit(0);
             }
+
+            if(!listApiary.isEmpty()){
+                double totalProduction;
+                totalProduction=listApiary.get(0).getAmountOfHoney();
+                activity.setTotalProduction(totalProduction);
+            }
+            else{
+                activity.setTotalProfit(0);
+            }
+
         }
         databaseHandle.close();
     }

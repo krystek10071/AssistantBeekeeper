@@ -17,7 +17,7 @@ public class AdapterDetailStatistics extends RecyclerView.Adapter<ViewHolderDeta
 
     private ArrayList<OperationsData> articles;
 
-    public AdapterDetailStatistics(ArrayList<OperationsData> articles) {
+     AdapterDetailStatistics(ArrayList<OperationsData> articles) {
         this.articles = articles;
     }
 
@@ -38,7 +38,6 @@ public class AdapterDetailStatistics extends RecyclerView.Adapter<ViewHolderDeta
         dateOperation.setText(articles.get(position).getDate());
         descriptionOperation.setText(articles.get(position).getDescription());
         valueOperation.setText(articles.get(position).getValue());
-
     }
 
     @Override

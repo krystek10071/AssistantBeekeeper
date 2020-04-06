@@ -18,7 +18,7 @@ public class DateParser {
         //todo
         Date date;
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat(patternBeforeConversion, Locale.ENGLISH);
-        SimpleDateFormat formatForConvertion=new SimpleDateFormat(patternAfterConversion, Locale.ENGLISH);
+        SimpleDateFormat formatForConvertion=new SimpleDateFormat(patternAfterConversion, Locale.forLanguageTag("pl"));
 
         try {
             date=simpleDateFormat.parse(dateInString);

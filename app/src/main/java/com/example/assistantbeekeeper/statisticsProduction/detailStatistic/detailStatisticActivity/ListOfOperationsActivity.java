@@ -1,6 +1,7 @@
 package com.example.assistantbeekeeper.statisticsProduction.detailStatistic.detailStatisticActivity;
 
-import android.annotation.SuppressLint;
+
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.assistantbeekeeper.R;
@@ -8,6 +9,7 @@ import com.example.assistantbeekeeper.statisticsProduction.detailStatistic.detai
 import com.example.assistantbeekeeper.statisticsProduction.detailStatistic.models.OperationsData;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,14 +24,12 @@ public class ListOfOperationsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        ArrayList<OperationsData> objList=new ArrayList<>();
-        objList=listOfOperationsPre.loadDataToRecycleView(this);
-
-
-
-
+        ArrayList<OperationsData> objList;
+        String namePlace= Objects.requireNonNull(getIntent().getExtras()).getString("placeName");
         setContentView(R.layout.list_of_operations_activity);
+
+        objList=listOfOperationsPre.loadDataToRecycleView(this, namePlace);
+
         recyclerView=findViewById(R.id.listOperationRecycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

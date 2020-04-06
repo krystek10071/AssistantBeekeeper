@@ -91,6 +91,11 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
         profitInCurentYear.setText(total);
     }
 
+    public  void setTotalProduction(double totalProduction){
+        String total= String.valueOf(totalProduction);
+        productionInCurentYear.setText(total);
+    }
+
 
     //interface for communication between fragments
 

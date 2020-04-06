@@ -5,15 +5,18 @@ import android.content.Context;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.CostEntity;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.EarningsEntity;
+import com.example.assistantbeekeeper.panelButtonFragment.forms.formPre.DateFormater;
+import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentAlertsPre.DateParser;
 import com.example.assistantbeekeeper.statisticsProduction.FragmentStatisticsPre.StatisticGeneralPre;
 import com.example.assistantbeekeeper.statisticsProduction.detailStatistic.models.OperationsData;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class ListOfOperationsPre {
-    public ArrayList<OperationsData> loadDataToRecycleView(Context context) {
+    public ArrayList<OperationsData> loadDataToRecycleView(Context context, String placeName) {
         ArrayList<OperationsData> listArticle;
         List<EarningsEntity> earningsEntities;
         List<CostEntity> costEntities;
@@ -32,8 +35,8 @@ public class ListOfOperationsPre {
 
     private ArrayList<OperationsData> prepareListOfOperations(List<EarningsEntity> earningsEntities, List<CostEntity> costEntities) {
         ArrayList<OperationsData> listArticle=new ArrayList<>();
-        ArrayList<OperationsData> listEarnings=new ArrayList<>();
-        ArrayList<OperationsData> listCosts=new ArrayList<>();
+        ArrayList<OperationsData> listEarnings;
+        ArrayList<OperationsData> listCosts;
 
         listEarnings=convertEarnigsToOperationData(earningsEntities);
         listCosts=convertCostsToOperationData(costEntities);
@@ -52,13 +55,32 @@ public class ListOfOperationsPre {
 
         for(int i=0; i<lengthEarnings; i++){
             OperationsData obj=new OperationsData();
-            obj.setDate(String.valueOf(earningsEntities.get(i).getData()));
-            obj.setValue(String.valueOf(earningsEntities.get(i).getValue()));
+
+            String dateInString=convertTimeInMillisToDate(earningsEntities.get(i).getData());
+            String value="+" + earningsEntities.get(i).getValue().toString();
+
+            obj.setDate(dateInString);
+            obj.setValue(value);
             obj.setDescription(earningsEntities.get(i).getName());
             obj.setTimeInMillis(earningsEntities.get(i).getData());
+            obj.setProfit(true);
+            obj.setCosts(false);
             listArticle.add(obj);
         }
         return listArticle;
+    }
+
+    private String convertTimeInMillisToDate(Long timeInMillis) {
+       Date date=new Date();
+       DateParser dateParser=new DateParser();
+       String dateBeforeConvertionFormat="EEE MMM DD HH:mm:ss zzz yyyy";
+       String dateAfterConvertion="dd-MM-yyyy";
+       String outputDate;
+
+       date.setTime(timeInMillis);
+       outputDate=dateParser.parseData(dateBeforeConvertionFormat, dateAfterConvertion, date.toString());
+
+        return outputDate;
     }
 
     private ArrayList<OperationsData> convertCostsToOperationData(List<CostEntity> costEntities){
@@ -67,10 +89,16 @@ public class ListOfOperationsPre {
 
         for(int i=0; i<lengthCosts; i++){
             OperationsData obj=new OperationsData();
-            obj.setDate(String.valueOf(costEntities.get(i).getData()));
-            obj.setValue(String.valueOf(costEntities.get(i).getValue()));
+
+            String dateInString=convertTimeInMillisToDate(costEntities.get(i).getData());
+            String value="-" + costEntities.get(i).getValue().toString();
+
+            obj.setDate(dateInString);
+            obj.setValue(value);
             obj.setDescription(costEntities.get(i).getName());
             obj.setTimeInMillis(costEntities.get(i).getData());
+            obj.setProfit(false);
+            obj.setCosts(true);
             listArticle.add(obj);
         }
         return listArticle;
