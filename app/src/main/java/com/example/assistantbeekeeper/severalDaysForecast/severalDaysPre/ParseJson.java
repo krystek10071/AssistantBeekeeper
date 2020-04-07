@@ -27,12 +27,15 @@ import java.util.ArrayList;
                 JSONObject jsonObject=new JSONObject(resultData);
                 JSONArray dailyForecastArray=jsonObject.getJSONArray("DailyForecasts");
                 lengthDailyForecast=dailyForecastArray.length();
+                IconPhraseParser iconPhraseParser=new IconPhraseParser();
 
                 for(int i=0; i<lengthDailyForecast; i++){
+
+
                     JSONObject resultObj=dailyForecastArray.getJSONObject(i);
                     long epochDate=resultObj.getLong("EpochDate")*1000;                       //*1000 po to by byla poprawna data
                     int whetherIcon=resultObj.getJSONObject("Day").getInt("Icon");
-                    String iconPhrase=resultObj.getJSONObject("Day").getString("IconPhrase");
+                    String iconPhrase=iconPhraseParser.parseNumberIconToPhrase(whetherIcon);
                     long tDay=Math.round(resultObj.getJSONObject("Temperature").getJSONObject("Maximum").getDouble("Value")) ;
                     long tNight=Math.round(resultObj.getJSONObject("Temperature").getJSONObject("Minimum").getDouble("Value"));
                     double windSpeed=resultObj.getJSONObject("Day").getJSONObject("Wind").getJSONObject("Speed").getDouble("Value");

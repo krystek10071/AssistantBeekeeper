@@ -17,13 +17,10 @@ public class FiveDaysForecast implements IFiveDaysForecast {
 
     @Override
     public void downloadWeatherData(FiveDaysForecastActivity fiveDaysForecastActivity) {
-
-        //todo
         //create url address
         URL myUrl= DownloadData.createUrlAdress();
         //fetch data from webservice
-        //DownloadData.FetchDataFromWebside(myUrl, fiveDaysForecastActivity);
-
+        DownloadData.FetchDataFromWebside(myUrl, fiveDaysForecastActivity);
     }
 
     @Override

@@ -69,7 +69,6 @@ import java.util.ArrayList;
             fiveDayWeatherData=parseJson.parseJsonToObjectList();
 
 
-
             //send data to FiveDaysForecastActivity
            fiveDaysForecast.setData(fiveDayWeatherData);
        }
