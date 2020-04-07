@@ -54,8 +54,8 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
 
         //init TextView components
         initComponentView();
-        //TODO
-        //fiveDaysForecast.downloadWeatherData(this);
+
+        fiveDaysForecast.downloadWeatherData(this);
 
     }
 

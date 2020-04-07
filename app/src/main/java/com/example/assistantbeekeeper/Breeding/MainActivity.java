@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -16,6 +17,7 @@ import com.example.assistantbeekeeper.Breeding.Breeding;
 import com.example.assistantbeekeeper.R;
 import com.example.assistantbeekeeper.panelAddApiary.addApiaryActivity.AddApiaryActivity;
 import com.example.assistantbeekeeper.panelButtonFragment.panelButtonActivity.PanelButtonActivity;
+
 import com.example.assistantbeekeeper.statisticsProduction.FragmentActivity.StatisticGeneralFragment;
 import com.example.assistantbeekeeper.weatherRadar.weatherRadarActi.WeatherRadarActivity;
 import com.example.assistantbeekeeper.weatherwitget.CurrentWeatherDataClass;
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements StatisticGeneralF
        //listWeatherOneDay=WeatherWidget.FetchDataWether(weatherOneDayData,this, this);
 
 
-       // FragmentActivity fragmentStatistics= (FragmentActivity) getSupportFragmentManager().findFragmentById(R.id.statistics_fragment);
+       //FragmentActivity fragmentStatistics= (FragmentActivity) getSupportFragmentManager().findFragmentById(R.id.statistics_fragment);
 
 
     }

@@ -70,8 +70,7 @@ public class FragmentActivity extends Fragment {
         alertsPre.FethRSOData(this, listParameter);
     }
 
-    //TODO
-    //test method
+
     private void setArticles(ArrayList<AlertsWeatherData> articles){
         AlertsWeatherData obj1=new AlertsWeatherData("ostrze", "dasdasda","sdsda", "sdsd", "sdd");
 

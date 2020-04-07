@@ -1,6 +1,5 @@
 package com.example.assistantbeekeeper.statisticsProduction.detailStatistic.detailStatisticPre;
 
-import android.app.Activity;
 import android.content.Context;
 
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
