@@ -66,7 +66,7 @@
 
                     <TextView
                         android:id="@+id/textView5"
-                        android:layout_width="219dp"
+                        android:layout_width="221dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_marginStart="15dp"
@@ -78,16 +78,31 @@
 
                     <TextView
                         android:id="@+id/textView6"
-                        android:layout_width="97dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentEnd="true"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
-                        android:layout_marginEnd="30dp"
+                        android:layout_marginEnd="14dp"
+                        android:layout_toStartOf="@+id/currencyID"
                         android:layout_toEndOf="@+id/textView5"
-                        android:gravity="center_vertical"
                         android:text="@string/sum1"
+                        android:textAlignment="textEnd"
                         android:textColor="#FDFFFFFF"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/currencyID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="28dp"
+
+                        android:layout_marginEnd="15dp"
+                        android:text="@string/currency"
+                        android:textAlignment="center"
+                        android:textColor="@color/design_default_color_background"
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 
@@ -102,9 +117,10 @@
 
                     <TextView
                         android:id="@+id/textView4"
-                        android:layout_width="222dp"
+                        android:layout_width="221dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="15dp"
+                        android:layout_centerVertical="true"
                         android:gravity="center_vertical"
                         android:text="@string/earnings"
                         android:textColor="#FFFF"
@@ -112,16 +128,32 @@
 
                     <TextView
                         android:id="@+id/textView7"
-                        android:layout_width="107dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentEnd="true"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
-                        android:layout_marginEnd="30dp"
+                        android:layout_marginEnd="17dp"
+                        android:layout_toStartOf="@+id/currencyID2"
                         android:layout_toEndOf="@+id/textView4"
-                        android:gravity="center_vertical"
                         android:text="@string/sum1"
+                        android:textAlignment="textEnd"
                         android:textColor="#FDFFFFFF"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/currencyID2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+
+                        android:layout_marginTop="28dp"
+                        android:layout_marginEnd="15dp"
+                        android:text="@string/currency"
+                        android:textAlignment="center"
+                        android:textColor="@color/design_default_color_background"
+                        android:textSize="16sp" />
+
 
                 </RelativeLayout>
 
@@ -146,16 +178,31 @@
 
                     <TextView
                         android:id="@+id/textView8"
-                        android:layout_width="107dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentEnd="true"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
-                        android:layout_marginEnd="30dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_toStartOf="@+id/currencyID3"
                         android:layout_toEndOf="@+id/textView3"
-                        android:gravity="center_vertical"
                         android:text="@string/sum1"
+                        android:textAlignment="textEnd"
                         android:textColor="#FDFFFFFF"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/currencyID3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="28dp"
+
+                        android:layout_marginEnd="20dp"
+                        android:text="@string/litre"
+                        android:textAlignment="center"
+                        android:textColor="@color/design_default_color_background"
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 

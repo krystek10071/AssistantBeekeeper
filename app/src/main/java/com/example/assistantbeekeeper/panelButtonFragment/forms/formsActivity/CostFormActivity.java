@@ -90,7 +90,7 @@ public class CostFormActivity extends AppCompatActivity {
         textInputName=findViewById(R.id.textInput1);
         textInputValue=findViewById(R.id.textInput2);
         textInputDate=findViewById(R.id.textInput3);
-        buttonAkcept=findViewById(R.id.buttonConfirmProfit);
+        buttonAkcept=findViewById(R.id.buttonConfirmCost);
         floatingActionButton=findViewById(R.id.floatingActionButton1);
         placeName=findViewById(R.id.placeName);
     }

@@ -64,5 +64,6 @@
     <string name="enter_name_apiary">Wprowadź nazwę pasieki</string>
     <string name="ButtonAddApiary">Dodaj pasiekę</string>
     <string name="addApiary">Dodaj pasieke</string>
+    <string name="litre">l</string>
 
 </resources>
