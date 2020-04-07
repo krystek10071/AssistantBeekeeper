@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="90dp"
     android:orientation="vertical"
     android:background="#F1951A">
 
@@ -25,7 +25,7 @@
                 android:layout_width="181dp"
                 android:layout_height="25dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/ustaw_date"
                 android:textSize="18sp"
                 android:textColor="@color/design_default_color_background"
@@ -37,19 +37,21 @@
                 android:layout_width="229dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="10dp"
                 android:text="@string/description_events"
                 android:textColor="@color/design_default_color_background"
                 android:textSize="18sp"
 
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateOperations"
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/valueOperation"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="4dp"
                 android:text="@string/value"
                 android:textAlignment="textEnd"
@@ -63,7 +65,7 @@
                 android:id="@+id/operationValute"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="24dp"
                 android:text="@string/currency"
                 android:textAlignment="center"

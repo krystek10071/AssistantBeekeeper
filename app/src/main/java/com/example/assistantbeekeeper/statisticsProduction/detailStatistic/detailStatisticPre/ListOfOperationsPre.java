@@ -1,13 +1,15 @@
 package com.example.assistantbeekeeper.statisticsProduction.detailStatistic.detailStatisticPre;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.dbHandler.AssistantDbAbstract;
+import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.ApiaryEntity;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.CostEntity;
 import com.example.assistantbeekeeper.assistantBeekeeperRoomSQLLite.models.EarningsEntity;
-import com.example.assistantbeekeeper.panelButtonFragment.forms.formPre.DateFormater;
 import com.example.assistantbeekeeper.severalDaysForecast.alertRSOFagment.FragmentAlertsPre.DateParser;
 import com.example.assistantbeekeeper.statisticsProduction.FragmentStatisticsPre.StatisticGeneralPre;
+import com.example.assistantbeekeeper.statisticsProduction.detailStatistic.detailStatisticActivity.ListOfOperationsActivity;
 import com.example.assistantbeekeeper.statisticsProduction.detailStatistic.models.OperationsData;
 
 import java.util.ArrayList;
@@ -16,18 +18,26 @@ import java.util.Date;
 import java.util.List;
 
 public class ListOfOperationsPre {
-    public ArrayList<OperationsData> loadDataToRecycleView(Context context, String placeName) {
+
+    public ArrayList<OperationsData> loadDataToRecycleView(Context context, ListOfOperationsActivity activity, String placeName) {
         ArrayList<OperationsData> listArticle;
         List<EarningsEntity> earningsEntities;
         List<CostEntity> costEntities;
+        List<ApiaryEntity> apiaryEntities;
 
         StatisticGeneralPre statisticGeneralPre=new StatisticGeneralPre();
         AssistantDbAbstract databaseHandle=statisticGeneralPre.createDatabase(context);
 
-        earningsEntities=databaseHandle.earningsDAO().getAll();
-        costEntities=databaseHandle.costDao().getAll();
+        apiaryEntities=databaseHandle.apiaryDAO().getIdApiaryByName(placeName);
+
+        earningsEntities=databaseHandle.earningsDAO().loadProfitByIdApiary(apiaryEntities.get(0).getId());
+        costEntities=databaseHandle.costDao().loadCostsByIdApiary(apiaryEntities.get(0).getId());
 
          listArticle=prepareListOfOperations(earningsEntities, costEntities);
+
+         if(listArticle.isEmpty()){activity.displayMessage("Brak elementów do wyświetlenia");}
+
+         databaseHandle.close();
          return listArticle;
     }
 
@@ -73,7 +83,7 @@ public class ListOfOperationsPre {
     private String convertTimeInMillisToDate(Long timeInMillis) {
        Date date=new Date();
        DateParser dateParser=new DateParser();
-       String dateBeforeConvertionFormat="EEE MMM DD HH:mm:ss zzz yyyy";
+       String dateBeforeConvertionFormat="EEE MMM dd HH:mm:ss zzz yyyy";
        String dateAfterConvertion="dd-MM-yyyy";
        String outputDate;
 

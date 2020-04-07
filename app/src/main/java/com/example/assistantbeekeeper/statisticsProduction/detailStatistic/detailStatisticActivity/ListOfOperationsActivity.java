@@ -3,6 +3,7 @@ package com.example.assistantbeekeeper.statisticsProduction.detailStatistic.deta
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.assistantbeekeeper.R;
 import com.example.assistantbeekeeper.statisticsProduction.detailStatistic.detailStatisticPre.ListOfOperationsPre;
@@ -28,14 +29,15 @@ public class ListOfOperationsActivity extends AppCompatActivity {
         String namePlace= Objects.requireNonNull(getIntent().getExtras()).getString("placeName");
         setContentView(R.layout.list_of_operations_activity);
 
-        objList=listOfOperationsPre.loadDataToRecycleView(this, namePlace);
+        objList=listOfOperationsPre.loadDataToRecycleView(this, this, namePlace);
 
         recyclerView=findViewById(R.id.listOperationRecycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new AdapterDetailStatistics(objList));
+    }
 
-
-
+    public void displayMessage(String message){
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

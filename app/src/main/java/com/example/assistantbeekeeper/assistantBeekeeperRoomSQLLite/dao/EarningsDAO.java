@@ -26,5 +26,8 @@ public interface EarningsDAO {
     @Query("SELECT * FROM Earnings WHERE Data > (:timeFrom) AND Data < (:timeTo) AND idApiary = (:id_apiary)"  )
     List<EarningsEntity> loadCurrentCostsInYear(Long timeFrom, Long timeTo, Long id_apiary);
 
+    @Query("SELECT * FROM Earnings WHERE idApiary = (:id_apiary)")
+    List<EarningsEntity> loadProfitByIdApiary(Long id_apiary);
+
 
 }

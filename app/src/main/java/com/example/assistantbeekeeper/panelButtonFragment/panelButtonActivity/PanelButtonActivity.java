@@ -72,6 +72,5 @@ public class PanelButtonActivity extends Fragment {
     public void setNameApiary(String name_Apiary) {
         nameApiary=name_Apiary;
         Log.i(TAG, nameApiary);
-        Toast.makeText(getContext(), name_Apiary, Toast.LENGTH_LONG).show();
     }
 }

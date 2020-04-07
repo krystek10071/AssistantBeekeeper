@@ -73,7 +73,7 @@ public class StatisticGeneralFragment extends Fragment implements AdapterView.On
 
         seeMoreButton.setOnClickListener(view1 -> {
             Intent intent=new Intent(getActivity(), ListOfOperationsActivity.class);
-            intent.putExtra("placeName", String.valueOf(apiaryName));
+            intent.putExtra("placeName", apiaryName.getText());
             startActivity(intent);
         });
 
