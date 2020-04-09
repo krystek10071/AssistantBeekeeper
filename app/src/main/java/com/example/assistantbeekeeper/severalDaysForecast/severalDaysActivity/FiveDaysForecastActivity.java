@@ -276,8 +276,10 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
     }
 
     public Drawable getResForWeatherIcon(ArrayList<FiveDayWeatherDataClass> data, int index){
+
+
         if(data.get(index).getWheatherIcon()==1 || data.get(index).getWheatherIcon()==2 || data.get(index).getWheatherIcon()==3 ){
-            return ResourcesCompat.getDrawable(getResources(),R.drawable.iconfinder_partly_cloudy, null);
+            return ResourcesCompat.getDrawable(getResources(),R.drawable.iconfinder_sunny, null);
         }
 
 
