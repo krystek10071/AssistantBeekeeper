@@ -50,7 +50,6 @@ public class FragmentActivity extends Fragment {
         //set adapter
         recyclerView.setAdapter(new MyAdapter(articles));
 
-        alertsPre.FethRSOData(this, listParameter);
 
         Toast.makeText(getActivity(), "Wybierz parametry do wyswietlenia", Toast.LENGTH_SHORT).show();
         return view;
@@ -65,9 +64,9 @@ public class FragmentActivity extends Fragment {
         Toast.makeText(getActivity(), "Brak komunikatow RSO do wyswietlenia", Toast.LENGTH_LONG).show();
     }
 
-    public void refreshRSOData(FiveDaysForecastActivity fiveDaysForecastActivity, ArrayList<String> listParameter){
+    public void refreshRSOData( ArrayList<String> listParameter, String provincy){
 
-        alertsPre.FethRSOData(this, listParameter);
+        alertsPre.FethRSOData(this, listParameter, provincy);
     }
 
 

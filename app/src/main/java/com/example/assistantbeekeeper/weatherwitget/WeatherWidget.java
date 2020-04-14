@@ -4,10 +4,12 @@ package com.example.assistantbeekeeper.weatherwitget;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.location.Address;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.example.assistantbeekeeper.Breeding.MainActivity;
 import com.example.assistantbeekeeper.R;
 
 import org.json.JSONArray;
@@ -17,6 +19,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class WeatherWidget {
@@ -24,10 +27,19 @@ public class WeatherWidget {
     private static final String TAG="WeatherWidget";
 
     //build our URL Weather
-    public static URL createUrlAddress(){
-      URL weatherUrl=NetworkUtils.buildUrlWeatherForOneDay();
-      Log.i(TAG, "Weather url: "+ weatherUrl);
-      return weatherUrl;
+    public static URL createUrlAddress(int keyLocation){
+         URL weatherUrl=NetworkUtils.buildUrlWeatherForOneDay(keyLocation);
+         Log.i(TAG, "Weather url: "+ weatherUrl);
+         return weatherUrl;
+    }
+
+    public static int fetchLocationKey(MainActivity activity, List<Address> addresses) {
+        URL locationUrl=NetworkUtils.getURLLocationKey(addresses.get(0).getLocality());
+        Log.i(TAG, String.valueOf(locationUrl));
+
+        //todo
+        LocationKey.FetchLocationKeyJSON(activity, locationUrl);
+        return 0;
     }
 
     //download weather details
@@ -37,13 +49,8 @@ public class WeatherWidget {
     }
 
     private static class DownloadWeatherDetails extends AsyncTask<URL, Void, String>{
-
        private ArrayList<CurrentWeatherDataClass> weatherDataClassArrayList=new ArrayList<>();
-
-
         //Constructor
-
-
         @SuppressLint("StaticFieldLeak")
         Activity activity;
         @SuppressLint("StaticFieldLeak")
@@ -54,7 +61,6 @@ public class WeatherWidget {
             this.activity=activity;
             this.context=context;
         }
-
 
         @Override
         protected void onPreExecute() {
@@ -84,11 +90,7 @@ public class WeatherWidget {
             if(weatherDetailsResult!=null && !weatherDetailsResult.equals("")){
                 weatherDataClassArrayList=parseJSON_Data(weatherDetailsResult, weatherDataClassArrayList, activity, context);
             }
-
-
             super.onPostExecute(weatherDetailsResult);
-
-
         }
     }
 

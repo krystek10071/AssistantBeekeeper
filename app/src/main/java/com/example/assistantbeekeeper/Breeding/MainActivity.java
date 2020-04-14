@@ -2,16 +2,23 @@ package com.example.assistantbeekeeper.Breeding;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.assistantbeekeeper.Breeding.Breeding;
 import com.example.assistantbeekeeper.R;
@@ -23,9 +30,16 @@ import com.example.assistantbeekeeper.weatherRadar.weatherRadarActi.WeatherRadar
 import com.example.assistantbeekeeper.weatherwitget.CurrentWeatherDataClass;
 import com.example.assistantbeekeeper.severalDaysForecast.severalDaysActivity.FiveDaysForecastActivity;
 import com.example.assistantbeekeeper.weatherwitget.WeatherWidget;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements StatisticGeneralFragment.OverviewFragmentActivityListener {
 
@@ -44,16 +58,18 @@ public class MainActivity extends AppCompatActivity implements StatisticGeneralF
      TextView sensibleTemperature;
      ImageView weatherIcon;
      PanelButtonActivity fragmentPanelButtons;
+     FusedLocationProviderClient fusedLocationProviderClient;
+     String nameProvince;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        URL weatherOneDayData;
-        ArrayList<CurrentWeatherDataClass>  listWeatherOneDay;
-
         init();
+        checkMyLocation();
+
 
         breedingButton.setOnClickListener(v -> {
             Intent intent=new Intent(getApplicationContext(), Breeding.class);
@@ -62,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements StatisticGeneralF
 
         fiveDaysForecast.setOnClickListener(view -> {
             Intent intent=new Intent(getApplicationContext(), FiveDaysForecastActivity.class);
+            intent.putExtra("province", nameProvince);
             startActivity(intent);
         });
 
@@ -76,17 +93,53 @@ public class MainActivity extends AppCompatActivity implements StatisticGeneralF
         } );
 
 
+        //todo
 
-
-        //Todo
-        weatherOneDayData= WeatherWidget.createUrlAddress();
+      // weatherOneDayData= WeatherWidget.createUrlAddress(myAdresses);
        //listWeatherOneDay=WeatherWidget.FetchDataWether(weatherOneDayData,this, this);
-
-
        //FragmentActivity fragmentStatistics= (FragmentActivity) getSupportFragmentManager().findFragmentById(R.id.statistics_fragment);
+    }
 
+    public void createCurrentWeatherForecast(int keyLocation){
+       URL weatherUrlOneDayData= WeatherWidget.createUrlAddress(keyLocation);
+        ArrayList<CurrentWeatherDataClass> listWeatherOneDay = WeatherWidget.FetchDataWether(weatherUrlOneDayData, this, this);
+    }
+
+
+    private void checkMyLocation() {
+        if(ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)==
+                PackageManager.PERMISSION_GRANTED){
+            getLocation();
+        }else
+        {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION},
+                    44);
+        }
 
     }
+
+    private void getLocation() {
+        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(task -> {
+            Location location = task.getResult();
+            if (location != null) {
+                Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
+
+                try {
+                    List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(),
+                            1);
+
+                    WeatherWidget.fetchLocationKey(MainActivity.this, addresses);
+                    currentLocation.setText(addresses.get(0).getLocality());
+                    nameProvince=addresses.get(0).getAdminArea();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+
 
 
 
@@ -103,6 +156,8 @@ public class MainActivity extends AppCompatActivity implements StatisticGeneralF
         buttonTest=findViewById(R.id.buttonTest);
         fragmentPanelButtons=(PanelButtonActivity) getSupportFragmentManager().findFragmentById(R.id.panel_button_fragment);
         addApiaryButton=findViewById(R.id.addApiaryButton);
+        fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this);
+
     }
 
     public void setWeatherIcon(ArrayList<CurrentWeatherDataClass> data, int index){

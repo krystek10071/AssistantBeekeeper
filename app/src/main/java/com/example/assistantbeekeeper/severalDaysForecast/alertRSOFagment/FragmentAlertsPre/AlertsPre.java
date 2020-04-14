@@ -12,7 +12,7 @@ public class AlertsPre implements IAlertsPre {
     private static final String TAG="ALERTS_PRE";
 
     @Override
-    public void FethRSOData(FragmentActivity fragmentRsoActivity, ArrayList<String> listRsoParameter) {
+    public void FethRSOData(FragmentActivity fragmentRsoActivity, ArrayList<String> listRsoParameter, String provincy) {
 
         //todo
         ArrayList<URL> listUrl=new ArrayList<>();
@@ -21,7 +21,7 @@ public class AlertsPre implements IAlertsPre {
 
         for (int i=0; i<lenghtListParameter; i++){
             URL urlAdress;
-            urlAdress=DownloadRSOData.createUrlAdress("wszystkie", listRsoParameter.get(i));
+            urlAdress=DownloadRSOData.createUrlAdress(provincy, listRsoParameter.get(i));
             listUrl.add(urlAdress);
         }
 

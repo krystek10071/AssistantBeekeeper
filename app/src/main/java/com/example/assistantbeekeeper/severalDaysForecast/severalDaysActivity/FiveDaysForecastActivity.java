@@ -3,6 +3,7 @@ package com.example.assistantbeekeeper.severalDaysForecast.severalDaysActivity;
 
 
 import android.content.ClipData;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,6 +36,7 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
     TextView windSpeed1, windSpeed2, windSpeed3, windSpeed4, windSpeed5;
     ImageView weatherIcon1, weatherIcon2, weatherIcon3, weatherIcon4, weatherIcon5;
     boolean general, meteorological, hydrological, trafficInformation;
+    String provincy;
 
     FiveDaysForecast fiveDaysForecast=new FiveDaysForecast();
     AlertsPre alertsPre=new AlertsPre();
@@ -46,11 +48,13 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_five_days_forecast);
+        Intent intent=getIntent();
 
         general=false;
         meteorological=false;
         hydrological=false;
         trafficInformation=false;
+        provincy=intent.getStringExtra("province");
 
         //init TextView components
         initComponentView();
@@ -93,7 +97,7 @@ public class FiveDaysForecastActivity extends AppCompatActivity implements IFive
                         rsoParameters.add("informacje-drogowe");
                     }
 
-                    fragmentRSOActivity.refreshRSOData(this, rsoParameters);
+                    fragmentRSOActivity.refreshRSOData( rsoParameters, provincy);
                 }
                 return true;
 

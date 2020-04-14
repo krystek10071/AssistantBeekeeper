@@ -18,7 +18,10 @@ public class NetworkUtils {
             "http://dataservice.accuweather.com/forecasts/v1/daily/5day/274231";                    //weather data for five day
 
     private final static String WHEATHER_1_DAY_URL=
-            "http://dataservice.accuweather.com/forecasts/v1/daily/1day/267375";                    //weather data for one day
+            "http://dataservice.accuweather.com/forecasts/v1/daily/1day/";                    //weather data for one day
+
+    private final static String WHEATHER_LOCATION_URL=
+            "http://dataservice.accuweather.com/locations/v1/cities/search";                        //url for Location
 
     private final static String API_KEY="bDGjT2yEX1J5CGJAC7lpPImJztQAmwcp";
 
@@ -26,6 +29,7 @@ public class NetworkUtils {
     private final static String PARAM_LANGUAGE="language";
     private final static String PARAM_DETAILS="details";
     private final static String PARAM_METRIC="metric";
+    private final static String PARAM_Q="q";
 
 
     public static URL buildUrlWeatheForFiveDay(){
@@ -47,8 +51,9 @@ public class NetworkUtils {
         return  urlAddress;
     }
 
-        public static URL buildUrlWeatherForOneDay(){
-        Uri buildUri=Uri.parse(WHEATHER_1_DAY_URL).buildUpon()
+        public static URL buildUrlWeatherForOneDay(int keyLocation){
+
+        Uri buildUri=Uri.parse(WHEATHER_1_DAY_URL+keyLocation).buildUpon()
                 .appendQueryParameter(PARAM_KEY, API_KEY).appendQueryParameter(PARAM_LANGUAGE, "pl")
                 .appendQueryParameter(PARAM_DETAILS, "true")
                 .appendQueryParameter(PARAM_METRIC, "true")
@@ -92,5 +97,20 @@ public class NetworkUtils {
             httpURLConnection.disconnect();
         }
 
+    }
+
+    public static URL getURLLocationKey(String locality){
+        Uri buildUri=Uri.parse(WHEATHER_LOCATION_URL).buildUpon()
+                .appendQueryParameter(PARAM_KEY, API_KEY).appendQueryParameter(PARAM_Q, locality)
+                .appendQueryParameter(PARAM_LANGUAGE, "pl").build();
+
+        URL urlAddress=null;
+
+        try {
+            urlAddress=new URL(buildUri.toString());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return urlAddress;
     }
 }

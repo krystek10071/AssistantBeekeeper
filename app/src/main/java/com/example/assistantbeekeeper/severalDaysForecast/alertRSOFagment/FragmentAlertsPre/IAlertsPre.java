@@ -6,5 +6,5 @@ import java.util.ArrayList;
 
 public interface IAlertsPre {
 
-    void FethRSOData(FragmentActivity fragmentRsoActivity, ArrayList<String> listRsoParameter);
+    void FethRSOData(FragmentActivity fragmentRsoActivity, ArrayList<String> listRsoParameter, String provincy);
 }
