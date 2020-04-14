@@ -50,7 +50,6 @@ public class FragmentActivity extends Fragment {
         //set adapter
         recyclerView.setAdapter(new MyAdapter(articles));
 
-
         Toast.makeText(getActivity(), "Wybierz parametry do wyswietlenia", Toast.LENGTH_SHORT).show();
         return view;
     }
