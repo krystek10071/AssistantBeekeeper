@@ -3,5 +3,6 @@ This Assistant Beekeeper application application is designed to help the Beekeep
 The generaly functionality this application is calendar for rearing queens of bees.
 Application includes several functionality, such as:<br/><br/>
 weather forecasts,<br/>
-weather radar from 
-the possibility of conducting a cost estimate
+weather radar from [Windy.com](htpps://www.Windy.com),<br/>
+the possibility of conducting a cost estimate,<br/>
+fetching alerts from RSO (Regional warning system),<br/>
