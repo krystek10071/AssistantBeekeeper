@@ -6,3 +6,7 @@ weather forecasts,<br/>
 weather radar from [Windy.com](htpps://www.Windy.com),<br/>
 the possibility of conducting a cost estimate,<br/>
 fetching alerts from RSO (Regional warning system),<br/>
+
+Below is several screenshots from application:
+
+
